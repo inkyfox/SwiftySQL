@@ -23,16 +23,16 @@ public class SQLGenerator {
         switch db {
         default:
             generators = [
-                ObjectIdentifier(SQL.Select.self)     : DefaultDB.SelectGenerator(),
-                ObjectIdentifier(SQL.Column.self)     : DefaultDB.ColumnGenerator(),
-                ObjectIdentifier(SQL.BinaryExpr.self) : DefaultDB.BinaryExprGenerator(),
-                ObjectIdentifier(SQL.Table.self)      : DefaultDB.TableGenerator(),
-                ObjectIdentifier(SQL.Join.self)       : DefaultDB.JoinGenerator(),
-                ObjectIdentifier(SQL.Order.self)      : DefaultDB.OrderGenerator(),
-                ObjectIdentifier(SQL.Case.self)       : DefaultDB.CaseGenerator(),
-                ObjectIdentifier(SQL.Func.self)       : DefaultDB.FuncGenerator(),
-                ObjectIdentifier(SQL.Limit.self)      : DefaultDB.LimitGenerator(),
-                ObjectIdentifier(SQL.Alias.self)      : DefaultDB.AliasGenerator(),
+                ObjectIdentifier(SQL.Select.self)     : SQL.Select.Generator(),
+                ObjectIdentifier(SQL.Column.self)     : SQL.Column.Generator(),
+                ObjectIdentifier(SQL.BinaryExpr.self) : SQL.BinaryExpr.Generator(),
+                ObjectIdentifier(SQL.Table.self)      : SQL.Table.Generator(),
+                ObjectIdentifier(SQL.Join.self)       : SQL.Join.Generator(),
+                ObjectIdentifier(SQL.Order.self)      : SQL.Order.Generator(),
+                ObjectIdentifier(SQL.Case.self)       : SQL.Case.Generator(),
+                ObjectIdentifier(SQL.Func.self)       : SQL.Func.Generator(),
+                ObjectIdentifier(SQL.Limit.self)      : SQL.Limit.Generator(),
+                ObjectIdentifier(SQL.Alias.self)      : SQL.Alias.Generator(),
             ]
         }
         
@@ -66,7 +66,7 @@ protocol SQLElementGeneratable: class {
     func setGenerator(_ generator: SQLGenerator)
 }
 
-class SQLElementGenerator<T: SQLStringConvertible>: SQLElementGeneratable {
+class SQLElementGenerator<T: SQLStringConvertible>: NSObject, SQLElementGeneratable {
     
     var generator: SQLGenerator!
     

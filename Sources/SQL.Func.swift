@@ -8,4 +8,16 @@
 
 import Foundation
 
+extension SQL {
+    
+    public struct Func: SQLColumnType, SQLOrderType, SQLAliasable {
+        let name: String
+        let args: [SQLExprType]?
+        
+        public init(_ name: String, args: [SQLExprType]? = []) {
+            self.name = name
+            self.args = args
+        }
+    }
 
+}

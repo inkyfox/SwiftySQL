@@ -8,6 +8,22 @@
 
 import Foundation
 
+extension SQL {
+    
+    public struct BinaryExpr: SQLColumnType, SQLOrderType, SQLConditionType, SQLAliasable {
+        let lhs: SQLExprType
+        let op: String
+        let rhs: SQLExprType
+        
+        public init(_ lhs: SQLExprType, _ op: String, _ rhs: SQLExprType) {
+            self.lhs = lhs
+            self.op = op.trimmingCharacters(in: whiteSpaces).uppercased()
+            self.rhs = rhs
+        }
+    }
+    
+}
+
 extension SQLColumnType {
     
     public func eq(_ expr: SQLColumnType) -> SQL.BinaryExpr {

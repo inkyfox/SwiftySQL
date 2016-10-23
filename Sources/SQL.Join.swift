@@ -8,6 +8,22 @@
 
 import Foundation
 
+extension SQL {
+    
+    public struct Join: SQLSourceTableType {
+        
+        public enum JoinType {
+            case inner, leftOuter, cross, natural, naturalLeftOuter
+        }
+        
+        let left: SQLSourceTableType
+        let type: JoinType
+        let right: SQLSourceTableType
+        let on: SQLConditionType?
+    }
+
+}
+
 extension SQLSourceTableType {
     
     public func join(_ right: SQLSourceTableType, on: SQLConditionType? = nil) -> SQL.Join {
@@ -35,4 +51,5 @@ extension SQLSourceTableType {
     }
 
 }
+
 

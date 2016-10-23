@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A93E534F1DBC48E200062A95 /* SQL.Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E534E1DBC48E200062A95 /* SQL.Order.swift */; };
+		A93E53591DBC4A4A00062A95 /* SQL.Order+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E53581DBC4A4A00062A95 /* SQL.Order+DefaultDB.swift */; };
+		A93E535D1DBC4E0300062A95 /* SQL.Case+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E535C1DBC4E0300062A95 /* SQL.Case+DefaultDB.swift */; };
+		A93E535F1DBC4E7A00062A95 /* SQL.Func+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E535E1DBC4E7A00062A95 /* SQL.Func+DefaultDB.swift */; };
+		A93E53611DBC4EA400062A95 /* SQL.Limit+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E53601DBC4EA400062A95 /* SQL.Limit+DefaultDB.swift */; };
+		A93E53631DBC4EDA00062A95 /* SQL.Alias+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E53621DBC4EDA00062A95 /* SQL.Alias+DefaultDB.swift */; };
 		A9B39B4C1DB9D76C00A208FC /* SwiftySQL-macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A9B39B4A1DB9D76C00A208FC /* SwiftySQL-macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9B39B581DB9D84D00A208FC /* SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B521DB9D84D00A208FC /* SQL.swift */; };
 		A9B39B5A1DB9D84D00A208FC /* SQL.Select.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B541DB9D84D00A208FC /* SQL.Select.swift */; };
@@ -21,15 +27,21 @@
 		A9B39B801DB9D91000A208FC /* SwiftySQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9B39B481DB9D76C00A208FC /* SwiftySQL.framework */; };
 		A9B39B811DB9D91000A208FC /* SwiftySQL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9B39B481DB9D76C00A208FC /* SwiftySQL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A9B39B941DBB01C200A208FC /* SQL.Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B931DBB01C200A208FC /* SQL.Join.swift */; };
-		A9B39B961DBB01DD00A208FC /* SQL.Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B951DBB01DD00A208FC /* SQL.Order.swift */; };
 		A9B39B981DBB1B3F00A208FC /* SQL.Case.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B971DBB1B3F00A208FC /* SQL.Case.swift */; };
 		A9B39B9A1DBB1B5100A208FC /* SQL.Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B991DBB1B5100A208FC /* SQL.Func.swift */; };
 		A9B39B9E1DBB1B9200A208FC /* TollFreeSQLColumnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B9D1DBB1B9200A208FC /* TollFreeSQLColumnType.swift */; };
 		A9B39BA21DBB3E1100A208FC /* SQLTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BA11DBB3E1100A208FC /* SQLTypes.swift */; };
 		A9B39BA41DBB58FA00A208FC /* SQL.Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BA31DBB58FA00A208FC /* SQL.Alias.swift */; };
 		A9B39BA71DBBA52100A208FC /* SQLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BA61DBBA52100A208FC /* SQLGenerator.swift */; };
-		A9B39BA91DBBA77900A208FC /* DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BA81DBBA77900A208FC /* DefaultDB.swift */; };
 		A9B39BAB1DBBCA0200A208FC /* SQL.BinaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BAA1DBBCA0200A208FC /* SQL.BinaryExpr.swift */; };
+		A9B39BAF1DBC380100A208FC /* SQL.Select+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BAE1DBC380100A208FC /* SQL.Select+DefaultDB.swift */; };
+		A9B39BB11DBC3AE900A208FC /* SQL.Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BB01DBC3AE900A208FC /* SQL.Column.swift */; };
+		A9B39BB31DBC3B4000A208FC /* SQL.Limit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BB21DBC3B4000A208FC /* SQL.Limit.swift */; };
+		A9B39BB51DBC3B5C00A208FC /* SQL.Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BB41DBC3B5C00A208FC /* SQL.Table.swift */; };
+		A9B39BB71DBC3BAA00A208FC /* SQL.Column+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BB61DBC3BAA00A208FC /* SQL.Column+DefaultDB.swift */; };
+		A9B39BB91DBC3C0F00A208FC /* SQL.BinaryExpr+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BB81DBC3C0F00A208FC /* SQL.BinaryExpr+DefaultDB.swift */; };
+		A9B39BBB1DBC40BD00A208FC /* SQL.Table+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BBA1DBC40BD00A208FC /* SQL.Table+DefaultDB.swift */; };
+		A9B39BBD1DBC411F00A208FC /* SQL.Join+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BBC1DBC411F00A208FC /* SQL.Join+DefaultDB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +76,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A93E534E1DBC48E200062A95 /* SQL.Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Order.swift; sourceTree = "<group>"; };
+		A93E53581DBC4A4A00062A95 /* SQL.Order+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Order+DefaultDB.swift"; sourceTree = "<group>"; };
+		A93E535C1DBC4E0300062A95 /* SQL.Case+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Case+DefaultDB.swift"; sourceTree = "<group>"; };
+		A93E535E1DBC4E7A00062A95 /* SQL.Func+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Func+DefaultDB.swift"; sourceTree = "<group>"; };
+		A93E53601DBC4EA400062A95 /* SQL.Limit+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Limit+DefaultDB.swift"; sourceTree = "<group>"; };
+		A93E53621DBC4EDA00062A95 /* SQL.Alias+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Alias+DefaultDB.swift"; sourceTree = "<group>"; };
 		A9B39B481DB9D76C00A208FC /* SwiftySQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftySQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B39B4A1DB9D76C00A208FC /* SwiftySQL-macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftySQL-macOS.h"; sourceTree = "<group>"; };
 		A9B39B4B1DB9D76C00A208FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,16 +99,22 @@
 		A9B39B7A1DB9D90900A208FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A9B39B7C1DB9D90900A208FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9B39B931DBB01C200A208FC /* SQL.Join.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Join.swift; sourceTree = "<group>"; };
-		A9B39B951DBB01DD00A208FC /* SQL.Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Order.swift; sourceTree = "<group>"; };
 		A9B39B971DBB1B3F00A208FC /* SQL.Case.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Case.swift; sourceTree = "<group>"; };
 		A9B39B991DBB1B5100A208FC /* SQL.Func.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Func.swift; sourceTree = "<group>"; };
 		A9B39B9D1DBB1B9200A208FC /* TollFreeSQLColumnType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TollFreeSQLColumnType.swift; sourceTree = "<group>"; };
 		A9B39BA11DBB3E1100A208FC /* SQLTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLTypes.swift; sourceTree = "<group>"; };
 		A9B39BA31DBB58FA00A208FC /* SQL.Alias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Alias.swift; sourceTree = "<group>"; };
 		A9B39BA61DBBA52100A208FC /* SQLGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLGenerator.swift; sourceTree = "<group>"; };
-		A9B39BA81DBBA77900A208FC /* DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultDB.swift; sourceTree = "<group>"; };
 		A9B39BAA1DBBCA0200A208FC /* SQL.BinaryExpr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.BinaryExpr.swift; sourceTree = "<group>"; };
 		A9B39BAD1DBBE29400A208FC /* SwiftySQL.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SwiftySQL.playground; sourceTree = "<group>"; };
+		A9B39BAE1DBC380100A208FC /* SQL.Select+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Select+DefaultDB.swift"; sourceTree = "<group>"; };
+		A9B39BB01DBC3AE900A208FC /* SQL.Column.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Column.swift; sourceTree = "<group>"; };
+		A9B39BB21DBC3B4000A208FC /* SQL.Limit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Limit.swift; sourceTree = "<group>"; };
+		A9B39BB41DBC3B5C00A208FC /* SQL.Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Table.swift; sourceTree = "<group>"; };
+		A9B39BB61DBC3BAA00A208FC /* SQL.Column+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Column+DefaultDB.swift"; sourceTree = "<group>"; };
+		A9B39BB81DBC3C0F00A208FC /* SQL.BinaryExpr+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.BinaryExpr+DefaultDB.swift"; sourceTree = "<group>"; };
+		A9B39BBA1DBC40BD00A208FC /* SQL.Table+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Table+DefaultDB.swift"; sourceTree = "<group>"; };
+		A9B39BBC1DBC411F00A208FC /* SQL.Join+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Join+DefaultDB.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,12 +185,15 @@
 				A9B39B561DB9D84D00A208FC /* SQLStringConvertible.swift */,
 				A9B39B9D1DBB1B9200A208FC /* TollFreeSQLColumnType.swift */,
 				A9B39B541DB9D84D00A208FC /* SQL.Select.swift */,
+				A9B39BB01DBC3AE900A208FC /* SQL.Column.swift */,
 				A9B39BAA1DBBCA0200A208FC /* SQL.BinaryExpr.swift */,
 				A9B39B931DBB01C200A208FC /* SQL.Join.swift */,
-				A9B39B951DBB01DD00A208FC /* SQL.Order.swift */,
 				A9B39B971DBB1B3F00A208FC /* SQL.Case.swift */,
 				A9B39B991DBB1B5100A208FC /* SQL.Func.swift */,
+				A9B39BB41DBC3B5C00A208FC /* SQL.Table.swift */,
 				A9B39BA31DBB58FA00A208FC /* SQL.Alias.swift */,
+				A9B39BB21DBC3B4000A208FC /* SQL.Limit.swift */,
+				A93E534E1DBC48E200062A95 /* SQL.Order.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -196,7 +223,16 @@
 			isa = PBXGroup;
 			children = (
 				A9B39BA61DBBA52100A208FC /* SQLGenerator.swift */,
-				A9B39BA81DBBA77900A208FC /* DefaultDB.swift */,
+				A9B39BAE1DBC380100A208FC /* SQL.Select+DefaultDB.swift */,
+				A9B39BB61DBC3BAA00A208FC /* SQL.Column+DefaultDB.swift */,
+				A9B39BB81DBC3C0F00A208FC /* SQL.BinaryExpr+DefaultDB.swift */,
+				A9B39BBA1DBC40BD00A208FC /* SQL.Table+DefaultDB.swift */,
+				A9B39BBC1DBC411F00A208FC /* SQL.Join+DefaultDB.swift */,
+				A93E53581DBC4A4A00062A95 /* SQL.Order+DefaultDB.swift */,
+				A93E535C1DBC4E0300062A95 /* SQL.Case+DefaultDB.swift */,
+				A93E535E1DBC4E7A00062A95 /* SQL.Func+DefaultDB.swift */,
+				A93E53601DBC4EA400062A95 /* SQL.Limit+DefaultDB.swift */,
+				A93E53621DBC4EDA00062A95 /* SQL.Alias+DefaultDB.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -357,19 +393,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9B39BB31DBC3B4000A208FC /* SQL.Limit.swift in Sources */,
 				A9B39BAB1DBBCA0200A208FC /* SQL.BinaryExpr.swift in Sources */,
 				A9B39BA41DBB58FA00A208FC /* SQL.Alias.swift in Sources */,
 				A9B39B981DBB1B3F00A208FC /* SQL.Case.swift in Sources */,
 				A9B39BA71DBBA52100A208FC /* SQLGenerator.swift in Sources */,
 				A9B39B5D1DB9D84D00A208FC /* SQLUtils.swift in Sources */,
+				A9B39BB51DBC3B5C00A208FC /* SQL.Table.swift in Sources */,
+				A93E535D1DBC4E0300062A95 /* SQL.Case+DefaultDB.swift in Sources */,
+				A93E53611DBC4EA400062A95 /* SQL.Limit+DefaultDB.swift in Sources */,
 				A9B39B9A1DBB1B5100A208FC /* SQL.Func.swift in Sources */,
-				A9B39BA91DBBA77900A208FC /* DefaultDB.swift in Sources */,
+				A9B39BBB1DBC40BD00A208FC /* SQL.Table+DefaultDB.swift in Sources */,
+				A9B39BB11DBC3AE900A208FC /* SQL.Column.swift in Sources */,
+				A9B39BB91DBC3C0F00A208FC /* SQL.BinaryExpr+DefaultDB.swift in Sources */,
 				A9B39B5A1DB9D84D00A208FC /* SQL.Select.swift in Sources */,
 				A9B39B941DBB01C200A208FC /* SQL.Join.swift in Sources */,
+				A93E534F1DBC48E200062A95 /* SQL.Order.swift in Sources */,
+				A93E53631DBC4EDA00062A95 /* SQL.Alias+DefaultDB.swift in Sources */,
+				A9B39BBD1DBC411F00A208FC /* SQL.Join+DefaultDB.swift in Sources */,
 				A9B39B581DB9D84D00A208FC /* SQL.swift in Sources */,
 				A9B39BA21DBB3E1100A208FC /* SQLTypes.swift in Sources */,
+				A9B39BAF1DBC380100A208FC /* SQL.Select+DefaultDB.swift in Sources */,
+				A93E53591DBC4A4A00062A95 /* SQL.Order+DefaultDB.swift in Sources */,
 				A9B39B5C1DB9D84D00A208FC /* SQLStringConvertible.swift in Sources */,
-				A9B39B961DBB01DD00A208FC /* SQL.Order.swift in Sources */,
+				A9B39BB71DBC3BAA00A208FC /* SQL.Column+DefaultDB.swift in Sources */,
+				A93E535F1DBC4E7A00062A95 /* SQL.Func+DefaultDB.swift in Sources */,
 				A9B39B9E1DBB1B9200A208FC /* TollFreeSQLColumnType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -653,6 +701,7 @@
 				A9B39B4F1DB9D76C00A208FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A9B39B6A1DB9D89C00A208FC /* Build configuration list for PBXNativeTarget "SwiftySQLTests-macOS" */ = {
 			isa = XCConfigurationList;
@@ -661,6 +710,7 @@
 				A9B39B6C1DB9D89C00A208FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A9B39B7D1DB9D90900A208FC /* Build configuration list for PBXNativeTarget "SwiftySQLExample-macOS" */ = {
 			isa = XCConfigurationList;
@@ -669,6 +719,7 @@
 				A9B39B7F1DB9D90900A208FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

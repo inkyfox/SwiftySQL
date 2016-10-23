@@ -2,11 +2,26 @@
 //  SQL.Order.swift
 //  SwiftySQL
 //
-//  Created by Yongha Yoo (inkyfox) on 2016. 10. 22..
+//  Created by indy on 2016. 10. 23..
 //  Copyright © 2016년 Gen X Hippies Company. All rights reserved.
 //
 
 import Foundation
+
+extension SQL {
+    
+    public struct Order: SQLOrderType {
+        
+        public enum Sort {
+            case asc, desc
+        }
+        
+        let column: SQLColumnType
+        let sort: Sort
+        
+    }
+    
+}
 
 extension SQLColumnType {
     
@@ -18,4 +33,5 @@ extension SQLColumnType {
         return SQL.Order(column: self, sort: .desc)
     }
 }
+
 

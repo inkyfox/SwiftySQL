@@ -8,6 +8,24 @@
 
 import Foundation
 
+extension SQL {
+    
+    public class Select: SQLQueryType, SQLColumnType, SQLSourceTableType, SQLAliasable {
+        
+        var columns: [SQLColumnType] = []
+        var tables: [SQLSourceTableType] = []
+        var condition: SQLConditionType? = nil
+        var groups: [SQLColumnType] = []
+        var having: SQLConditionType? = nil
+        var orders: [SQLOrderType] = []
+        var limit: Limit? = nil
+        
+        internal init() { }
+        
+    }
+    
+}
+
 extension SQL.Select {
     
     public func query(by generator: SQLGenerator) -> String {

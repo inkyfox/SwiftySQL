@@ -8,6 +8,21 @@
 
 import Foundation
 
+extension SQL {
+    
+    open class Alias: SQLColumnType, SQLSourceTableType {
+        let sql: SQLAliasable
+        let alias: String
+        
+        public init(_ sql: SQLAliasable, alias: String) {
+            self.sql = sql
+            self.alias = alias
+        }
+        
+    }
+    
+}
+
 extension SQL.Alias {
     
     public func `as`(_ alias: String) -> SQL.Alias {

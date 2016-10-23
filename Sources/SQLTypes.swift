@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public protocol SQLExprType: SQLStringConvertible { }
 public protocol SQLColumnType: SQLExprType { }
 public protocol SQLConditionType: SQLExprType { }

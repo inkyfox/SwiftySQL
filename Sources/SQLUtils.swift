@@ -31,3 +31,17 @@ internal func space(_ indent: Int) -> String {
     indentSpaces[indent] = space
     return space
 }
+
+
+internal func sqlJoin(_ sqls: [SQLStringConvertible], by generator: SQLGenerator) -> String {
+    return sqls
+        .map { $0.sqlString(by: generator) }
+        .joined(separator: ", ")
+}
+
+internal func formattedSQLJoin(_ sqls: [SQLStringConvertible],
+                            withIndent indent: Int, by generator: SQLGenerator) -> String {
+    return sqls
+        .map { $0.formattedSQLString(withIndent: indent, by: generator) }
+        .joined(separator: ",\n\(space(indent))")
+}
