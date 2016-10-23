@@ -207,6 +207,15 @@ test(student.name
 
 test(student.name.in(student.table))
 
+// tuple
+
+test(student.name
+    .in(SQL.Tuple("a", "b", 1,
+                  SQL.select(lecture.studentCount)
+                    .from(lecture)
+                    .where(21.lt(lecture.studentCount))
+    )))
+
 // combination
 print("--")
 test(

@@ -36,8 +36,9 @@ public class SQLGenerator {
                 ObjectIdentifier(SQL.Func.self)       : SQL.Func.Generator(),
                 ObjectIdentifier(SQL.Limit.self)      : SQL.Limit.Generator(),
                 ObjectIdentifier(SQL.Alias.self)      : SQL.Alias.Generator(),
-                ObjectIdentifier(SQL.Literal.self)      : SQL.Literal.Generator(),
-                ObjectIdentifier(SQL.In.self)      : SQL.In.Generator(),
+                ObjectIdentifier(SQL.Literal.self)    : SQL.Literal.Generator(),
+                ObjectIdentifier(SQL.In.self)         : SQL.In.Generator(),
+                ObjectIdentifier(SQL.Tuple.self)      : SQL.Tuple.Generator(),
             ]
         }
         

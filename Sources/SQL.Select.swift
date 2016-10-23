@@ -58,6 +58,12 @@ extension SQL.Select {
         return self
     }
     
+    public func select(_ columns: SQLColumnType...) -> SQL.Select {
+        self.columns += columns
+        return self
+    }
+
+    
     public func from(_ table: SQLSourceTableType) -> SQL.Select {
         tables.append(table)
         return self
@@ -68,6 +74,11 @@ extension SQL.Select {
         return self
     }
     
+    public func from(_ tables: SQLSourceTableType...) -> SQL.Select {
+        self.tables += tables
+        return self
+    }
+
     public func `where`(_ condition: SQLConditionType) -> SQL.Select {
         self.condition = condition
         return self
@@ -79,6 +90,11 @@ extension SQL.Select {
     }
     
     public func groupBy(_ groups: [SQLColumnType]) -> SQL.Select {
+        self.groups += groups
+        return self
+    }
+    
+    public func groupBy(_ groups: SQLColumnType...) -> SQL.Select {
         self.groups += groups
         return self
     }
@@ -102,7 +118,12 @@ extension SQL.Select {
         self.orders += orders
         return self
     }
-    
+
+    public func orderBy(_ order: SQLOrderType...) -> SQL.Select {
+        self.orders += orders
+        return self
+    }
+
     public func limit(_ limit: SQL.Limit) -> SQL.Select {
         self.limit = limit
         return self
@@ -132,6 +153,11 @@ extension SQL {
         return builder.select(columns)
     }
     
+    public static func select(_ columns: SQLColumnType...) -> SQL.Select {
+        let builder = Select()
+        return builder.select(columns)
+    }
+
     public static func select(from source: SQLSourceTableType) -> SQL.Select {
         let builder = Select()
         return builder.from(source)
@@ -141,6 +167,12 @@ extension SQL {
         let builder = Select()
         return builder.from(sources)
     }
+    
+    public static func select(from sources: SQLSourceTableType...) -> SQL.Select {
+        let builder = Select()
+        return builder.from(sources)
+    }
+
 }
 
 

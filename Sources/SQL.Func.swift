@@ -23,7 +23,13 @@ extension SQL {
             self.name = name
             self.args = [arg]
         }
-}
+        
+        public init(_ name: String, args: SQLExprType...) {
+            self.name = name
+            self.args = args
+        }
+        
+    }
 
 }
 
