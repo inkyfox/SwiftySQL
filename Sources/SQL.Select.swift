@@ -36,9 +36,13 @@ extension SQL.Select {
         return generator.generateFormattedQuery(self)
     }
     
-    public var description: String { return query(by: SQLGenerator.default) }
+    public var description: String {
+        return query(by: SQLGenerator.default)
+    }
     
-    public var debugDescription: String { return formattedQuery(by: SQLGenerator.default) }
+    public var debugDescription: String {
+        return formattedQuery(by: SQLGenerator.default)
+    }
 
 }
 

@@ -11,6 +11,7 @@ import Foundation
 public protocol SQLExprType: SQLStringConvertible { }
 public protocol SQLColumnType: SQLExprType { }
 public protocol SQLConditionType: SQLExprType { }
+public protocol SQLOperaorExprType: SQLExprType { }
 
 public protocol SQLSourceTableType: SQLStringConvertible { }
 public protocol SQLOrderType: SQLStringConvertible { }

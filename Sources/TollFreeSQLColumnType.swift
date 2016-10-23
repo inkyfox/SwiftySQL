@@ -37,3 +37,15 @@ extension String: SQLColumnType, SQLAliasable {
     }
     
 }
+
+extension Character: SQLColumnType, SQLAliasable {
+    
+    public func sqlString(by generator: SQLGenerator) -> String {
+        return "'\(self)'"
+    }
+    
+    public func formattedSQLString(withIndent indent: Int, by generator: SQLGenerator) -> String {
+        return "'\(self)'"
+    }
+    
+}

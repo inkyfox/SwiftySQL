@@ -13,7 +13,10 @@ extension SQL.Table {
     class Generator: SQLElementGenerator<SQL.Table> {
         
         override func generate(_ element: SQL.Table) -> String {
-            return element.table
+            if let schemaName = element.schemaName {
+                return "\(schemaName).\(element.tableName)"
+            }
+            return element.tableName
         }
         
     }

@@ -4,27 +4,60 @@ import Cocoa
 import SwiftySQL
 
 class Student: SQL.Alias {
+    let table = SQL.Table("tbl_student")
+    
     let name = SQL.Column(table: "stu", column: "name")
     let age = SQL.Column(table: "stu", column: "age")
     let attendCount = SQL.Column(table: "stu", column: "attendCount")
     
     init() {
-        super.init(SQL.Table("tbl_student"), alias: "stu")
+        super.init(table, alias: "stu")
     }
 }
 
 class Lecture: SQL.Alias {
+    let table = SQL.Table(schemaName: "user", tableName: "tbl_lecture")
+    
     let name = SQL.Column(table: "lec", column: "name")
     let studentName = SQL.Column(table: "lec", column: "name")
     let studentCount = SQL.Column(table: "stu", column: "studentCount")
-
+    
     init() {
-        super.init(SQL.Table("tbl_lecture"), alias: "lec")
+        super.init(table, alias: "lec")
     }
 }
 
 let student = Student()
 let lecture = Lecture()
+
+func unformat(_ query: String) -> String {
+    return query.components(separatedBy: "\n")
+        .map { $0.trimmingCharacters(in: CharacterSet.whitespaces) }
+        .joined(separator: " ")
+        .replacingOccurrences(of: " FROM   ", with: " FROM ")
+        .replacingOccurrences(of: " WHERE  ", with: " WHERE ")
+        .replacingOccurrences(of: " GROUP  BY ", with: " GROUP BY ")
+        .replacingOccurrences(of: " ORDER  BY ", with: " ORDER BY ")
+        .replacingOccurrences(of: " LIMIT  ", with: " LIMIT ")
+        .replacingOccurrences(of: "( ", with: "(")
+        .replacingOccurrences(of: " )", with: ")")
+}
+
+func test(_ sql: SQLStringConvertible) {
+    let generator = SQLGenerator.default
+    let query = sql.sqlString(by: generator)
+    let formatted = sql.formattedSQLString(withIndent: 0, by: generator)
+    let passed = query == unformat(formatted)
+    let result = passed ? "[Passed] " : "[Failed] "
+    let indent = result.characters.count
+    if passed {
+        print("\(result)\(sql.formattedSQLString(withIndent: indent, by: generator))")
+    } else {
+        print("\(result)\(sql.formattedSQLString(withIndent: indent, by: generator))")
+        print("    \(query)")
+        print("    \(unformat(formatted))")
+    }
+}
 
 let query =
     SQL.select([student.name.as("name"),
@@ -97,30 +130,30 @@ print("SAME: \(query.description == formatted)")
 
 /* Func */
 print("--")
-debugPrint(SQL.Func("COUNT", args: []))
-debugPrint(SQL.Func("COUNT", arg: .asterisk))
+test(SQL.Func("COUNT", args: []))
+test(SQL.Func("COUNT", arg: .asterisk))
 
-debugPrint(SQL.Func("FUNC",
-                    args: [1,
-                           SQL.select(lecture.studentCount)
-                            .from(lecture)
-                            .where(21.lt(lecture.studentCount)),
-                           2,
-                           SQL.Literal.null,
-                           "AAA"]))
+test(SQL.Func("FUNC",
+              args: [1,
+                     SQL.select(lecture.studentCount)
+                        .from(lecture)
+                        .where(21.lt(lecture.studentCount)),
+                     2,
+                     SQL.Literal.null,
+                     "AAA"]))
 
-debugPrint(SQL.count(.asterisk))
+test(SQL.count(.asterisk))
 
-debugPrint(SQL.abs(-5))
+test(SQL.abs(-5))
 
 
 /* OpExpr */
 // binary
 
 print("--")
-debugPrint(student.attendCount.eq(lecture.studentCount))
-debugPrint(student.attendCount.ne(lecture.studentCount))
-debugPrint(
+test(student.attendCount.eq(lecture.studentCount))
+test(student.attendCount.ne(lecture.studentCount))
+test(
     student.attendCount.ge(SQL.select(lecture.studentCount)
         .from(lecture)
         .where(21.lt(lecture.studentCount))
@@ -128,35 +161,55 @@ debugPrint(
         .limit(1))
 )
 
-debugPrint(student.attendCount.plus(lecture.studentCount))
-debugPrint(student.attendCount.minus(lecture.studentCount))
-debugPrint(student.attendCount.multiply(lecture.studentCount))
-debugPrint(student.attendCount.divide(lecture.studentCount))
-debugPrint(student.attendCount.mod(lecture.studentCount))
-debugPrint(student.attendCount.is(lecture.studentCount))
-debugPrint(student.attendCount.isNot(lecture.studentCount))
-debugPrint(student.attendCount.concat(lecture.studentCount))
-debugPrint(student.attendCount.bitwiseAnd(lecture.studentCount))
-debugPrint(student.attendCount.bitwiseOr(lecture.studentCount))
+test(student.attendCount.plus(lecture.studentCount))
+test(student.attendCount.minus(lecture.studentCount))
+test(student.attendCount.multiply(lecture.studentCount))
+test(student.attendCount.divide(lecture.studentCount))
+test(student.attendCount.mod(lecture.studentCount))
+test(student.attendCount.is(lecture.studentCount))
+test(student.attendCount.isNot(lecture.studentCount))
+test(student.attendCount.concat(lecture.studentCount))
+test(student.attendCount.bitwiseAnd(lecture.studentCount))
+test(student.attendCount.bitwiseOr(lecture.studentCount))
 
 // unary
 print("--")
-debugPrint(student.attendCount.isNull())
-debugPrint(student.attendCount.NotNull())
+test(student.attendCount.isNull())
+test(student.attendCount.isNotNull())
 
-debugPrint(SQL.minus(student.attendCount))
-debugPrint(SQL
+test(SQL.minus(student.attendCount))
+test(SQL
     .minus(SQL.select(lecture.studentCount)
         .from(lecture)
         .where(21.lt(lecture.studentCount))
         .orderBy(lecture.name, .asc)
         .limit(1))
 )
-debugPrint(SQL.not(student.attendCount))
+test(SQL.not(student.attendCount))
+
+test(student.name.like("%JONE%"))
+test(student.name.notLike("%JONE%"))
+test(student.name.like("%JONE%", escape: "|"))
+test(student.name.likeIgnoreCase("%JONE%"))
+test(student.name.notLikeIgnoreCase("%JONE%"))
+test(student.name.contains("abc"))
+test(student.name.hasPrefix("abc"))
+test(student.name.hasSuffix("abc"))
+
+test(student.name.between(Character("a"), and: Character("z")))
+test(student.name.notBetween(1, and: 100))
+
+test(student.name
+    .in(SQL.select(lecture.studentCount)
+        .from(lecture)
+        .where(21.lt(lecture.studentCount)))
+)
+
+test(student.name.in(student.table))
 
 // combination
 print("--")
-debugPrint(
+test(
     student.name.eq("Yoo")
         .or(student.name.eq("Lee"))
         .and(student.age.lt(lecture.name))

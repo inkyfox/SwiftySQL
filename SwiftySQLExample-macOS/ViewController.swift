@@ -10,20 +10,26 @@ import Cocoa
 import SwiftySQL
 
 class Student: SQL.Alias {
+    let table = SQL.Table("tbl_student")
+    
     let name = SQL.Column(table: "stu", column: "name")
     let age = SQL.Column(table: "stu", column: "age")
+    let attendCount = SQL.Column(table: "stu", column: "attendCount")
     
     init() {
-        super.init(SQL.Table("tbl_student"), alias: "stu")
+        super.init(table, alias: "stu")
     }
 }
 
 class Lecture: SQL.Alias {
+    let table = SQL.Table(schemaName: "user", tableName: "tbl_lecture")
+    
     let name = SQL.Column(table: "lec", column: "name")
     let studentName = SQL.Column(table: "lec", column: "name")
-
+    let studentCount = SQL.Column(table: "stu", column: "studentCount")
+    
     init() {
-        super.init(SQL.Table("tbl_lecture"), alias: "lec")
+        super.init(table, alias: "lec")
     }
 }
 
@@ -93,11 +99,42 @@ class ViewController: NSViewController {
         
         debugPrint(SQL.count(.asterisk))
 
+        test(student.name.in(student.table))
+
     }
 
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
+        }
+    }
+    
+    func unformat(_ query: String) -> String {
+        return query.components(separatedBy: "\n")
+            .map { $0.trimmingCharacters(in: CharacterSet.whitespaces) }
+            .joined(separator: " ")
+            .replacingOccurrences(of: " FROM   ", with: " FROM ")
+            .replacingOccurrences(of: " WHERE  ", with: " WHERE ")
+            .replacingOccurrences(of: " GROUP  BY ", with: " GROUP BY ")
+            .replacingOccurrences(of: " ORDER  BY ", with: " ORDER BY ")
+            .replacingOccurrences(of: " LIMIT  ", with: " LIMIT ")
+            .replacingOccurrences(of: "( ", with: "(")
+            .replacingOccurrences(of: " )", with: ")")
+    }
+
+    func test(_ sql: SQLStringConvertible) {
+        let generator = SQLGenerator.default
+        let query = sql.sqlString(by: generator)
+        let formatted = sql.formattedSQLString(withIndent: 0, by: generator)
+        let passed = query == unformat(formatted)
+        let result = passed ? "[Passed] " : "[Failed] "
+        let indent = result.characters.count
+        if passed {
+            print("\(result)\(sql.formattedSQLString(withIndent: indent, by: generator))")
+        } else {
+            print("\(result)\(sql.formattedSQLString(withIndent: indent, by: generator))")
+            print("    \(query)")
+            print("    \(unformat(formatted))")
         }
     }
 

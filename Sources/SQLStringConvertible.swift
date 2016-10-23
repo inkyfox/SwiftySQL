@@ -31,9 +31,13 @@ extension SQLStringConvertible {
 
 extension SQLStringConvertible {
     
-    public var description: String { return sqlString(by: SQLGenerator.default) }
+    public var description: String {
+        return sqlString(by: SQLGenerator.default)
+    }
 
-    public var debugDescription: String { return formattedSQLString(withIndent: 0, by: SQLGenerator.default) }
+    public var debugDescription: String {
+        return formattedSQLString(withIndent: 0, by: SQLGenerator.default)
+    }
     
 }
 

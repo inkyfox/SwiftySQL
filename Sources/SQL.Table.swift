@@ -11,10 +11,17 @@ import Foundation
 extension SQL {
     
     public struct Table: SQLSourceTableType, SQLAliasable {
-        public let table: String
+        public let schemaName: String?
+        public let tableName: String
         
-        public init(_ table: String) {
-            self.table = table
+        public init(schemaName: String, tableName: String) {
+            self.schemaName = schemaName
+            self.tableName = tableName
+        }
+
+        public init(_ tableName: String) {
+            schemaName = nil
+            self.tableName = tableName
         }
     }
 
