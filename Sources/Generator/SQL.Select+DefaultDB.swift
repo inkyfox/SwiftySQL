@@ -13,11 +13,11 @@ extension SQL.Select {
     class Generator: SQLQueryGenerator<SQL.Select> {
         
         override func generate(_ element: SQL.Select) -> String {
-            return "(\(generateQuery(element)))"
+            return generateQuery(element).boxed
         }
         
         override func generateFormatted(_ element: SQL.Select, withIndent indent: Int) -> String {
-            return "( \(generateFormattedQuery(element, withIndent: indent + 2)) )"
+            return generateFormattedQuery(element, withIndent: indent + 2).boxedWithSpace
         }
         
         override func generateQuery(_ element: SQL.Select) -> String {

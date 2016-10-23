@@ -12,14 +12,6 @@ private let trimmedUnaryOperators = Set<String>(["+", "-", "~"])
 
 extension SQL.PrefixUnaryExpr {
     
-    fileprivate func isParenthesesNecessary(_ expr: SQLExprType) -> Bool {
-        return expr is SQLOperaorExprType
-    }
-    
-}
-
-extension SQL.PrefixUnaryExpr {
-    
     class Generator: SQLElementGenerator<SQL.PrefixUnaryExpr> {
         
         override func generate(_ element: SQL.PrefixUnaryExpr) -> String {
@@ -30,13 +22,7 @@ extension SQL.PrefixUnaryExpr {
                 query += " "
             }
             
-            let rhs = element.rhs
-
-            if element.isParenthesesNecessary(rhs) {
-                query += "(\(rhs.sqlString(by: generator)))"
-            } else {
-                query += rhs.sqlString(by: generator)
-            }
+            query += element.rhs.sqlStringBoxedIfNeeded(by: generator)
             
             return query
         }
@@ -52,13 +38,7 @@ extension SQL.PrefixUnaryExpr {
                 nextIndent += 1
             }
             
-            let rhs = element.rhs
-
-            if element.isParenthesesNecessary(rhs) {
-                query += "( \(rhs.formattedSQLString(withIndent: nextIndent + 2, by: generator)) )"
-            } else {
-                query += rhs.formattedSQLString(withIndent: nextIndent, by: generator)
-            }
+            query += element.rhs.formattedSQLStringBoxedIfNeeded(withIndent: nextIndent, by: generator)
             
             return query
         }

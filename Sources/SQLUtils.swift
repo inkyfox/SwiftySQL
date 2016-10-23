@@ -13,13 +13,13 @@ internal let whiteSpaces = CharacterSet.whitespacesAndNewlines
 
 extension String {
 
-    var needParentheses: Bool {
-        return rangeOfCharacter(from: whiteSpaces) != nil && !(hasPrefix("(") && hasSuffix(")"))
+    var boxed: String {
+        return "(\(self))"
     }
-    
-    var parenthesesIfNeeded: String {
-        return needParentheses ? "(\(self))" : self
+    var boxedWithSpace: String {
+        return "( \(self) )"
     }
+
 }
 
 private var indentSpaces: [Int : String] = [:]
@@ -45,3 +45,4 @@ internal func formattedSQLJoin(_ sqls: [SQLStringConvertible],
         .map { $0.formattedSQLString(withIndent: indent, by: generator) }
         .joined(separator: ",\n\(space(indent))")
 }
+

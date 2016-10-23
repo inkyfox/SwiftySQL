@@ -14,7 +14,7 @@ private let trimmedUnaryOperators = Set<String>(["+", "-", "~"])
 extension SQL.BinaryExpr {
     
     fileprivate func isParenthesesNecessary(_ expr: SQLExprType) -> Bool {
-        let isOpExpr = expr is SQLOperaorExprType
+        let isOpExpr = expr.needBoxed
 
         guard newLinedOperators.contains(op) else { return isOpExpr }
 
@@ -36,7 +36,7 @@ extension SQL.BinaryExpr {
             let lhs = element.lhs
             
             if element.isParenthesesNecessary(lhs) {
-                query = "(\(lhs.sqlString(by: generator)))"
+                query = lhs.sqlString(by: generator).boxed
             } else {
                 query = lhs.sqlString(by: generator)
             }
@@ -46,7 +46,7 @@ extension SQL.BinaryExpr {
             let rhs = element.rhs
 
             if element.isParenthesesNecessary(rhs) {
-                query += "(\(rhs.sqlString(by: generator)))"
+                query += rhs.sqlString(by: generator).boxed
             } else {
                 query += rhs.sqlString(by: generator)
             }
@@ -61,7 +61,7 @@ extension SQL.BinaryExpr {
             let lhs = element.lhs
 
             if element.isParenthesesNecessary(lhs) {
-                query = "( \(lhs.formattedSQLString(withIndent: indent + 2, by: generator)) )"
+                query = lhs.formattedSQLString(withIndent: indent + 2, by: generator).boxedWithSpace
             } else {
                 query = lhs.formattedSQLString(withIndent: indent, by: generator)
             }
@@ -79,7 +79,7 @@ extension SQL.BinaryExpr {
             let rhs = element.rhs
 
             if element.isParenthesesNecessary(rhs) {
-                query += "( \(rhs.formattedSQLString(withIndent: nextIndent + 2, by: generator)) )"
+                query += rhs.formattedSQLString(withIndent: nextIndent + 2, by: generator).boxedWithSpace
             } else {
                 query += rhs.formattedSQLString(withIndent: nextIndent, by: generator)
             }

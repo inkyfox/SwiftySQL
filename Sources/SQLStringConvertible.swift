@@ -27,10 +27,6 @@ extension SQLStringConvertible {
         return generator.generateFormatted(self, withIndent: indent)
     }
     
-}
-
-extension SQLStringConvertible {
-    
     public var description: String {
         return sqlString(by: SQLGenerator.default)
     }
@@ -38,6 +34,25 @@ extension SQLStringConvertible {
     public var debugDescription: String {
         return formattedSQLString(withIndent: 0, by: SQLGenerator.default)
     }
+}
+
+extension SQLStringConvertible {
     
+    var needBoxed: Bool {
+        return self is SQLOperaorExprType
+    }
+    
+    func sqlStringBoxedIfNeeded(by generator: SQLGenerator) -> String {
+        let str = sqlString(by: generator)
+        return needBoxed ? str.boxed : str
+    }
+
+    func formattedSQLStringBoxedIfNeeded(withIndent indent: Int,
+                                         by generator: SQLGenerator) -> String {
+        return needBoxed ?
+            formattedSQLString(withIndent: indent + 2, by: generator).boxedWithSpace :
+            formattedSQLString(withIndent: indent, by: generator)
+    }
+
 }
 
