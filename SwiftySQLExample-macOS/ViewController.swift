@@ -90,6 +90,9 @@ class ViewController: NSViewController {
         print(query)
         print("--")
         debugPrint(query)
+        
+        debugPrint(SQL.count(.asterisk))
+
     }
 
     override var representedObject: Any? {

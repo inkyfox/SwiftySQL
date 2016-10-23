@@ -6,6 +6,7 @@ import SwiftySQL
 class Student: SQL.Alias {
     let name = SQL.Column(table: "stu", column: "name")
     let age = SQL.Column(table: "stu", column: "age")
+    let attendCount = SQL.Column(table: "stu", column: "attendCount")
     
     init() {
         super.init(SQL.Table("tbl_student"), alias: "stu")
@@ -15,7 +16,8 @@ class Student: SQL.Alias {
 class Lecture: SQL.Alias {
     let name = SQL.Column(table: "lec", column: "name")
     let studentName = SQL.Column(table: "lec", column: "name")
-    
+    let studentCount = SQL.Column(table: "stu", column: "studentCount")
+
     init() {
         super.init(SQL.Table("tbl_lecture"), alias: "lec")
     }
@@ -92,8 +94,86 @@ print(formatted)
 
 print("--")
 print("SAME: \(query.description == formatted)")
-print("--")
 
-print(SQL.Func("COUNT", args: []))
-print(SQL.Func("COUNT", args: nil))
+/* Func */
+print("--")
+debugPrint(SQL.Func("COUNT", args: []))
+debugPrint(SQL.Func("COUNT", arg: .asterisk))
+
+debugPrint(SQL.Func("FUNC",
+                    args: [1,
+                           SQL.select(lecture.studentCount)
+                            .from(lecture)
+                            .where(21.lt(lecture.studentCount)),
+                           2,
+                           SQL.Literal.null,
+                           "AAA"]))
+
+debugPrint(SQL.count(.asterisk))
+
+debugPrint(SQL.abs(-5))
+
+
+/* OpExpr */
+// binary
+
+print("--")
+debugPrint(student.attendCount.eq(lecture.studentCount))
+debugPrint(student.attendCount.ne(lecture.studentCount))
+debugPrint(
+    student.attendCount.ge(SQL.select(lecture.studentCount)
+        .from(lecture)
+        .where(21.lt(lecture.studentCount))
+        .orderBy(lecture.name, .asc)
+        .limit(1))
+)
+
+debugPrint(student.attendCount.plus(lecture.studentCount))
+debugPrint(student.attendCount.minus(lecture.studentCount))
+debugPrint(student.attendCount.multiply(lecture.studentCount))
+debugPrint(student.attendCount.divide(lecture.studentCount))
+debugPrint(student.attendCount.mod(lecture.studentCount))
+debugPrint(student.attendCount.is(lecture.studentCount))
+debugPrint(student.attendCount.isNot(lecture.studentCount))
+debugPrint(student.attendCount.concat(lecture.studentCount))
+debugPrint(student.attendCount.bitwiseAnd(lecture.studentCount))
+debugPrint(student.attendCount.bitwiseOr(lecture.studentCount))
+
+// unary
+print("--")
+debugPrint(student.attendCount.isNull())
+debugPrint(student.attendCount.NotNull())
+
+debugPrint(SQL.minus(student.attendCount))
+debugPrint(SQL
+    .minus(SQL.select(lecture.studentCount)
+        .from(lecture)
+        .where(21.lt(lecture.studentCount))
+        .orderBy(lecture.name, .asc)
+        .limit(1))
+)
+debugPrint(SQL.not(student.attendCount))
+
+// combination
+print("--")
+debugPrint(
+    student.name.eq("Yoo")
+        .or(student.name.eq("Lee"))
+        .and(student.age.lt(lecture.name))
+        .and(student.age.lt(lecture.name))
+        .and(SQL.not(student.name.eq("Hey"))
+            .or(lecture.name.eq("Test")))
+        .and(SQL.minus(student.age.lt(lecture.name)))
+        .or(SQL.not(lecture.name).eq("Science"))
+        .or(student.name.eq("WOW"))
+        .and(student.name.eq("Hey")
+            .or(lecture.name.eq("Test")))
+        .or(lecture.name.eq("Science"))
+        .or(student.name.eq("Hey")
+            .and(lecture.name.eq("Test")))
+)
+
+
+
+/* Date */
 

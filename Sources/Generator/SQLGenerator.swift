@@ -25,7 +25,7 @@ public class SQLGenerator {
             generators = [
                 ObjectIdentifier(SQL.Select.self)     : SQL.Select.Generator(),
                 ObjectIdentifier(SQL.Column.self)     : SQL.Column.Generator(),
-                ObjectIdentifier(SQL.BinaryExpr.self) : SQL.BinaryExpr.Generator(),
+                ObjectIdentifier(SQL.OpExpr.self) : SQL.OpExpr.Generator(),
                 ObjectIdentifier(SQL.Table.self)      : SQL.Table.Generator(),
                 ObjectIdentifier(SQL.Join.self)       : SQL.Join.Generator(),
                 ObjectIdentifier(SQL.Order.self)      : SQL.Order.Generator(),
@@ -33,6 +33,7 @@ public class SQLGenerator {
                 ObjectIdentifier(SQL.Func.self)       : SQL.Func.Generator(),
                 ObjectIdentifier(SQL.Limit.self)      : SQL.Limit.Generator(),
                 ObjectIdentifier(SQL.Alias.self)      : SQL.Alias.Generator(),
+                ObjectIdentifier(SQL.Literal.self)      : SQL.Literal.Generator(),
             ]
         }
         

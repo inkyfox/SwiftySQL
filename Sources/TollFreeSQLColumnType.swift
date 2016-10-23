@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol TollFreeSQLColumnType: SQLColumnType, SQLAliasable { }
+public protocol TollFreeSQLColumnType: SQLColumnType, SQLAliasable, SQLConditionType { }
 
 extension TollFreeSQLColumnType {
     public func sqlString(by generator: SQLGenerator) -> String {

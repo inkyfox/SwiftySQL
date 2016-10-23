@@ -10,7 +10,7 @@ import Foundation
 
 extension SQL {
     
-    public struct Column: SQLColumnType, SQLOrderType, SQLAliasable {
+    public struct Column: SQLColumnType, SQLOrderType, SQLConditionType, SQLAliasable {
         let tableName: String?
         let columnName: String
         

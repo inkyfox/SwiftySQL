@@ -26,5 +26,5 @@ extension SQL.Alias {
         }
         
     }
-
+    
 }

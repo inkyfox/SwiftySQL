@@ -10,7 +10,7 @@ import Foundation
 
 extension SQL {
     
-    public struct Case: SQLColumnType, SQLOrderType, SQLAliasable {
+    public struct Case: SQLColumnType, SQLConditionType, SQLOrderType, SQLAliasable {
         struct When  {
             let when: SQLExprType
             let then: SQLExprType

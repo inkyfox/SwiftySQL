@@ -10,7 +10,7 @@ import Foundation
 
 extension SQL {
     
-    public class Select: SQLQueryType, SQLColumnType, SQLSourceTableType, SQLAliasable {
+    public class Select: SQLQueryType, SQLColumnType, SQLConditionType, SQLSourceTableType,  SQLAliasable {
         
         var columns: [SQLColumnType] = []
         var tables: [SQLSourceTableType] = []
@@ -89,7 +89,12 @@ extension SQL.Select {
         return self
     }
     
-    public func orderBy(_ orders: [SQLOrderType]) -> SQL.Select {
+    public func orderBy(_ order: SQLColumnType, _ sort: SQL.Order.Sort) -> SQL.Select {
+        orders.append(SQL.Order(column: order, sort: sort))
+        return self
+    }
+    
+    public func orderBy(_ order: [SQLOrderType]) -> SQL.Select {
         self.orders += orders
         return self
     }
