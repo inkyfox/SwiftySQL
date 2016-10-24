@@ -23,22 +23,24 @@ public class SQLGenerator {
         switch db {
         default:
             generators = [
-                ObjectIdentifier(SQL.Select.self)     : SQL.Select.Generator(),
-                ObjectIdentifier(SQL.Column.self)     : SQL.Column.Generator(),
+                ObjectIdentifier(SQL.Select.self)          : SQL.Select.Generator(),
+                ObjectIdentifier(SQL.Column.self)          : SQL.Column.Generator(),
                 ObjectIdentifier(SQL.PrefixUnaryExpr.self) : SQL.PrefixUnaryExpr.Generator(),
                 ObjectIdentifier(SQL.SuffixUnaryExpr.self) : SQL.SuffixUnaryExpr.Generator(),
-                ObjectIdentifier(SQL.BinaryExpr.self) : SQL.BinaryExpr.Generator(),
-                ObjectIdentifier(SQL.TernaryExpr.self) : SQL.TernaryExpr.Generator(),
-                ObjectIdentifier(SQL.Table.self)      : SQL.Table.Generator(),
-                ObjectIdentifier(SQL.Join.self)       : SQL.Join.Generator(),
-                ObjectIdentifier(SQL.Order.self)      : SQL.Order.Generator(),
-                ObjectIdentifier(SQL.Case.self)       : SQL.Case.Generator(),
-                ObjectIdentifier(SQL.Func.self)       : SQL.Func.Generator(),
-                ObjectIdentifier(SQL.Limit.self)      : SQL.Limit.Generator(),
-                ObjectIdentifier(SQL.Alias.self)      : SQL.Alias.Generator(),
-                ObjectIdentifier(SQL.Literal.self)    : SQL.Literal.Generator(),
-                ObjectIdentifier(SQL.In.self)         : SQL.In.Generator(),
-                ObjectIdentifier(SQL.Tuple.self)      : SQL.Tuple.Generator(),
+                ObjectIdentifier(SQL.BinaryExpr.self)      : SQL.BinaryExpr.Generator(),
+                ObjectIdentifier(SQL.TernaryExpr.self)     : SQL.TernaryExpr.Generator(),
+                ObjectIdentifier(SQL.Table.self)           : SQL.Table.Generator(),
+                ObjectIdentifier(SQL.Join.self)            : SQL.Join.Generator(),
+                ObjectIdentifier(SQL.Order.self)           : SQL.Order.Generator(),
+                ObjectIdentifier(SQL.Case.self)            : SQL.Case.Generator(),
+                ObjectIdentifier(SQL.Func.self)            : SQL.Func.Generator(),
+                ObjectIdentifier(SQL.Limit.self)           : SQL.Limit.Generator(),
+                ObjectIdentifier(SQL.Alias.self)           : SQL.Alias.Generator(),
+                ObjectIdentifier(SQL.Literal.self)         : SQL.Literal.Generator(),
+                ObjectIdentifier(SQL.AsteriskLiteral.self) : SQL.AsteriskLiteral.Generator(),
+                ObjectIdentifier(SQL.PreparedLiteral.self) : SQL.PreparedLiteral.Generator(),
+                ObjectIdentifier(SQL.In.self)              : SQL.In.Generator(),
+                ObjectIdentifier(SQL.Tuple.self)           : SQL.Tuple.Generator(),
             ]
         }
         

@@ -12,14 +12,12 @@ extension SQL {
     
     public struct Literal: SQLColumnType, SQLAliasable {
         
-        public static let asterisk: Literal = Literal(.asterisk)
         public static let null: Literal = Literal(.null)
         public static let currentDate: Literal = Literal(.currentDate)
         public static let currentTime: Literal = Literal(.currentTime)
         public static let currentTimestamp: Literal = Literal(.currentTimestamp)
         
         public enum Keyword {
-            case asterisk
             case null, currentDate, currentTime, currentTimestamp
         }
         
@@ -47,5 +45,12 @@ extension SQL {
         
     }
     
+    public enum AsteriskLiteral: SQLExprType {
+        case all
+    }
+
+    public enum PreparedLiteral: SQLExprType {
+        case prepared
+    }
 }
 

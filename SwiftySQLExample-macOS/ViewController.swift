@@ -97,7 +97,7 @@ class ViewController: NSViewController {
         print("--")
         debugPrint(query)
         
-        debugPrint(SQL.count(.asterisk))
+        debugPrint(SQL.count(.all))
 
         test(student.name.in(student.table))
 

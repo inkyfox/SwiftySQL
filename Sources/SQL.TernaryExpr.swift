@@ -32,11 +32,11 @@ extension SQL {
 
 extension SQLExprType {
     
-    public func like(_ pattern: String, escape: String) -> SQL.TernaryExpr {
+    public func like(_ pattern: String, escape: Character) -> SQL.TernaryExpr {
         return SQL.TernaryExpr(self, "LIKE", pattern, "ESCAPE", escape)
     }
     
-    public func notLike(_ pattern: String, escape: String) -> SQL.TernaryExpr {
+    public func notLike(_ pattern: String, escape: Character) -> SQL.TernaryExpr {
         return SQL.TernaryExpr(self, "NOT LIKE", pattern, "ESCAPE", escape)
     }
 

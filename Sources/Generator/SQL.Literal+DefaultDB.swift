@@ -14,7 +14,6 @@ extension SQL.Literal {
         
         private func keywordString(_ keyword: SQL.Literal.Keyword) -> String {
             switch keyword {
-            case .asterisk: return "*"
             case .null: return "NULL"
             case .currentDate: return "CURRENT_DATE"
             case .currentTime: return "CURRENT_TIME"
@@ -36,9 +35,27 @@ extension SQL.Literal {
             
         }
         
-        override func generateFormatted(_ element: SQL.Literal,
-                                        withIndent indent: Int) -> String {
-            return generate(element)
+    }
+    
+}
+
+extension SQL.AsteriskLiteral {
+
+    class Generator: SQLElementGenerator<SQL.AsteriskLiteral> {
+        
+        override func generate(_ element: SQL.AsteriskLiteral) -> String {
+            return "*"
+        }
+        
+    }
+}
+
+extension SQL.PreparedLiteral {
+    
+    class Generator: SQLElementGenerator<SQL.PreparedLiteral> {
+        
+        override func generate(_ element: SQL.PreparedLiteral) -> String {
+            return "?"
         }
         
     }

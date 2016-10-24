@@ -60,36 +60,36 @@ func test(_ sql: SQLStringConvertible) {
 }
 
 let query =
-    SQL.select([student.name.as("name"),
-                student.age,
-                lecture.name,
-                "Literal string",
-                1234,
-                SQL.Case([(when: student.age.eq(15),
-                           then: student.age),
-                          (when: SQL.select(student.age)
+    SQL.select(student.name.as("name"),
+               student.age,
+               lecture.name,
+               "Literal string",
+               1234,
+               SQL.Case([(when: student.age.eq(15),
+                          then: student.age),
+                         (when: SQL.select(student.age)
                             .from(student)
                             .where(student.age.le(45))
                             .eq(5),
-                           then: lecture.studentName)
-                    ],
-                         else: 145),
-                SQL.select(student.age)
-                    .from(student)
-                    .where(21.ne(student.age))])
-        .from([student.as("T1"),
-               student
+                          then: lecture.studentName)
+                ],
+                        else: 145),
+               SQL.select(student.age)
+                .from(student)
+                .where(21.ne(student.age)))
+        .from(student.as("T1"),
+              student
                 .join(lecture)
                 .leftJoin(lecture,
                           on: student.name.eq(lecture.studentName))
                 .naturalJoin(lecture,
                              on: student.name.eq(lecture.studentName)),
-               SQL.select(student.age)
+              SQL.select(student.age)
                 .from(student)
                 .where(student.age.le(45))
                 .as("ag"),
-               lecture
-            ])
+              lecture
+        )
         .where(student.name.eq("Yoo")
             .or(student.name.eq("Lee"))
             .and(student.age.lt(lecture.name))
@@ -131,7 +131,7 @@ print("SAME: \(query.description == formatted)")
 /* Func */
 print("--")
 test(SQL.Func("COUNT", args: []))
-test(SQL.Func("COUNT", arg: .asterisk))
+test(SQL.Func("COUNT", arg: .all))
 
 test(SQL.Func("FUNC",
               args: [1,
@@ -142,12 +142,27 @@ test(SQL.Func("FUNC",
                      SQL.Literal.null,
                      "AAA"]))
 
-test(SQL.count(.asterisk))
+test(SQL.count(.all))
 
 test(SQL.abs(-5))
 
 
 /* OpExpr */
+// unary
+print("--")
+test(student.attendCount.isNull())
+test(student.attendCount.isNotNull())
+
+test(SQL.minus(student.attendCount))
+test(SQL
+    .minus(SQL.select(lecture.studentCount)
+        .from(lecture)
+        .where(21.lt(lecture.studentCount))
+        .orderBy(lecture.name, .asc)
+        .limit(1))
+)
+test(SQL.not(student.attendCount))
+
 // binary
 
 print("--")
@@ -172,30 +187,25 @@ test(student.attendCount.concat(lecture.studentCount))
 test(student.attendCount.bitwiseAnd(lecture.studentCount))
 test(student.attendCount.bitwiseOr(lecture.studentCount))
 
-// unary
-print("--")
-test(student.attendCount.isNull())
-test(student.attendCount.isNotNull())
-
-test(SQL.minus(student.attendCount))
-test(SQL
-    .minus(SQL.select(lecture.studentCount)
-        .from(lecture)
-        .where(21.lt(lecture.studentCount))
-        .orderBy(lecture.name, .asc)
-        .limit(1))
-)
-test(SQL.not(student.attendCount))
-
 test(student.name.like("%JONE%"))
 test(student.name.notLike("%JONE%"))
-test(student.name.like("%JONE%", escape: "|"))
 test(student.name.likeIgnoreCase("%JONE%"))
 test(student.name.notLikeIgnoreCase("%JONE%"))
 test(student.name.contains("abc"))
 test(student.name.hasPrefix("abc"))
 test(student.name.hasSuffix("abc"))
 
+print("--")
+test(student.attendCount.eq(.prepared))
+test(student.attendCount.multiply(.prepared))
+test(student.name.like(.prepared))
+test(student.name.notLike(.prepared))
+test(student.name.likeIgnoreCase(.prepared))
+test(student.name.notLikeIgnoreCase(.prepared))
+
+// ternary
+print("--")
+test(student.name.like("%JONE%", escape: "|"))
 test(student.name.between(Character("a"), and: Character("z")))
 test(student.name.notBetween(1, and: 100))
 
