@@ -10,7 +10,7 @@ import Foundation
 
 extension SQL {
     
-    public struct Literal: SQLColumnType, SQLAliasable {
+    public struct Literal: SQLValueType, SQLAliasable {
         
         public static let null: Literal = Literal(.null)
         public static let currentDate: Literal = Literal(.currentDate)
@@ -22,7 +22,7 @@ extension SQL {
         }
         
         let keyword: Keyword?
-        let number: TollFreeSQLColumnType?
+        let number: TollFreeSQLValueType?
         let string: String?
         
         init(_ keyword: Keyword) {
@@ -31,7 +31,7 @@ extension SQL {
             self.string = nil
         }
         
-        init(_ number: TollFreeSQLColumnType) {
+        init(_ number: TollFreeSQLValueType) {
             self.keyword = nil
             self.number = number
             self.string = nil

@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol SQLExprType: SQLStringConvertible { }
-public protocol SQLColumnType: SQLExprType { }
+public protocol SQLValueType: SQLExprType { }
 public protocol SQLConditionType: SQLExprType { }
 public protocol SQLOperaorExprType: SQLExprType { }
 

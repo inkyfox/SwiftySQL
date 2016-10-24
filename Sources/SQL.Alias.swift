@@ -10,7 +10,7 @@ import Foundation
 
 extension SQL {
     
-    open class Alias: SQLColumnType, SQLSourceTableType {
+    open class Alias: SQLValueType, SQLSourceTableType {
         let sql: SQLAliasable
         let alias: String
         

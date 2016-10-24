@@ -10,7 +10,7 @@ import Foundation
 
 extension SQL {
     
-    public struct BinaryExpr: SQLOperaorExprType, SQLColumnType, SQLConditionType, SQLOrderType, SQLAliasable {
+    public struct BinaryExpr: SQLOperaorExprType, SQLValueType, SQLConditionType, SQLOrderType, SQLAliasable {
 
         let lhs: SQLExprType
         let op: String
@@ -32,29 +32,29 @@ extension SQL {
     
 }
 
-extension SQLColumnType {
+extension SQLValueType {
     
-    public func eq(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func eq(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "=", expr)
     }
     
-    public func gt(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func gt(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, ">", expr)
     }
     
-    public func ge(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func ge(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, ">=", expr)
     }
     
-    public func lt(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func lt(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "<", expr)
     }
     
-    public func le(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func le(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "<=", expr)
     }
     
-    public func ne(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func ne(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "<>", expr)
     }
     
@@ -74,43 +74,43 @@ extension SQLConditionType {
 
 extension SQLConditionType {
 
-    public func plus(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func plus(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "+", expr)
     }
     
-    public func minus(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func minus(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "-", expr)
     }
     
-    public func multiply(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func multiply(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "*", expr)
     }
 
-    public func divide(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func divide(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "/", expr)
     }
 
-    public func mod(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func mod(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "%", expr)
     }
 
-    public func `is`(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func `is`(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "IS", expr)
     }
 
-    public func isNot(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func isNot(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "IS NOT", expr)
     }
 
-    public func concat(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func concat(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "||", expr)
     }
 
-    public func bitwiseAnd(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func bitwiseAnd(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "|", expr)
     }
     
-    public func bitwiseOr(_ expr: SQLColumnType) -> SQL.BinaryExpr {
+    public func bitwiseOr(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "&", expr)
     }
 

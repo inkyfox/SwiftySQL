@@ -10,12 +10,12 @@ import Foundation
 
 extension SQL {
     
-    public class Select: SQLQueryType, SQLColumnType, SQLConditionType, SQLSourceTableType,  SQLAliasable {
+    public class Select: SQLQueryType, SQLValueType, SQLConditionType, SQLSourceTableType,  SQLAliasable {
         
-        var columns: [SQLColumnType] = []
+        var columns: [SQLValueType] = []
         var tables: [SQLSourceTableType] = []
         var condition: SQLConditionType? = nil
-        var groups: [SQLColumnType] = []
+        var groups: [SQLValueType] = []
         var having: SQLConditionType? = nil
         var orders: [SQLOrderType] = []
         var limit: Limit? = nil
@@ -48,17 +48,17 @@ extension SQL.Select {
 
 extension SQL.Select {
     
-    public func select(_ column: SQLColumnType) -> SQL.Select {
+    public func select(_ column: SQLValueType) -> SQL.Select {
         columns.append(column)
         return self
     }
     
-    public func select(_ columns: [SQLColumnType]) -> SQL.Select {
+    public func select(_ columns: [SQLValueType]) -> SQL.Select {
         self.columns += columns
         return self
     }
     
-    public func select(_ columns: SQLColumnType...) -> SQL.Select {
+    public func select(_ columns: SQLValueType...) -> SQL.Select {
         self.columns += columns
         return self
     }
@@ -84,17 +84,17 @@ extension SQL.Select {
         return self
     }
     
-    public func groupBy(_ group: SQLColumnType) -> SQL.Select {
+    public func groupBy(_ group: SQLValueType) -> SQL.Select {
         groups.append(group)
         return self
     }
     
-    public func groupBy(_ groups: [SQLColumnType]) -> SQL.Select {
+    public func groupBy(_ groups: [SQLValueType]) -> SQL.Select {
         self.groups += groups
         return self
     }
     
-    public func groupBy(_ groups: SQLColumnType...) -> SQL.Select {
+    public func groupBy(_ groups: SQLValueType...) -> SQL.Select {
         self.groups += groups
         return self
     }
@@ -109,7 +109,7 @@ extension SQL.Select {
         return self
     }
     
-    public func orderBy(_ order: SQLColumnType, _ sort: SQL.Order.Sort) -> SQL.Select {
+    public func orderBy(_ order: SQLValueType, _ sort: SQL.Order.Sort) -> SQL.Select {
         orders.append(SQL.Order(column: order, sort: sort))
         return self
     }
@@ -143,17 +143,17 @@ extension SQL {
     }
     
     
-    public static func select(_ column: SQLColumnType) -> SQL.Select {
+    public static func select(_ column: SQLValueType) -> SQL.Select {
         let builder = Select()
         return builder.select(column)
     }
     
-    public static func select(_ columns: [SQLColumnType]) -> SQL.Select {
+    public static func select(_ columns: [SQLValueType]) -> SQL.Select {
         let builder = Select()
         return builder.select(columns)
     }
     
-    public static func select(_ columns: SQLColumnType...) -> SQL.Select {
+    public static func select(_ columns: SQLValueType...) -> SQL.Select {
         let builder = Select()
         return builder.select(columns)
     }

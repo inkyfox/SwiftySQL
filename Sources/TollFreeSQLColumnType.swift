@@ -1,5 +1,5 @@
 //
-//  TollFreeSQLColumnType.swift
+//  TollFreeSQLValueType.swift
 //  SwiftySQL
 //
 //  Created by Yongha Yoo (inkyfox) on 2016. 10. 22..
@@ -8,9 +8,9 @@
 
 import Foundation
 
-public protocol TollFreeSQLColumnType: SQLColumnType, SQLAliasable, SQLConditionType { }
+public protocol TollFreeSQLValueType: SQLValueType, SQLAliasable, SQLConditionType { }
 
-extension TollFreeSQLColumnType {
+extension TollFreeSQLValueType {
     public func sqlString(by generator: SQLGenerator) -> String {
         return "\(self)"
     }
@@ -20,13 +20,13 @@ extension TollFreeSQLColumnType {
     }
 }
 
-extension Int: TollFreeSQLColumnType { }
+extension Int: TollFreeSQLValueType { }
 
-extension Float: TollFreeSQLColumnType { }
+extension Float: TollFreeSQLValueType { }
 
-extension Double: TollFreeSQLColumnType { }
+extension Double: TollFreeSQLValueType { }
 
-extension String: SQLColumnType, SQLAliasable {
+extension String: SQLValueType, SQLAliasable {
 
     public func sqlString(by generator: SQLGenerator) -> String {
         return "\"\(self)\""
@@ -38,7 +38,7 @@ extension String: SQLColumnType, SQLAliasable {
     
 }
 
-extension Character: SQLColumnType, SQLAliasable {
+extension Character: SQLValueType, SQLAliasable {
     
     public func sqlString(by generator: SQLGenerator) -> String {
         return "'\(self)'"

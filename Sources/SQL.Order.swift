@@ -16,14 +16,14 @@ extension SQL {
             case asc, desc
         }
         
-        let column: SQLColumnType
+        let column: SQLValueType
         let sort: Sort
         
     }
     
 }
 
-extension SQLColumnType {
+extension SQLValueType {
     
     public var asc: SQL.Order {
         return SQL.Order(column: self, sort: .asc)

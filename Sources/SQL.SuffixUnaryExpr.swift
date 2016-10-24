@@ -10,7 +10,7 @@ import Foundation
 
 extension SQL {
     
-    public struct SuffixUnaryExpr: SQLOperaorExprType, SQLColumnType, SQLConditionType, SQLOrderType, SQLAliasable {
+    public struct SuffixUnaryExpr: SQLOperaorExprType, SQLValueType, SQLConditionType, SQLOrderType, SQLAliasable {
 
         let lhs: SQLExprType
         let op: String

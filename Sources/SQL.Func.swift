@@ -10,7 +10,7 @@ import Foundation
 
 extension SQL {
     
-    public struct Func: SQLColumnType, SQLConditionType, SQLOrderType, SQLAliasable {
+    public struct Func: SQLValueType, SQLConditionType, SQLOrderType, SQLAliasable {
         let name: String
         let args: [SQLExprType]
         

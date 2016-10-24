@@ -10,7 +10,7 @@ import Foundation
 
 extension SQL {
     
-    public struct TernaryExpr: SQLOperaorExprType, SQLColumnType, SQLConditionType, SQLOrderType, SQLAliasable {
+    public struct TernaryExpr: SQLOperaorExprType, SQLValueType, SQLConditionType, SQLOrderType, SQLAliasable {
         
         let lhs: SQLExprType
         let lop: String
