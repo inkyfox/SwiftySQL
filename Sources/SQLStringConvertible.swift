@@ -54,5 +54,27 @@ extension SQLStringConvertible {
             formattedSQLString(withIndent: indent, by: generator)
     }
 
+    func formattedSQLStringBoxed(withIndent indent: Int,
+                                   by generator: SQLGenerator) -> String {
+        return formattedSQLString(withIndent: indent + 2, by: generator).boxedWithSpace
+    }
+    
+
 }
 
+//extension Sequence where Iterator.Element : SQLStringConvertible {
+//    
+//    func sqlString(by generator: SQLGenerator) -> String {
+//        return self
+//            .map { $0.sqlString(by: generator) }
+//            .joined(separator: ", ")
+//    }
+//
+//    func formattedSQLString(withIndent indent: Int, by generator: SQLGenerator) -> String {
+//        return self
+//            .map { $0.formattedSQLString(withIndent: indent, by: generator) }
+//            .joined(separator: ",\n\(space(indent))")
+//    }
+//    
+//}
+//

@@ -61,7 +61,7 @@ extension SQL.BinaryExpr {
             let lhs = element.lhs
 
             if element.isParenthesesNecessary(lhs) {
-                query = lhs.formattedSQLString(withIndent: indent + 2, by: generator).boxedWithSpace
+                query = lhs.formattedSQLStringBoxed(withIndent: indent, by: generator)
             } else {
                 query = lhs.formattedSQLString(withIndent: indent, by: generator)
             }
@@ -79,7 +79,7 @@ extension SQL.BinaryExpr {
             let rhs = element.rhs
 
             if element.isParenthesesNecessary(rhs) {
-                query += rhs.formattedSQLString(withIndent: nextIndent + 2, by: generator).boxedWithSpace
+                query += rhs.formattedSQLStringBoxed(withIndent: nextIndent, by: generator)
             } else {
                 query += rhs.formattedSQLString(withIndent: nextIndent, by: generator)
             }

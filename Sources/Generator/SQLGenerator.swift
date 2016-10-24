@@ -24,6 +24,7 @@ public class SQLGenerator {
         default:
             generators = [
                 ObjectIdentifier(SQL.Select.self)          : SQL.Select.Generator(),
+                ObjectIdentifier(SQL.Insert.self)          : SQL.Insert.Generator(),
                 ObjectIdentifier(SQL.Column.self)          : SQL.Column.Generator(),
                 ObjectIdentifier(SQL.PrefixUnaryExpr.self) : SQL.PrefixUnaryExpr.Generator(),
                 ObjectIdentifier(SQL.SuffixUnaryExpr.self) : SQL.SuffixUnaryExpr.Generator(),
@@ -64,9 +65,9 @@ public class SQLGenerator {
         return (generators[ObjectIdentifier(T.self)] as? SQLQueryGenerator<T>)?.generateQuery(element) ?? ""
     }
     
-    func generateFormattedQuery<T: SQLQueryType>(_ element: T) -> String {
+    func generateFormattedQuery<T: SQLQueryType>(_ element: T, withIndent indent: Int) -> String {
         return (generators[ObjectIdentifier(T.self)] as? SQLQueryGenerator<T>)?
-            .generateFormattedQuery(element, withIndent: 0) ?? ""
+            .generateFormattedQuery(element, withIndent: indent) ?? ""
     }
 }
 

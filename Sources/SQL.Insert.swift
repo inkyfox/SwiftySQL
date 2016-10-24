@@ -12,15 +12,39 @@ extension SQL {
     
     public class Insert: SQLQueryType {
         
-//        public enum Command {
-//            case insert, replace, insertOrReplace
-//        }
-//        
-//        let command: Command
-//        let table: Table
-//        let columns: [Column]
+        enum Action {
+            case insert, replace
+            case insertOrReplace, insertOrRollback, insertOrAbort, insertOrFail, insertOrIgnore
+        }
         
+        public enum OrAction {
+            case replace, rollback, abort, fail, ignore
+            
+            var action: Action {
+                switch self {
+                case .replace: return .insertOrReplace
+                case .rollback: return .insertOrRollback
+                case .abort: return .insertOrAbort
+                case .fail: return .insertOrFail
+                case .ignore: return .insertOrIgnore
+                }
+            }
+        }
+
+        let action: Action
+        let table: Table
+        var columns: [Column] = []
+        
+        var values: [[SQLExprType]] = []
+        var select: SQL.Select? = nil
+        
+        init(_ action: Action, into table: Table) {
+            self.action = action
+            self.table = table
+        }
+
     }
+    
 }
 
 extension SQL.Insert {
@@ -29,8 +53,8 @@ extension SQL.Insert {
         return generator.generateQuery(self)
     }
     
-    public func formattedQuery(by generator: SQLGenerator) -> String {
-        return generator.generateFormattedQuery(self)
+    public func formattedQuery(withIndent indent: Int = 0, by generator: SQLGenerator) -> String {
+        return generator.generateFormattedQuery(self, withIndent: indent)
     }
     
     public var description: String {
@@ -41,4 +65,68 @@ extension SQL.Insert {
         return formattedQuery(by: SQLGenerator.default)
     }
     
+}
+
+extension SQL {
+    
+    public static func insert(into table: Table) -> SQL.Insert {
+        return SQL.Insert(.insert, into: table)
+    }
+    
+    public static func replace(into table: Table) -> SQL.Insert {
+        return SQL.Insert(.replace, into: table)
+    }
+    
+    public static func insert(_ orAction: SQL.Insert.OrAction, into table: Table) -> SQL.Insert {
+        return SQL.Insert(orAction.action, into: table)
+    }
+    
+}
+
+extension SQL.Insert {
+    
+    public func columns(_ columns: [SQL.Column]) -> SQL.Insert {
+        self.columns += columns
+        return self
+    }
+    
+    public func columns(_ columns: SQL.Column...) -> SQL.Insert {
+        self.columns += columns
+        return self
+    }
+    
+}
+
+extension SQL.Insert {
+
+    public func values(_ values: [SQLExprType]) -> SQL.Insert {
+        select = nil
+        self.values.append(values)
+        return self
+    }
+
+    public func values(_ values: SQLExprType...) -> SQL.Insert {
+        select = nil
+        self.values.append(values)
+        return self
+    }
+    
+    public func values(_ values: SQL.Tuple) -> SQL.Insert {
+        select = nil
+        self.values.append(values.exprs)
+        return self
+    }
+ 
+    public func values(_ prepared: SQL.PreparedLiteral) -> SQL.Insert {
+        select = nil
+        self.values.append(Array<SQL.PreparedLiteral>(repeating: .prepared, count: columns.count))
+        return self
+    }
+    
+    public func select(_ select: SQL.Select) -> SQL.Insert {
+        values.removeAll()
+        self.select = select
+        return self
+    }
+
 }

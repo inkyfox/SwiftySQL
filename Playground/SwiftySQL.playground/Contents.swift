@@ -30,30 +30,50 @@ class Lecture: SQL.Alias {
 let student = Student()
 let lecture = Lecture()
 
+extension String {
+    func replacingOccurrences(of regex: NSRegularExpression, with to: String) -> String {
+        return regex.stringByReplacingMatches(in: self, options: [], range: NSRange(location: 0, length: characters.count),
+                                       withTemplate: to)
+    }
+}
 func unformat(_ query: String) -> String {
-    return query.components(separatedBy: "\n")
-        .map { $0.trimmingCharacters(in: CharacterSet.whitespaces) }
-        .joined(separator: " ")
-        .replacingOccurrences(of: " FROM   ", with: " FROM ")
-        .replacingOccurrences(of: " WHERE  ", with: " WHERE ")
-        .replacingOccurrences(of: " GROUP  BY ", with: " GROUP BY ")
-        .replacingOccurrences(of: " ORDER  BY ", with: " ORDER BY ")
-        .replacingOccurrences(of: " LIMIT  ", with: " LIMIT ")
-        .replacingOccurrences(of: "( ", with: "(")
-        .replacingOccurrences(of: " )", with: ")")
+    return
+        query.components(separatedBy: "\n")
+            .map { $0.trimmingCharacters(in: CharacterSet.whitespaces) }
+            .joined(separator: " ")
+            .replacingOccurrences(of: " FROM   ", with: " FROM ")
+            .replacingOccurrences(of: " WHERE  ", with: " WHERE ")
+            .replacingOccurrences(of: " GROUP  BY ", with: " GROUP BY ")
+            .replacingOccurrences(of: " ORDER  BY ", with: " ORDER BY ")
+            .replacingOccurrences(of: " LIMIT  ", with: " LIMIT ")
+            .replacingOccurrences(of: try! NSRegularExpression(pattern: " VALUES [ ]*", options: .caseInsensitive),
+                                  with: " VALUES ")
+            .replacingOccurrences(of: "( ", with: "(")
+            .replacingOccurrences(of: " )", with: ")")
+}
+
+extension SQLStringConvertible {
+    func sql(by generator: SQLGenerator) -> String {
+        return (self as? SQLQueryType)?.query(by: generator) ?? self.sqlString(by: generator)
+    }
+
+    func formattedSQL(withIndent indent: Int, by generator: SQLGenerator) -> String {
+        return (self as? SQLQueryType)?.formattedQuery(withIndent: indent, by: generator) ??
+            self.formattedSQLString(withIndent: indent, by: generator)
+    }
 }
 
 func test(_ sql: SQLStringConvertible) {
     let generator = SQLGenerator.default
-    let query = sql.sqlString(by: generator)
-    let formatted = sql.formattedSQLString(withIndent: 0, by: generator)
+    let query = sql.sql(by: generator)
+    let formatted = sql.formattedSQL(withIndent: 0, by: generator)
     let passed = query == unformat(formatted)
     let result = passed ? "[Passed] " : "[Failed] "
     let indent = result.characters.count
     if passed {
-        print("\(result)\(sql.formattedSQLString(withIndent: indent, by: generator))")
+        print("\(result)\(sql.formattedSQL(withIndent: indent, by: generator))")
     } else {
-        print("\(result)\(sql.formattedSQLString(withIndent: indent, by: generator))")
+        print("\(result)\(sql.formattedSQL(withIndent: indent, by: generator))")
         print("    \(query)")
         print("    \(unformat(formatted))")
     }
@@ -113,20 +133,21 @@ debugPrint(query)
 print("--")
 print(query)
 print("--")
-let formatted = query.debugDescription.components(separatedBy: "\n")
-    .map { $0.trimmingCharacters(in: CharacterSet.whitespaces) }
-    .joined(separator: " ")
-    .replacingOccurrences(of: " FROM   ", with: " FROM ")
-    .replacingOccurrences(of: " WHERE  ", with: " WHERE ")
-    .replacingOccurrences(of: " GROUP  BY ", with: " GROUP BY ")
-    .replacingOccurrences(of: " ORDER  BY ", with: " ORDER BY ")
-    .replacingOccurrences(of: " LIMIT  ", with: " LIMIT ")
-    .replacingOccurrences(of: "( ", with: "(")
-    .replacingOccurrences(of: " )", with: ")")
-print(formatted)
+let unformatted =
+    query.debugDescription.components(separatedBy: "\n")
+        .map { $0.trimmingCharacters(in: CharacterSet.whitespaces) }
+        .joined(separator: " ")
+        .replacingOccurrences(of: " FROM   ", with: " FROM ")
+        .replacingOccurrences(of: " WHERE  ", with: " WHERE ")
+        .replacingOccurrences(of: " GROUP  BY ", with: " GROUP BY ")
+        .replacingOccurrences(of: " ORDER  BY ", with: " ORDER BY ")
+        .replacingOccurrences(of: " LIMIT  ", with: " LIMIT ")
+        .replacingOccurrences(of: "( ", with: "(")
+        .replacingOccurrences(of: " )", with: ")")
+print(unformatted)
 
 print("--")
-print("SAME: \(query.description == formatted)")
+print("SAME: \(query.description == unformatted)")
 
 /* Func */
 print("--")
@@ -243,4 +264,28 @@ test(
 
 
 /* Date */
+
+
+/* Insert */
+
+test(
+    SQL.insert(into: student.table)
+        .columns(student.name, student.age, student.attendCount)
+        .values("Yongha", "40", "1")
+        .values("Soyul", "5", "0")
+)
+
+test(
+    SQL.insert(into: student.table)
+        .columns(student.name, student.age, student.attendCount)
+        .select(SQL.select(lecture.studentCount)
+            .from(lecture)
+            .where(21.lt(lecture.studentCount)))
+)
+
+test(
+    SQL.insert(into: student.table)
+        .columns(student.name, student.age, student.attendCount)
+)
+
 

@@ -23,6 +23,6 @@ public protocol SQLQueryType: SQLStringConvertible {
 
     func query(by generator: SQLGenerator) -> String
     
-    func formattedQuery(by generator: SQLGenerator) -> String
+    func formattedQuery(withIndent indent: Int, by generator: SQLGenerator) -> String
 
 }

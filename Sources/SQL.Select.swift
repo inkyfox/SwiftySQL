@@ -32,8 +32,8 @@ extension SQL.Select {
         return generator.generateQuery(self)
     }
     
-    public func formattedQuery(by generator: SQLGenerator) -> String {
-        return generator.generateFormattedQuery(self)
+    public func formattedQuery(withIndent indent: Int = 0, by generator: SQLGenerator) -> String {
+        return generator.generateFormattedQuery(self, withIndent: indent)
     }
     
     public var description: String {

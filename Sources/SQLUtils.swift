@@ -43,6 +43,14 @@ internal func formattedSQLJoin(_ sqls: [SQLStringConvertible],
                             withIndent indent: Int, by generator: SQLGenerator) -> String {
     return sqls
         .map { $0.formattedSQLString(withIndent: indent, by: generator) }
-        .joined(separator: ",\n\(space(indent))")
+        .joined(separator: ",\n" + space(indent))
+}
+
+internal func formattedSQLJoinBoxed(_ sqls: [SQLStringConvertible],
+                               withIndent indent: Int, by generator: SQLGenerator) -> String {
+    return sqls
+        .map { $0.formattedSQLString(withIndent: indent + 2, by: generator) }
+        .joined(separator: ",\n" + space(indent + 2))
+        .boxedWithSpace
 }
 

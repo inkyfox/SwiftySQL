@@ -18,7 +18,7 @@ extension SQL.Tuple {
         
         override func generateFormatted(_ element: SQL.Tuple,
                                         withIndent indent: Int) -> String {
-            return formattedSQLJoin(element.exprs, withIndent: indent + 2, by: generator).boxedWithSpace
+            return formattedSQLJoinBoxed(element.exprs, withIndent: indent, by: generator)
         }
         
     }
