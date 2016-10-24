@@ -20,7 +20,7 @@ class Lecture: SQL.Alias {
     
     let name = SQL.Column(table: "lec", column: "name")
     let studentName = SQL.Column(table: "lec", column: "name")
-    let studentCount = SQL.Column(table: "stu", column: "studentCount")
+    let studentCount = SQL.Column(table: "lec", column: "studentCount")
     
     init() {
         super.init(table, alias: "lec")
@@ -36,6 +36,7 @@ extension String {
                                        withTemplate: to)
     }
 }
+
 func unformat(_ query: String) -> String {
     return
         query.components(separatedBy: "\n")
@@ -48,6 +49,8 @@ func unformat(_ query: String) -> String {
             .replacingOccurrences(of: " LIMIT  ", with: " LIMIT ")
             .replacingOccurrences(of: try! NSRegularExpression(pattern: " VALUES [ ]*", options: .caseInsensitive),
                                   with: " VALUES ")
+            .replacingOccurrences(of: try! NSRegularExpression(pattern: " SET [ ]*", options: .caseInsensitive),
+                                  with: " SET ")
             .replacingOccurrences(of: "( ", with: "(")
             .replacingOccurrences(of: " )", with: ")")
 }
@@ -276,6 +279,13 @@ test(
 )
 
 test(
+    SQL.insert(or: .replace, into: student.table)
+        .columns(student.name, student.age, student.attendCount)
+        .values("Yongha", "40", "1")
+        .values("Soyul", "5", "0")
+)
+
+test(
     SQL.insert(into: student.table)
         .columns(student.name, student.age, student.attendCount)
         .select(SQL.select(lecture.studentCount)
@@ -288,4 +298,26 @@ test(
         .columns(student.name, student.age, student.attendCount)
 )
 
+/* Update */
+
+test(
+    SQL.update(student.table)
+        .set(student.name, "Lee")
+        .set([student.name, student.age],
+             ["Lee", 30])
+        .set([student.name, student.age],
+             SQL.select(lecture.studentName, lecture.studentCount)
+                .from(lecture)
+                .where(21.lt(lecture.studentCount)))
+        .set([student.name, student.age],
+             [
+                SQL.select(lecture.studentName)
+                    .from(lecture)
+                    .where(21.lt(lecture.studentCount)),
+                SQL.select(lecture.studentCount)
+                    .from(lecture)
+                    .where(21.lt(lecture.studentCount)),
+            ])
+        .where(21.lt(lecture.studentCount))
+)
 

@@ -56,7 +56,8 @@ extension SQL.Insert {
             
             query += element.table.tableName
             query += "\n\(space(paramIndent))"
-            query += element.columns.map { $0.columnName }.joined(separator: ",\n" + space(paramIndent + 2)).boxedWithSpace + "\n"
+            query += element.columns.map { $0.columnName }.joined(separator: ", ").boxedWithSpace + "\n"
+            //query += element.columns.map { $0.columnName }.joined(separator: ",\n" + space(paramIndent + 2)).boxedWithSpace + "\n"
             
             if element.values.count > 0 {
                 query += space(indent) + "VALUES" + space(paramIndent - indent - 6)

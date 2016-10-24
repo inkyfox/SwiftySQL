@@ -25,6 +25,7 @@ public class SQLGenerator {
             generators = [
                 ObjectIdentifier(SQL.Select.self)          : SQL.Select.Generator(),
                 ObjectIdentifier(SQL.Insert.self)          : SQL.Insert.Generator(),
+                ObjectIdentifier(SQL.Update.self)          : SQL.Update.Generator(),
                 ObjectIdentifier(SQL.Column.self)          : SQL.Column.Generator(),
                 ObjectIdentifier(SQL.PrefixUnaryExpr.self) : SQL.PrefixUnaryExpr.Generator(),
                 ObjectIdentifier(SQL.SuffixUnaryExpr.self) : SQL.SuffixUnaryExpr.Generator(),

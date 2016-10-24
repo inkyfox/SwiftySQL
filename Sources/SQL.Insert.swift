@@ -36,7 +36,7 @@ extension SQL {
         var columns: [Column] = []
         
         var values: [[SQLExprType]] = []
-        var select: SQL.Select? = nil
+        var select: Select? = nil
         
         init(_ action: Action, into table: Table) {
             self.action = action
@@ -69,16 +69,16 @@ extension SQL.Insert {
 
 extension SQL {
     
-    public static func insert(into table: Table) -> SQL.Insert {
-        return SQL.Insert(.insert, into: table)
+    public static func insert(into table: Table) -> Insert {
+        return Insert(.insert, into: table)
     }
     
-    public static func replace(into table: Table) -> SQL.Insert {
-        return SQL.Insert(.replace, into: table)
+    public static func replace(into table: Table) -> Insert {
+        return Insert(.replace, into: table)
     }
     
-    public static func insert(_ orAction: SQL.Insert.OrAction, into table: Table) -> SQL.Insert {
-        return SQL.Insert(orAction.action, into: table)
+    public static func insert(or orAction: Insert.OrAction, into table: Table) -> Insert {
+        return Insert(orAction.action, into: table)
     }
     
 }
