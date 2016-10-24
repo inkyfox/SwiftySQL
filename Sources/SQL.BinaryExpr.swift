@@ -70,43 +70,47 @@ extension SQLConditionType {
         return SQL.BinaryExpr(self, "OR", expr)
     }
 
-    public func plus(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+}
+
+extension SQLConditionType {
+
+    public func plus(_ expr: SQLColumnType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "+", expr)
     }
     
-    public func minus(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+    public func minus(_ expr: SQLColumnType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "-", expr)
     }
     
-    public func multiply(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+    public func multiply(_ expr: SQLColumnType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "*", expr)
     }
 
-    public func divide(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+    public func divide(_ expr: SQLColumnType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "/", expr)
     }
 
-    public func mod(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+    public func mod(_ expr: SQLColumnType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "%", expr)
     }
 
-    public func `is`(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+    public func `is`(_ expr: SQLColumnType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "IS", expr)
     }
 
-    public func isNot(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+    public func isNot(_ expr: SQLColumnType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "IS NOT", expr)
     }
 
-    public func concat(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+    public func concat(_ expr: SQLColumnType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "||", expr)
     }
 
-    public func bitwiseAnd(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+    public func bitwiseAnd(_ expr: SQLColumnType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "|", expr)
     }
     
-    public func bitwiseOr(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+    public func bitwiseOr(_ expr: SQLColumnType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "&", expr)
     }
 
@@ -173,14 +177,6 @@ extension SQLExprType {
 
 extension SQLConditionType {
     
-    public func and(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(self, "AND", prepared)
-    }
-    
-    public func or(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(self, "OR", prepared)
-    }
-    
     public func plus(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "+", prepared)
     }
@@ -192,7 +188,7 @@ extension SQLConditionType {
     public func multiply(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "*", prepared)
     }
-    
+
     public func divide(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "/", prepared)
     }
