@@ -67,15 +67,15 @@ extension SQLConditionType {
     }
     
     public func andNot(_ expr: SQLConditionType) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(self, "AND NOT", expr)
+        return SQL.BinaryExpr(self, "AND", SQL.not(expr))
     }
     
-    public func andExists(_ expr: SQLConditionType) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(self, "AND EXISTS", expr)
+    public func andExists(_ select: SQL.Select) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "AND", SQL.exists(select))
     }
     
-    public func andNotExists(_ expr: SQLConditionType) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(self, "AND NOT EXISTS", expr)
+    public func andNotExists(_ select: SQL.Select) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "AND", SQL.notExists(select))
     }
     
     public func or(_ expr: SQLConditionType) -> SQL.BinaryExpr {
@@ -83,15 +83,15 @@ extension SQLConditionType {
     }
 
     public func orNot(_ expr: SQLConditionType) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(self, "OR NOT", expr)
+        return SQL.BinaryExpr(self, "OR", SQL.not(expr))
     }
     
-    public func orExists(_ expr: SQLConditionType) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(self, "OR EXISTS", expr)
+    public func orExists(_ select: SQL.Select) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "OR", SQL.exists(select))
     }
     
-    public func orNotExists(_ expr: SQLConditionType) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(self, "OR NOT EXISTS", expr)
+    public func orNotExists(_ select: SQL.Select) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "OR", SQL.notExists(select))
     }
     
 }

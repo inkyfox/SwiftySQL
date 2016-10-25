@@ -73,9 +73,27 @@ class BinaryExprTests: XCTestCase {
             student.name.eq("Yongha")
                 .and(student.id.gt(100))
                 .and(student.grade.le(3))
+                .andNot(student.name.hasSuffix("er"))
+                .andExists(
+                    SQL.select()
+                        .from(attending)
+                        .where(attending.studentID.eq(student.id))
+                )
+                .andNotExists(
+                    SQL.select()
+                        .from(attending)
+                        .where(attending.studentID.eq(student.id)
+                            .and(attending.lectureID.eq(1900)))
+                )
                 .and(student.id.plus(30).lt(200))
             ,
-            "stu.name = \"Yongha\" AND stu.id > 100 AND stu.grade <= 3 AND (stu.id + 30) < 200")
+            "stu.name = \"Yongha\" AND " +
+            "stu.id > 100 AND " +
+            "stu.grade <= 3 AND " +
+            "NOT (stu.name LIKE \"%er\") AND " +
+            "EXISTS (SELECT * FROM user.attending AS atd WHERE atd.student_id = stu.id) AND " +
+            "NOT EXISTS (SELECT * FROM user.attending AS atd WHERE atd.student_id = stu.id AND atd.lecture_id = 1900) AND " +
+            "(stu.id + 30) < 200")
         XCTAssertSQL(
             student.name.eq("Yongha")
                 .and(student.id.gt(100)
@@ -84,13 +102,34 @@ class BinaryExprTests: XCTestCase {
             "stu.name = \"Yongha\" AND stu.id > 100 AND stu.grade <= 3")
     }
     
+    
+
     func testOr() {
         XCTAssertSQL(
             student.name.eq("Yongha")
                 .or(student.id.gt(100))
                 .or(student.grade.le(3))
+                .orNot(student.name.hasSuffix("er"))
+                .orExists(
+                    SQL.select()
+                        .from(attending)
+                        .where(attending.studentID.eq(student.id))
+                )
+                .orNotExists(
+                    SQL.select()
+                        .from(attending)
+                        .where(attending.studentID.eq(student.id)
+                            .and(attending.lectureID.eq(1900)))
+                )
+                .or(student.id.plus(30).lt(200))
             ,
-            "stu.name = \"Yongha\" OR stu.id > 100 OR stu.grade <= 3")
+            "stu.name = \"Yongha\" OR " +
+            "stu.id > 100 OR " +
+            "stu.grade <= 3 OR " +
+            "NOT (stu.name LIKE \"%er\") OR " +
+            "EXISTS (SELECT * FROM user.attending AS atd WHERE atd.student_id = stu.id) OR " +
+            "NOT EXISTS (SELECT * FROM user.attending AS atd WHERE atd.student_id = stu.id AND atd.lecture_id = 1900) OR " +
+            "(stu.id + 30) < 200")
         XCTAssertSQL(
             student.name.eq("Yongha")
                 .or(student.id.gt(100)

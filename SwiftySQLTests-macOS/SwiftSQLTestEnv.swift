@@ -56,7 +56,7 @@ extension XCTestCase {
         let formatted = sql.formattedSQL(withIndent: 0, by: generator)
         let unformatted = unformat(formatted)
         if query != unformatted {
-            recordFailure(withDescription: "Formatted SQL != Unformatted SQL: [\(query)] != [\(unformatted)]",
+            recordFailure(withDescription: "Formatted SQL != Unformatted SQL:\n[\(query)]\n!=\n[\(unformatted)]",
                 inFile: file, atLine: line, expected: true)
         }
     }
@@ -65,7 +65,7 @@ extension XCTestCase {
                            file: String = #file, line: UInt = #line) {
         let query = sql.sql(by: SQLGenerator.default)
         if query != string {
-            recordFailure(withDescription: "SQL Equal failed: \(query) != \(string)",
+            recordFailure(withDescription: "SQL Equal failed:\n\(query)\n!=\n\(string)",
                 inFile: file, atLine: line, expected: true)
         }
     }
