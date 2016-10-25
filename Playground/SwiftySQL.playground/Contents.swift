@@ -43,10 +43,11 @@ func unformat(_ query: String) -> String {
             .map { $0.trimmingCharacters(in: CharacterSet.whitespaces) }
             .joined(separator: " ")
             .replacingOccurrences(of: " FROM   ", with: " FROM ")
-            .replacingOccurrences(of: " WHERE  ", with: " WHERE ")
             .replacingOccurrences(of: " GROUP  BY ", with: " GROUP BY ")
             .replacingOccurrences(of: " ORDER  BY ", with: " ORDER BY ")
             .replacingOccurrences(of: " LIMIT  ", with: " LIMIT ")
+            .replacingOccurrences(of: try! NSRegularExpression(pattern: " WHERE [ ]*", options: .caseInsensitive),
+                                  with: " WHERE ")
             .replacingOccurrences(of: try! NSRegularExpression(pattern: " VALUES [ ]*", options: .caseInsensitive),
                                   with: " VALUES ")
             .replacingOccurrences(of: try! NSRegularExpression(pattern: " SET [ ]*", options: .caseInsensitive),
@@ -187,6 +188,14 @@ test(SQL
 )
 test(SQL.not(student.attendCount))
 
+test(SQL
+    .exists(SQL.select(lecture.studentCount)
+        .from(lecture)
+        .where(21.lt(lecture.studentCount))
+        .orderBy(lecture.name, .asc)
+        .limit(1))
+)
+
 // binary
 
 print("--")
@@ -321,3 +330,22 @@ test(
         .where(21.lt(lecture.studentCount))
 )
 
+/* Delete */
+
+test(
+    SQL.delete(from: student.table)
+        .where(student.name.eq("Yoo")
+            .or(student.name.eq("Lee"))
+            .and(student.age.lt(lecture.name))
+            .and(student.age.lt(lecture.name))
+            .and(student.name.eq("Hey")
+                .or(lecture.name.eq("Test")))
+            .and(student.age.lt(lecture.name))
+            .or(lecture.name.eq("Science"))
+            .or(student.name.eq("WOW"))
+            .and(student.name.eq("Hey")
+                .or(lecture.name.eq("Test")))
+            .or(lecture.name.eq("Science"))
+            .or(student.name.eq("Hey")
+                .and(lecture.name.eq("Test"))))
+)

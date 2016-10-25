@@ -38,4 +38,13 @@ extension SQL {
         return SQL.PrefixUnaryExpr(op: "~", expr)
     }
     
+    public static func exists(_ select: SQL.Select) -> SQL.PrefixUnaryExpr {
+        return SQL.PrefixUnaryExpr(op: "EXISTS", select)
+    }
+
+    
+    public static func notExists(_ select: SQL.Select) -> SQL.PrefixUnaryExpr {
+        return SQL.PrefixUnaryExpr(op: "NOT EXISTS", select)
+    }
+
 }

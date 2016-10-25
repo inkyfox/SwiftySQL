@@ -33,7 +33,7 @@ extension SQL.Update {
         
         override func generateQuery(_ element: SQL.Update) -> String {
             var query = actionString(element.orAction) + " "
-            query += element.table.tableName
+            query += element.table.sqlString(by: generator)
             query += " SET "
             query +=
                 element.sets
@@ -57,9 +57,9 @@ extension SQL.Update {
         
         override func generateFormattedQuery(_ element: SQL.Update, withIndent indent: Int) -> String {
             var query = actionString(element.orAction) + " "
-            query += element.table.tableName + "\n"
+            let paramIndent = indent + query.characters.count
+            query += element.table.formattedSQLString(withIndent: paramIndent, by: generator) + "\n"
             query += space(indent) + "SET    "
-            let paramIndent = indent + 7
             query +=
                 element.sets
                     .filter { $0.0.count > 0 && $0.1.count > 0 }

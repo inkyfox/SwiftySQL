@@ -29,6 +29,8 @@
 		A9604F491DBDB38600F79239 /* SQL.Insert+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F481DBDB38600F79239 /* SQL.Insert+DefaultDB.swift */; };
 		A9604F4B1DBDD18F00F79239 /* SQL.Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F4A1DBDD18F00F79239 /* SQL.Update.swift */; };
 		A9604F4D1DBDDAF600F79239 /* SQL.Update+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F4C1DBDDAF600F79239 /* SQL.Update+DefaultDB.swift */; };
+		A9604F4F1DBEF49000F79239 /* SQL.Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F4E1DBEF49000F79239 /* SQL.Delete.swift */; };
+		A9604F511DBEF87900F79239 /* SQL.Delete+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F501DBEF87900F79239 /* SQL.Delete+DefaultDB.swift */; };
 		A9B39B4C1DB9D76C00A208FC /* SwiftySQL-macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A9B39B4A1DB9D76C00A208FC /* SwiftySQL-macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9B39B581DB9D84D00A208FC /* SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B521DB9D84D00A208FC /* SQL.swift */; };
 		A9B39B5A1DB9D84D00A208FC /* SQL.Select.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B541DB9D84D00A208FC /* SQL.Select.swift */; };
@@ -114,6 +116,8 @@
 		A9604F481DBDB38600F79239 /* SQL.Insert+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Insert+DefaultDB.swift"; sourceTree = "<group>"; };
 		A9604F4A1DBDD18F00F79239 /* SQL.Update.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Update.swift; sourceTree = "<group>"; };
 		A9604F4C1DBDDAF600F79239 /* SQL.Update+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Update+DefaultDB.swift"; sourceTree = "<group>"; };
+		A9604F4E1DBEF49000F79239 /* SQL.Delete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Delete.swift; sourceTree = "<group>"; };
+		A9604F501DBEF87900F79239 /* SQL.Delete+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Delete+DefaultDB.swift"; sourceTree = "<group>"; };
 		A9B39B481DB9D76C00A208FC /* SwiftySQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftySQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B39B4A1DB9D76C00A208FC /* SwiftySQL-macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftySQL-macOS.h"; sourceTree = "<group>"; };
 		A9B39B4B1DB9D76C00A208FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				A9B39B541DB9D84D00A208FC /* SQL.Select.swift */,
 				A93E53841DBD8AE000062A95 /* SQL.Insert.swift */,
 				A9604F4A1DBDD18F00F79239 /* SQL.Update.swift */,
+				A9604F4E1DBEF49000F79239 /* SQL.Delete.swift */,
 				A9B39BB01DBC3AE900A208FC /* SQL.Column.swift */,
 				A93E53701DBCB3EB00062A95 /* SQL.PrefixUnaryExpr.swift */,
 				A93E53741DBCB4D400062A95 /* SQL.SuffixUnaryExpr.swift */,
@@ -281,6 +286,7 @@
 				A93E53821DBD2C5F00062A95 /* SQL.Tuple+DefaultDB.swift */,
 				A9604F481DBDB38600F79239 /* SQL.Insert+DefaultDB.swift */,
 				A9604F4C1DBDDAF600F79239 /* SQL.Update+DefaultDB.swift */,
+				A9604F501DBEF87900F79239 /* SQL.Delete+DefaultDB.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -450,6 +456,7 @@
 				A93E53851DBD8AE000062A95 /* SQL.Insert.swift in Sources */,
 				A9B39BAB1DBBCA0200A208FC /* SQL.BinaryExpr.swift in Sources */,
 				A9B39BA41DBB58FA00A208FC /* SQL.Alias.swift in Sources */,
+				A9604F4F1DBEF49000F79239 /* SQL.Delete.swift in Sources */,
 				A93E537F1DBD20B300062A95 /* SQL.In.swift in Sources */,
 				A9B39B981DBB1B3F00A208FC /* SQL.Case.swift in Sources */,
 				A9B39BB51DBC3B5C00A208FC /* SQL.Table.swift in Sources */,
@@ -473,6 +480,7 @@
 				A9B39BB91DBC3C0F00A208FC /* SQL.BinaryExpr+DefaultDB.swift in Sources */,
 				A93E537B1DBCB6CB00062A95 /* SQL.TernaryExpr+DefaultDB.swift in Sources */,
 				A93E53611DBC4EA400062A95 /* SQL.Limit+DefaultDB.swift in Sources */,
+				A9604F511DBEF87900F79239 /* SQL.Delete+DefaultDB.swift in Sources */,
 				A93E535D1DBC4E0300062A95 /* SQL.Case+DefaultDB.swift in Sources */,
 				A9604F4D1DBDDAF600F79239 /* SQL.Update+DefaultDB.swift in Sources */,
 				A9B39BBB1DBC40BD00A208FC /* SQL.Table+DefaultDB.swift in Sources */,

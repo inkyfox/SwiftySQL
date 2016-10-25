@@ -34,7 +34,7 @@ extension SQL.Insert {
         
         override func generateQuery(_ element: SQL.Insert) -> String {
             var query = actionString(element.action) + " INTO "
-            query += element.table.tableName + " "
+            query += element.table.sqlString(by: generator) + " "
             query += element.columns.map { $0.columnName }.joined(separator: ", ").boxed + " "
             
             if element.values.count > 0 {
@@ -54,7 +54,7 @@ extension SQL.Insert {
             
             let paramIndent = indent + query.characters.count
             
-            query += element.table.tableName
+            query += element.table.formattedSQLString(withIndent: paramIndent, by: generator)
             query += "\n\(space(paramIndent))"
             query += element.columns.map { $0.columnName }.joined(separator: ", ").boxedWithSpace + "\n"
             //query += element.columns.map { $0.columnName }.joined(separator: ",\n" + space(paramIndent + 2)).boxedWithSpace + "\n"
