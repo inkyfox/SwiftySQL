@@ -8,6 +8,7 @@
 
 import XCTest
 
+
 class SwiftySQLTests_macOS: XCTestCase {
     
     override func setUp() {
