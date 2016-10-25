@@ -42,6 +42,9 @@
 		A9604F781DBF2B3C00F79239 /* SQL.Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F651DBF2B3C00F79239 /* SQL.Table.swift */; };
 		A9604F7A1DBF35FC00F79239 /* SwiftSQLTestEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F791DBF35FC00F79239 /* SwiftSQLTestEnv.swift */; };
 		A9604F801DBF4ADF00F79239 /* NativeType+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F7E1DBF4A0600F79239 /* NativeType+DefaultDB.swift */; };
+		A9604F821DBFAF9000F79239 /* PrefixUnaryExprTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F811DBFAF9000F79239 /* PrefixUnaryExprTests.swift */; };
+		A9604F841DBFBA0900F79239 /* SuffixUnaryExprTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F831DBFBA0900F79239 /* SuffixUnaryExprTests.swift */; };
+		A9AE671F1DBFCADF00DD9962 /* BinaryExprTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AE671E1DBFCADF00DD9962 /* BinaryExprTests.swift */; };
 		A9B39B4C1DB9D76C00A208FC /* SwiftySQL-macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A9B39B4A1DB9D76C00A208FC /* SwiftySQL-macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9B39B581DB9D84D00A208FC /* SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B521DB9D84D00A208FC /* SQL.swift */; };
 		A9B39B5C1DB9D84D00A208FC /* SQLStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B561DB9D84D00A208FC /* SQLStringConvertible.swift */; };
@@ -130,6 +133,9 @@
 		A9604F651DBF2B3C00F79239 /* SQL.Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Table.swift; sourceTree = "<group>"; };
 		A9604F791DBF35FC00F79239 /* SwiftSQLTestEnv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSQLTestEnv.swift; sourceTree = "<group>"; };
 		A9604F7E1DBF4A0600F79239 /* NativeType+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NativeType+DefaultDB.swift"; sourceTree = "<group>"; };
+		A9604F811DBFAF9000F79239 /* PrefixUnaryExprTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefixUnaryExprTests.swift; sourceTree = "<group>"; };
+		A9604F831DBFBA0900F79239 /* SuffixUnaryExprTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuffixUnaryExprTests.swift; sourceTree = "<group>"; };
+		A9AE671E1DBFCADF00DD9962 /* BinaryExprTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryExprTests.swift; sourceTree = "<group>"; };
 		A9B39B481DB9D76C00A208FC /* SwiftySQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftySQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B39B4A1DB9D76C00A208FC /* SwiftySQL-macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftySQL-macOS.h"; sourceTree = "<group>"; };
 		A9B39B4B1DB9D76C00A208FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -257,6 +263,9 @@
 			children = (
 				A9604F791DBF35FC00F79239 /* SwiftSQLTestEnv.swift */,
 				A9B39B641DB9D89C00A208FC /* NativeTypeTests.swift */,
+				A9604F811DBFAF9000F79239 /* PrefixUnaryExprTests.swift */,
+				A9604F831DBFBA0900F79239 /* SuffixUnaryExprTests.swift */,
+				A9AE671E1DBFCADF00DD9962 /* BinaryExprTests.swift */,
 				A9B39B661DB9D89C00A208FC /* Info.plist */,
 			);
 			path = "SwiftySQLTests-macOS";
@@ -510,7 +519,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9604F7A1DBF35FC00F79239 /* SwiftSQLTestEnv.swift in Sources */,
+				A9604F821DBFAF9000F79239 /* PrefixUnaryExprTests.swift in Sources */,
 				A9B39B651DB9D89C00A208FC /* NativeTypeTests.swift in Sources */,
+				A9AE671F1DBFCADF00DD9962 /* BinaryExprTests.swift in Sources */,
+				A9604F841DBFBA0900F79239 /* SuffixUnaryExprTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,7 +713,7 @@
 		A9B39B6B1DB9D89C00A208FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XH2F8QV9GT;
 				INFOPLIST_FILE = "SwiftySQLTests-macOS/Info.plist";
@@ -717,7 +729,7 @@
 		A9B39B6C1DB9D89C00A208FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XH2F8QV9GT;
 				INFOPLIST_FILE = "SwiftySQLTests-macOS/Info.plist";
@@ -735,7 +747,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XH2F8QV9GT;
 				INFOPLIST_FILE = "SwiftySQLExample-macOS/Info.plist";
@@ -753,7 +765,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XH2F8QV9GT;
 				INFOPLIST_FILE = "SwiftySQLExample-macOS/Info.plist";

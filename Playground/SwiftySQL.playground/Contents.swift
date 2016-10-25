@@ -168,7 +168,7 @@ test(SQL.Func("FUNC",
                         .from(lecture)
                         .where(21.lt(lecture.studentCount)),
                      2,
-                     SQL.Literal.null,
+                     SQL.Keyword.null,
                      "AAA"]))
 
 test(SQL.count(.all))
@@ -353,3 +353,8 @@ test(
             .or(student.name.eq("Hey")
                 .and(lecture.name.eq("Test"))))
 )
+
+test( SQL.select(1.plus(-2)))
+
+test(SQL.bitwiseNot(SQL.Hex(0x123)))
+

@@ -19,7 +19,7 @@ extension SQL {
             self.args = args
         }
 
-        public init(_ name: String, arg: SQL.AsteriskLiteral) {
+        public init(_ name: String, arg: SQL.AsteriskMark) {
             self.name = name
             self.args = [arg]
         }
@@ -43,7 +43,7 @@ extension SQL {
         return SQL.Func("COUNT", args: [arg])
     }
 
-    public static func count(_ arg: SQL.AsteriskLiteral) -> SQL.Func {
+    public static func count(_ arg: SQL.AsteriskMark) -> SQL.Func {
         return SQL.Func("COUNT", arg: arg)
     }
     

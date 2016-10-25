@@ -10,7 +10,7 @@ import Foundation
 
 extension SQL {
     
-    public struct PrefixUnaryExpr: SQLOperaorExprType, SQLValueType, SQLConditionType, SQLOrderType, SQLAliasable {
+    public struct PrefixUnaryExpr: SQLValueType, SQLConditionType, SQLOrderType, SQLAliasable {
 
         let op: String
         let rhs: SQLExprType
@@ -30,11 +30,11 @@ extension SQL {
         return SQL.PrefixUnaryExpr(op: "NOT", expr)
     }
     
-    public static func minus(_ expr: SQLConditionType) -> SQL.PrefixUnaryExpr {
+    public static func minus(_ expr: SQLValueType) -> SQL.PrefixUnaryExpr {
         return SQL.PrefixUnaryExpr(op: "-", expr)
     }
     
-    public static func bitwiseNot(_ expr: SQLConditionType) -> SQL.PrefixUnaryExpr {
+    public static func bitwiseNot(_ expr: SQLValueType) -> SQL.PrefixUnaryExpr {
         return SQL.PrefixUnaryExpr(op: "~", expr)
     }
     

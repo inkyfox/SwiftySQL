@@ -10,7 +10,7 @@ import Foundation
 
 extension SQL {
     
-    public struct SuffixUnaryExpr: SQLOperaorExprType, SQLValueType, SQLConditionType, SQLOrderType, SQLAliasable {
+    public struct SuffixUnaryExpr: SQLValueType, SQLConditionType, SQLOrderType, SQLAliasable {
 
         let lhs: SQLExprType
         let op: String
@@ -24,7 +24,7 @@ extension SQL {
     
 }
 
-extension SQLConditionType {
+extension SQLValueType {
     
     public func isNull() -> SQL.SuffixUnaryExpr {
         return SQL.SuffixUnaryExpr(self, op: "ISNULL")

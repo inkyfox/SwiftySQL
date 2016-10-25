@@ -10,46 +10,40 @@ import Foundation
 
 extension SQL {
     
-    public struct Literal: SQLValueType, SQLAliasable {
+    public struct Keyword: SQLValueType, SQLAliasable {
         
-        public static let null: Literal = Literal(.null)
-        public static let currentDate: Literal = Literal(.currentDate)
-        public static let currentTime: Literal = Literal(.currentTime)
-        public static let currentTimestamp: Literal = Literal(.currentTimestamp)
+        public static let null: Keyword = Keyword(.null)
+        public static let currentDate: Keyword = Keyword(.currentDate)
+        public static let currentTime: Keyword = Keyword(.currentTime)
+        public static let currentTimestamp: Keyword = Keyword(.currentTimestamp)
         
-        public enum Keyword {
+        enum Name {
             case null, currentDate, currentTime, currentTimestamp
         }
         
-        let keyword: Keyword?
-        let number: SQLNumberType?
-        let string: String?
+        let name: Name
         
-        init(_ keyword: Keyword) {
-            self.keyword = keyword
-            self.number = nil
-            self.string = nil
-        }
-        
-        init(_ number: SQLNumberType) {
-            self.keyword = nil
-            self.number = number
-            self.string = nil
-        }
-        
-        init(_ string: String) {
-            self.keyword = nil
-            self.number = nil
-            self.string = string
+        init(_ name: Name) {
+            self.name = name
         }
         
     }
     
-    public enum AsteriskLiteral: SQLExprType {
+    public struct Hex: SQLValueType, SQLAliasable {
+
+        let hex: String
+        
+        public init(_ value: Int) {
+            self.hex = String(format: "0x%X", value)
+        }
+        
+    }
+    
+    public enum AsteriskMark: SQLExprType {
         case all
     }
 
-    public enum PreparedLiteral: SQLExprType {
+    public enum PreparedMark: SQLExprType {
         case prepared
     }
 }

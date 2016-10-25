@@ -117,9 +117,9 @@ extension SQL.Insert {
         return self
     }
  
-    public func values(_ prepared: SQL.PreparedLiteral) -> SQL.Insert {
+    public func values(_ prepared: SQL.PreparedMark) -> SQL.Insert {
         select = nil
-        self.values.append(Array<SQL.PreparedLiteral>(repeating: .prepared, count: columns.count))
+        self.values.append(Array<SQL.PreparedMark>(repeating: .prepared, count: columns.count))
         return self
     }
     

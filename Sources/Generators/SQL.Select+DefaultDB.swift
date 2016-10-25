@@ -25,6 +25,8 @@ extension SQL.Select {
             
             if element.columns.count > 0 {
                 query += "SELECT " + sqlJoin(element.columns, by: generator)
+            } else {
+                query += "SELECT *"
             }
             
             if element.tables.count > 0 {

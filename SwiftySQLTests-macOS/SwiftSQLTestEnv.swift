@@ -1,6 +1,6 @@
 //
 //  SwiftSQLTestEnv.swift
-//  SwiftySQL
+//  SwiftySQLTests
 //
 //  Created by Yongha Yoo (inkyfox) on 2016. 10. 25..
 //  Copyright © 2016년 Gen X Hippies Company. All rights reserved.
@@ -48,24 +48,41 @@ extension SQLStringConvertible {
     }
 }
 
-func XCTAssertFormat(_ sql: SQLStringConvertible) {
-    let generator = SQLGenerator.default
-    let query = sql.sql(by: generator)
-    let formatted = sql.formattedSQL(withIndent: 0, by: generator)
-    
-    XCTAssertTrue(query == unformat(formatted))
-}
+extension XCTestCase {
+    func XCTAssertSQLFormat(_ sql: SQLStringConvertible,
+                     file: String = #file, line: UInt = #line) {
+        let generator = SQLGenerator.default
+        let query = sql.sql(by: generator)
+        let formatted = sql.formattedSQL(withIndent: 0, by: generator)
+        let unformatted = unformat(formatted)
+        if query != unformatted {
+            recordFailure(withDescription: "Formatted SQL != Unformatted SQL: [\(query)] != [\(unformatted)]",
+                inFile: file, atLine: line, expected: true)
+        }
+    }
 
-func XCTAssertSQLEqual(_ sql: SQLStringConvertible, _ string: String) {
-    XCTAssertFormat(sql)
-    XCTAssertEqual(sql.sql(by: SQLGenerator.default), string)
+    func XCTAssertSQLEqual(_ sql: SQLStringConvertible, _ string: String,
+                           file: String = #file, line: UInt = #line) {
+        let query = sql.sql(by: SQLGenerator.default)
+        if query != string {
+            recordFailure(withDescription: "SQL Equal failed: \(query) != \(string)",
+                inFile: file, atLine: line, expected: true)
+        }
+    }
+    
+    func XCTAssertSQL(_ sql: SQLStringConvertible, _ string: String,
+                           file: String = #file, line: UInt = #line) {
+        
+        XCTAssertSQLFormat(sql, file: file, line: line)
+        XCTAssertSQLEqual(sql, string, file: file, line: line)
+    }
 }
 
 class Student: SQL.Alias {
     
     let table = SQL.Table("student")
     
-    let id = SQL.Column(table: "stu", column: "student_id")
+    let id = SQL.Column(table: "stu", column: "id")
     let name = SQL.Column(table: "stu", column: "name")
     let birth = SQL.Column(table: "stu", column: "birth")
     let grade = SQL.Column(table: "stu", column: "grade")
@@ -80,10 +97,9 @@ class Teature: SQL.Alias {
     
     let table = SQL.Table("teature")
     
-    let id = SQL.Column(table: "tea", column: "teature_id")
+    let id = SQL.Column(table: "tea", column: "id")
     let name = SQL.Column(table: "tea", column: "name")
     let office = SQL.Column(table: "tea", column: "office")
-    let attendCount = SQL.Column(table: "stu", column: "attendCount")
     
     init() {
         super.init(table, alias: "tea")
@@ -95,7 +111,7 @@ class Lecture: SQL.Alias {
     
     let table = SQL.Table("lecture")
     
-    let id = SQL.Column(table: "tea", column: "lecture_id")
+    let id = SQL.Column(table: "lec", column: "id")
     let name = SQL.Column(table: "lec", column: "name")
     let category = SQL.Column(table: "lec", column: "category")
     let teatureID = SQL.Column(table: "lec", column: "teature_id")

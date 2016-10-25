@@ -142,7 +142,6 @@ extension SQL {
         return Select()
     }
     
-    
     public static func select(_ column: SQLValueType) -> SQL.Select {
         let builder = Select()
         return builder.select(column)

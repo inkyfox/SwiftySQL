@@ -22,7 +22,7 @@ extension SQL {
             self.rhs = rhs
         }
 
-        public init(_ lhs: SQLExprType, _ op: String, _ rhs: Literal) {
+        public init(_ lhs: SQLExprType, _ op: String, _ rhs: Keyword) {
             self.lhs = lhs
             self.op = op.trimmingCharacters(in: whiteSpaces).uppercased()
             self.rhs = rhs
@@ -66,13 +66,37 @@ extension SQLConditionType {
         return SQL.BinaryExpr(self, "AND", expr)
     }
     
+    public func andNot(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "AND NOT", expr)
+    }
+    
+    public func andExists(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "AND EXISTS", expr)
+    }
+    
+    public func andNotExists(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "AND NOT EXISTS", expr)
+    }
+    
     public func or(_ expr: SQLConditionType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "OR", expr)
     }
 
+    public func orNot(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "OR NOT", expr)
+    }
+    
+    public func orExists(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "OR EXISTS", expr)
+    }
+    
+    public func orNotExists(_ expr: SQLConditionType) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "OR NOT EXISTS", expr)
+    }
+    
 }
 
-extension SQLConditionType {
+extension SQLValueType {
 
     public func plus(_ expr: SQLValueType) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "+", expr)
@@ -116,7 +140,7 @@ extension SQLConditionType {
 
 }
 
-extension SQLExprType {
+extension SQLValueType {
 
     public func like(_ pattern: String) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "LIKE", pattern)
@@ -148,92 +172,92 @@ extension SQLExprType {
     
 }
 
-extension SQLExprType {
+extension SQLValueType {
     
-    public func eq(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func eq(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "=", prepared)
     }
     
-    public func gt(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func gt(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, ">", prepared)
     }
     
-    public func ge(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func ge(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, ">=", prepared)
     }
     
-    public func lt(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func lt(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "<", prepared)
     }
     
-    public func le(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func le(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "<=", prepared)
     }
     
-    public func ne(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func ne(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "<>", prepared)
     }
 }
 
 extension SQLConditionType {
     
-    public func plus(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func plus(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "+", prepared)
     }
     
-    public func minus(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func minus(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "-", prepared)
     }
     
-    public func multiply(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func multiply(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "*", prepared)
     }
 
-    public func divide(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func divide(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "/", prepared)
     }
     
-    public func mod(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func mod(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "%", prepared)
     }
     
-    public func `is`(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func `is`(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "IS", prepared)
     }
     
-    public func isNot(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func isNot(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "IS NOT", prepared)
     }
     
-    public func concat(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func concat(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "||", prepared)
     }
     
-    public func bitwiseAnd(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func bitwiseAnd(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "|", prepared)
     }
     
-    public func bitwiseOr(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func bitwiseOr(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "&", prepared)
     }
     
 }
 
-extension SQLExprType {
+extension SQLValueType {
     
-    public func like(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func like(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "LIKE", prepared)
     }
     
-    public func notLike(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func notLike(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(self, "NOT LIKE", prepared)
     }
     
-    public func likeIgnoreCase(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func likeIgnoreCase(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(SQL.upper(self), "LIKE", SQL.upper(prepared))
     }
     
-    public func notLikeIgnoreCase(_ prepared: SQL.PreparedLiteral) -> SQL.BinaryExpr {
+    public func notLikeIgnoreCase(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
         return SQL.BinaryExpr(SQL.upper(self), "NOT LIKE", SQL.upper(prepared))
     }
     

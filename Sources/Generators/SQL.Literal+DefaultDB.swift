@@ -8,12 +8,12 @@
 
 import Foundation
 
-extension SQL.Literal {
+extension SQL.Keyword {
     
-    class Generator: SQLElementGenerator<SQL.Literal> {
+    class Generator: SQLElementGenerator<SQL.Keyword> {
         
-        private func keywordString(_ keyword: SQL.Literal.Keyword) -> String {
-            switch keyword {
+        private func keywordString(_ name: SQL.Keyword.Name) -> String {
+            switch name {
             case .null: return "NULL"
             case .currentDate: return "CURRENT_DATE"
             case .currentTime: return "CURRENT_TIME"
@@ -21,40 +21,46 @@ extension SQL.Literal {
             }
         }
         
-        override func generate(_ element: SQL.Literal) -> String {
-            
-            if let keyword = element.keyword {
-                return keywordString(keyword)
-            } else if let number = element.number {
-                return "\(number)"
-            } else if let string = element.string {
-                return "\"\(string)\""
-            } else {
-                return ""
-            }
-            
+        override func generate(_ element: SQL.Keyword) -> String {
+            return keywordString(element.name)
         }
         
     }
     
 }
 
-extension SQL.AsteriskLiteral {
-
-    class Generator: SQLElementGenerator<SQL.AsteriskLiteral> {
+extension SQL.Hex {
+    
+    class Generator: SQLElementGenerator<SQL.Hex> {
         
-        override func generate(_ element: SQL.AsteriskLiteral) -> String {
+        override func generate(_ element: SQL.Hex) -> String {
+            if element.hex.hasPrefix("0x") {
+                return element.hex
+            } else {
+                return "0x" + element.hex
+            }
+        }
+        
+    }
+    
+}
+
+extension SQL.AsteriskMark {
+
+    class Generator: SQLElementGenerator<SQL.AsteriskMark> {
+        
+        override func generate(_ element: SQL.AsteriskMark) -> String {
             return "*"
         }
         
     }
 }
 
-extension SQL.PreparedLiteral {
+extension SQL.PreparedMark {
     
-    class Generator: SQLElementGenerator<SQL.PreparedLiteral> {
+    class Generator: SQLElementGenerator<SQL.PreparedMark> {
         
-        override func generate(_ element: SQL.PreparedLiteral) -> String {
+        override func generate(_ element: SQL.PreparedMark) -> String {
             return "?"
         }
         
