@@ -46,7 +46,7 @@
 		A9B39B581DB9D84D00A208FC /* SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B521DB9D84D00A208FC /* SQL.swift */; };
 		A9B39B5C1DB9D84D00A208FC /* SQLStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B561DB9D84D00A208FC /* SQLStringConvertible.swift */; };
 		A9B39B5D1DB9D84D00A208FC /* SQLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B571DB9D84D00A208FC /* SQLUtils.swift */; };
-		A9B39B651DB9D89C00A208FC /* SwiftySQLTests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B641DB9D89C00A208FC /* SwiftySQLTests_macOS.swift */; };
+		A9B39B651DB9D89C00A208FC /* NativeTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B641DB9D89C00A208FC /* NativeTypeTests.swift */; };
 		A9B39B671DB9D89C00A208FC /* SwiftySQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9B39B481DB9D76C00A208FC /* SwiftySQL.framework */; };
 		A9B39B741DB9D90900A208FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B731DB9D90900A208FC /* AppDelegate.swift */; };
 		A9B39B761DB9D90900A208FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B751DB9D90900A208FC /* ViewController.swift */; };
@@ -137,7 +137,7 @@
 		A9B39B561DB9D84D00A208FC /* SQLStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLStringConvertible.swift; sourceTree = "<group>"; };
 		A9B39B571DB9D84D00A208FC /* SQLUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLUtils.swift; sourceTree = "<group>"; };
 		A9B39B621DB9D89C00A208FC /* SwiftySQLTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftySQLTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9B39B641DB9D89C00A208FC /* SwiftySQLTests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftySQLTests_macOS.swift; sourceTree = "<group>"; };
+		A9B39B641DB9D89C00A208FC /* NativeTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeTypeTests.swift; sourceTree = "<group>"; };
 		A9B39B661DB9D89C00A208FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9B39B711DB9D90900A208FC /* SwiftySQLExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftySQLExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B39B731DB9D90900A208FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				A9604F791DBF35FC00F79239 /* SwiftSQLTestEnv.swift */,
-				A9B39B641DB9D89C00A208FC /* SwiftySQLTests_macOS.swift */,
+				A9B39B641DB9D89C00A208FC /* NativeTypeTests.swift */,
 				A9B39B661DB9D89C00A208FC /* Info.plist */,
 			);
 			path = "SwiftySQLTests-macOS";
@@ -510,7 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9604F7A1DBF35FC00F79239 /* SwiftSQLTestEnv.swift in Sources */,
-				A9B39B651DB9D89C00A208FC /* SwiftySQLTests_macOS.swift in Sources */,
+				A9B39B651DB9D89C00A208FC /* NativeTypeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

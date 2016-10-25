@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import XCTest
 
 @testable import SwiftySQL
 
@@ -36,13 +37,38 @@ func unformat(_ query: String) -> String {
             .replacingOccurrences(of: " )", with: ")")
 }
 
+extension SQLStringConvertible {
+    func sql(by generator: SQLGenerator) -> String {
+        return (self as? SQLQueryType)?.query(by: generator) ?? self.sqlString(by: generator)
+    }
+    
+    func formattedSQL(withIndent indent: Int, by generator: SQLGenerator) -> String {
+        return (self as? SQLQueryType)?.formattedQuery(withIndent: indent, by: generator) ??
+            self.formattedSQLString(withIndent: indent, by: generator)
+    }
+}
+
+func XCTAssertFormat(_ sql: SQLStringConvertible) {
+    let generator = SQLGenerator.default
+    let query = sql.sql(by: generator)
+    let formatted = sql.formattedSQL(withIndent: 0, by: generator)
+    
+    XCTAssertTrue(query == unformat(formatted))
+}
+
+func XCTAssertSQLEqual(_ sql: SQLStringConvertible, _ string: String) {
+    XCTAssertFormat(sql)
+    XCTAssertEqual(sql.sql(by: SQLGenerator.default), string)
+}
+
 class Student: SQL.Alias {
     
     let table = SQL.Table("student")
     
+    let id = SQL.Column(table: "stu", column: "student_id")
     let name = SQL.Column(table: "stu", column: "name")
     let birth = SQL.Column(table: "stu", column: "birth")
-    let attendCount = SQL.Column(table: "stu", column: "attendCount")
+    let grade = SQL.Column(table: "stu", column: "grade")
     
     init() {
         super.init(table, alias: "stu")
@@ -54,23 +80,26 @@ class Teature: SQL.Alias {
     
     let table = SQL.Table("teature")
     
+    let id = SQL.Column(table: "tea", column: "teature_id")
     let name = SQL.Column(table: "tea", column: "name")
-    let age = SQL.Column(table: "tea", column: "age")
+    let office = SQL.Column(table: "tea", column: "office")
     let attendCount = SQL.Column(table: "stu", column: "attendCount")
     
     init() {
-        super.init(table, alias: "stu")
+        super.init(table, alias: "tea")
     }
     
 }
 
 class Lecture: SQL.Alias {
     
-    let table = SQL.Table(schemaName: "user", tableName: "tbl_lecture")
+    let table = SQL.Table("lecture")
     
+    let id = SQL.Column(table: "tea", column: "lecture_id")
     let name = SQL.Column(table: "lec", column: "name")
-    let teatureName = SQL.Column(table: "lec", column: "name")
-    let studentCount = SQL.Column(table: "lec", column: "studentCount")
+    let category = SQL.Column(table: "lec", column: "category")
+    let teatureID = SQL.Column(table: "lec", column: "teature_id")
+    let hours = SQL.Column(table: "lec", column: "hours")
     
     init() {
         super.init(table, alias: "lec")
@@ -78,6 +107,23 @@ class Lecture: SQL.Alias {
     
 }
 
-let student = Student()
-let lecture = Lecture()
+class Attending: SQL.Alias {
+    
+    let table = SQL.Table(schemaName: "user", tableName: "attending")
+    
+    let studentID = SQL.Column(table: "atd", column: "student_id")
+    let lectureID = SQL.Column(table: "atd", column: "lecture_id")
+    
+    init() {
+        super.init(table, alias: "atd")
+    }
+
+}
+
+var student: Student!
+var teature: Teature!
+var lecture: Lecture!
+var attending: Attending!
+
+
 
