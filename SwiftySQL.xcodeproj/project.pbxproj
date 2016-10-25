@@ -40,6 +40,8 @@
 		A9604F761DBF2B3C00F79239 /* SQL.Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F631DBF2B3C00F79239 /* SQL.Join.swift */; };
 		A9604F771DBF2B3C00F79239 /* SQL.Limit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F641DBF2B3C00F79239 /* SQL.Limit.swift */; };
 		A9604F781DBF2B3C00F79239 /* SQL.Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F651DBF2B3C00F79239 /* SQL.Table.swift */; };
+		A9604F7A1DBF35FC00F79239 /* SwiftSQLTestEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F791DBF35FC00F79239 /* SwiftSQLTestEnv.swift */; };
+		A9604F801DBF4ADF00F79239 /* NativeType+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F7E1DBF4A0600F79239 /* NativeType+DefaultDB.swift */; };
 		A9B39B4C1DB9D76C00A208FC /* SwiftySQL-macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A9B39B4A1DB9D76C00A208FC /* SwiftySQL-macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9B39B581DB9D84D00A208FC /* SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B521DB9D84D00A208FC /* SQL.swift */; };
 		A9B39B5C1DB9D84D00A208FC /* SQLStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B561DB9D84D00A208FC /* SQLStringConvertible.swift */; };
@@ -52,7 +54,6 @@
 		A9B39B7B1DB9D90900A208FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9B39B791DB9D90900A208FC /* Main.storyboard */; };
 		A9B39B801DB9D91000A208FC /* SwiftySQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9B39B481DB9D76C00A208FC /* SwiftySQL.framework */; };
 		A9B39B811DB9D91000A208FC /* SwiftySQL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9B39B481DB9D76C00A208FC /* SwiftySQL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A9B39B9E1DBB1B9200A208FC /* TollFreeSQLColumnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B9D1DBB1B9200A208FC /* TollFreeSQLColumnType.swift */; };
 		A9B39BA21DBB3E1100A208FC /* SQLTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BA11DBB3E1100A208FC /* SQLTypes.swift */; };
 		A9B39BA71DBBA52100A208FC /* SQLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BA61DBBA52100A208FC /* SQLGenerator.swift */; };
 		A9B39BAF1DBC380100A208FC /* SQL.Select+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BAE1DBC380100A208FC /* SQL.Select+DefaultDB.swift */; };
@@ -127,6 +128,8 @@
 		A9604F631DBF2B3C00F79239 /* SQL.Join.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Join.swift; sourceTree = "<group>"; };
 		A9604F641DBF2B3C00F79239 /* SQL.Limit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Limit.swift; sourceTree = "<group>"; };
 		A9604F651DBF2B3C00F79239 /* SQL.Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Table.swift; sourceTree = "<group>"; };
+		A9604F791DBF35FC00F79239 /* SwiftSQLTestEnv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSQLTestEnv.swift; sourceTree = "<group>"; };
+		A9604F7E1DBF4A0600F79239 /* NativeType+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NativeType+DefaultDB.swift"; sourceTree = "<group>"; };
 		A9B39B481DB9D76C00A208FC /* SwiftySQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftySQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B39B4A1DB9D76C00A208FC /* SwiftySQL-macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftySQL-macOS.h"; sourceTree = "<group>"; };
 		A9B39B4B1DB9D76C00A208FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -142,7 +145,6 @@
 		A9B39B771DB9D90900A208FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9B39B7A1DB9D90900A208FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A9B39B7C1DB9D90900A208FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A9B39B9D1DBB1B9200A208FC /* TollFreeSQLColumnType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TollFreeSQLColumnType.swift; sourceTree = "<group>"; };
 		A9B39BA11DBB3E1100A208FC /* SQLTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLTypes.swift; sourceTree = "<group>"; };
 		A9B39BA61DBBA52100A208FC /* SQLGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLGenerator.swift; sourceTree = "<group>"; };
 		A9B39BAD1DBBE29400A208FC /* SwiftySQL.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SwiftySQL.playground; sourceTree = "<group>"; };
@@ -183,25 +185,25 @@
 		A9604F521DBF2AB400F79239 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A9604F531DBF2B3C00F79239 /* SQL.Delete.swift */,
 				A9604F541DBF2B3C00F79239 /* SQL.PrefixUnaryExpr.swift */,
-				A9604F551DBF2B3C00F79239 /* SQL.Alias.swift */,
+				A9604F5F1DBF2B3C00F79239 /* SQL.SuffixUnaryExpr.swift */,
 				A9604F561DBF2B3C00F79239 /* SQL.BinaryExpr.swift */,
-				A9604F571DBF2B3C00F79239 /* SQL.Case.swift */,
+				A9604F601DBF2B3C00F79239 /* SQL.TernaryExpr.swift */,
+				A9604F5C1DBF2B3C00F79239 /* SQL.Literal.swift */,
+				A9604F611DBF2B3C00F79239 /* SQL.Tuple.swift */,
 				A9604F581DBF2B3C00F79239 /* SQL.Column.swift */,
 				A9604F591DBF2B3C00F79239 /* SQL.Func.swift */,
+				A9604F551DBF2B3C00F79239 /* SQL.Alias.swift */,
+				A9604F571DBF2B3C00F79239 /* SQL.Case.swift */,
 				A9604F5A1DBF2B3C00F79239 /* SQL.In.swift */,
-				A9604F5B1DBF2B3C00F79239 /* SQL.Insert.swift */,
-				A9604F5C1DBF2B3C00F79239 /* SQL.Literal.swift */,
 				A9604F5D1DBF2B3C00F79239 /* SQL.Order.swift */,
-				A9604F5E1DBF2B3C00F79239 /* SQL.Select.swift */,
-				A9604F5F1DBF2B3C00F79239 /* SQL.SuffixUnaryExpr.swift */,
-				A9604F601DBF2B3C00F79239 /* SQL.TernaryExpr.swift */,
-				A9604F611DBF2B3C00F79239 /* SQL.Tuple.swift */,
-				A9604F621DBF2B3C00F79239 /* SQL.Update.swift */,
-				A9604F631DBF2B3C00F79239 /* SQL.Join.swift */,
 				A9604F641DBF2B3C00F79239 /* SQL.Limit.swift */,
 				A9604F651DBF2B3C00F79239 /* SQL.Table.swift */,
+				A9604F631DBF2B3C00F79239 /* SQL.Join.swift */,
+				A9604F5E1DBF2B3C00F79239 /* SQL.Select.swift */,
+				A9604F5B1DBF2B3C00F79239 /* SQL.Insert.swift */,
+				A9604F621DBF2B3C00F79239 /* SQL.Update.swift */,
+				A9604F531DBF2B3C00F79239 /* SQL.Delete.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -246,7 +248,6 @@
 				A9B39B521DB9D84D00A208FC /* SQL.swift */,
 				A9B39BA11DBB3E1100A208FC /* SQLTypes.swift */,
 				A9B39B561DB9D84D00A208FC /* SQLStringConvertible.swift */,
-				A9B39B9D1DBB1B9200A208FC /* TollFreeSQLColumnType.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -254,6 +255,7 @@
 		A9B39B631DB9D89C00A208FC /* SwiftySQLTests-macOS */ = {
 			isa = PBXGroup;
 			children = (
+				A9604F791DBF35FC00F79239 /* SwiftSQLTestEnv.swift */,
 				A9B39B641DB9D89C00A208FC /* SwiftySQLTests_macOS.swift */,
 				A9B39B661DB9D89C00A208FC /* Info.plist */,
 			);
@@ -276,22 +278,23 @@
 			isa = PBXGroup;
 			children = (
 				A9B39BA61DBBA52100A208FC /* SQLGenerator.swift */,
-				A9B39BAE1DBC380100A208FC /* SQL.Select+DefaultDB.swift */,
-				A9B39BB61DBC3BAA00A208FC /* SQL.Column+DefaultDB.swift */,
+				A9604F7E1DBF4A0600F79239 /* NativeType+DefaultDB.swift */,
 				A93E53761DBCB69C00062A95 /* SQL.PrefixUnaryExpr+DefaultDB.swift */,
 				A93E53781DBCB6AD00062A95 /* SQL.SuffixUnaryExpr+DefaultDB.swift */,
 				A9B39BB81DBC3C0F00A208FC /* SQL.BinaryExpr+DefaultDB.swift */,
 				A93E537A1DBCB6CB00062A95 /* SQL.TernaryExpr+DefaultDB.swift */,
-				A93E537C1DBD209800062A95 /* SQL.In+DefaultDB.swift */,
-				A9B39BBA1DBC40BD00A208FC /* SQL.Table+DefaultDB.swift */,
-				A9B39BBC1DBC411F00A208FC /* SQL.Join+DefaultDB.swift */,
-				A93E53581DBC4A4A00062A95 /* SQL.Order+DefaultDB.swift */,
-				A93E535C1DBC4E0300062A95 /* SQL.Case+DefaultDB.swift */,
-				A93E535E1DBC4E7A00062A95 /* SQL.Func+DefaultDB.swift */,
-				A93E53601DBC4EA400062A95 /* SQL.Limit+DefaultDB.swift */,
-				A93E53621DBC4EDA00062A95 /* SQL.Alias+DefaultDB.swift */,
 				A93E536A1DBC8C7500062A95 /* SQL.Literal+DefaultDB.swift */,
 				A93E53821DBD2C5F00062A95 /* SQL.Tuple+DefaultDB.swift */,
+				A9B39BB61DBC3BAA00A208FC /* SQL.Column+DefaultDB.swift */,
+				A93E535E1DBC4E7A00062A95 /* SQL.Func+DefaultDB.swift */,
+				A93E53621DBC4EDA00062A95 /* SQL.Alias+DefaultDB.swift */,
+				A93E535C1DBC4E0300062A95 /* SQL.Case+DefaultDB.swift */,
+				A93E537C1DBD209800062A95 /* SQL.In+DefaultDB.swift */,
+				A93E53581DBC4A4A00062A95 /* SQL.Order+DefaultDB.swift */,
+				A93E53601DBC4EA400062A95 /* SQL.Limit+DefaultDB.swift */,
+				A9B39BBA1DBC40BD00A208FC /* SQL.Table+DefaultDB.swift */,
+				A9B39BBC1DBC411F00A208FC /* SQL.Join+DefaultDB.swift */,
+				A9B39BAE1DBC380100A208FC /* SQL.Select+DefaultDB.swift */,
 				A9604F481DBDB38600F79239 /* SQL.Insert+DefaultDB.swift */,
 				A9604F4C1DBDDAF600F79239 /* SQL.Update+DefaultDB.swift */,
 				A9604F501DBEF87900F79239 /* SQL.Delete+DefaultDB.swift */,
@@ -461,7 +464,6 @@
 				A9B39B5C1DB9D84D00A208FC /* SQLStringConvertible.swift in Sources */,
 				A9B39B5D1DB9D84D00A208FC /* SQLUtils.swift in Sources */,
 				A9B39B581DB9D84D00A208FC /* SQL.swift in Sources */,
-				A9B39B9E1DBB1B9200A208FC /* TollFreeSQLColumnType.swift in Sources */,
 				A9604F691DBF2B3C00F79239 /* SQL.BinaryExpr.swift in Sources */,
 				A9B39BA71DBBA52100A208FC /* SQLGenerator.swift in Sources */,
 				A9604F661DBF2B3C00F79239 /* SQL.Delete.swift in Sources */,
@@ -481,6 +483,7 @@
 				A9604F711DBF2B3C00F79239 /* SQL.Select.swift in Sources */,
 				A9604F771DBF2B3C00F79239 /* SQL.Limit.swift in Sources */,
 				A9604F491DBDB38600F79239 /* SQL.Insert+DefaultDB.swift in Sources */,
+				A9604F801DBF4ADF00F79239 /* NativeType+DefaultDB.swift in Sources */,
 				A93E537D1DBD209800062A95 /* SQL.In+DefaultDB.swift in Sources */,
 				A93E53831DBD2C5F00062A95 /* SQL.Tuple+DefaultDB.swift in Sources */,
 				A93E53771DBCB69C00062A95 /* SQL.PrefixUnaryExpr+DefaultDB.swift in Sources */,
@@ -506,6 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9604F7A1DBF35FC00F79239 /* SwiftSQLTestEnv.swift in Sources */,
 				A9B39B651DB9D89C00A208FC /* SwiftySQLTests_macOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

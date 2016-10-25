@@ -22,7 +22,7 @@ extension SQL {
         }
         
         let keyword: Keyword?
-        let number: TollFreeSQLValueType?
+        let number: SQLNumberType?
         let string: String?
         
         init(_ keyword: Keyword) {
@@ -31,7 +31,7 @@ extension SQL {
             self.string = nil
         }
         
-        init(_ number: TollFreeSQLValueType) {
+        init(_ number: SQLNumberType) {
             self.keyword = nil
             self.number = number
             self.string = nil

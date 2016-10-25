@@ -8,6 +8,7 @@
 
 import XCTest
 
+@testable import SwiftySQL
 
 class SwiftySQLTests_macOS: XCTestCase {
     

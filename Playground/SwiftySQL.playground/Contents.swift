@@ -153,6 +153,10 @@ print(unformatted)
 print("--")
 print("SAME: \(query.description == unformatted)")
 
+/* literal */
+
+test(SQL.select(1, 2, "string", Character("c"), Date()))
+
 /* Func */
 print("--")
 test(SQL.Func("COUNT", args: []))

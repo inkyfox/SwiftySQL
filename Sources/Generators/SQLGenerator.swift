@@ -44,6 +44,12 @@ public class SQLGenerator {
                 ObjectIdentifier(SQL.PreparedLiteral.self) : SQL.PreparedLiteral.Generator(),
                 ObjectIdentifier(SQL.In.self)              : SQL.In.Generator(),
                 ObjectIdentifier(SQL.Tuple.self)           : SQL.Tuple.Generator(),
+                ObjectIdentifier(Int.self)                 : Int.Generator(),
+                ObjectIdentifier(Float.self)               : Float.Generator(),
+                ObjectIdentifier(Double.self)              : Double.Generator(),
+                ObjectIdentifier(String.self)              : String.Generator(),
+                ObjectIdentifier(Character.self)           : Character.Generator(),
+                ObjectIdentifier(Date.self)                : Date.Generator(),
             ]
         }
         

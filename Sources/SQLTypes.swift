@@ -26,3 +26,17 @@ public protocol SQLQueryType: SQLStringConvertible {
     func formattedQuery(withIndent indent: Int, by generator: SQLGenerator) -> String
 
 }
+
+public protocol SQLNumberType: SQLValueType, SQLAliasable, SQLConditionType { }
+
+extension Int: SQLNumberType { }
+
+extension Float: SQLNumberType { }
+
+extension Double: SQLNumberType { }
+
+extension String: SQLValueType, SQLAliasable { }
+
+extension Character: SQLValueType, SQLAliasable { }
+
+extension Date: SQLValueType, SQLAliasable { }
