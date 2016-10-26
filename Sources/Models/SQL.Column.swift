@@ -27,3 +27,15 @@ extension SQL {
     }
     
 }
+
+extension SQL.Column {
+    
+    public func of(_ table: SQL.Alias) -> SQL.Column {
+        return SQL.Column(table: table.alias, column: columnName)
+    }
+    
+    public func of(_ table: String) -> SQL.Column {
+        return SQL.Column(table: table, column: columnName)
+    }
+
+}

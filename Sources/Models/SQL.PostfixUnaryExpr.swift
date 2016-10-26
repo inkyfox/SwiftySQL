@@ -1,5 +1,5 @@
 //
-//  SQL.SuffixUnaryExpr.swift
+//  SQL.PostfixUnaryExpr.swift
 //  SwiftySQL
 //
 //  Created by indy on 2016. 10. 23..
@@ -10,7 +10,7 @@ import Foundation
 
 extension SQL {
     
-    public struct SuffixUnaryExpr: SQLValueType, SQLConditionType, SQLOrderType, SQLAliasable {
+    public struct PostfixUnaryExpr: SQLValueType, SQLConditionType, SQLOrderType, SQLAliasable {
 
         let lhs: SQLExprType
         let op: String
@@ -26,12 +26,12 @@ extension SQL {
 
 extension SQLValueType {
     
-    public func isNull() -> SQL.SuffixUnaryExpr {
-        return SQL.SuffixUnaryExpr(self, op: "ISNULL")
+    public var isNull: SQL.PostfixUnaryExpr {
+        return SQL.PostfixUnaryExpr(self, op: "ISNULL")
     }
     
-    public func isNotNull() -> SQL.SuffixUnaryExpr {
-        return SQL.SuffixUnaryExpr(self, op: "NOTNULL")
+    public var isNotNull: SQL.PostfixUnaryExpr {
+        return SQL.PostfixUnaryExpr(self, op: "NOTNULL")
     }
     
 }

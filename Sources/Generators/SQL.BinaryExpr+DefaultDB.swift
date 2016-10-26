@@ -11,17 +11,29 @@ import Foundation
 private let newLinedOperators = Set<String>(["AND", "OR"])
 private let trimmedUnaryOperators = Set<String>(["+", "-", "~"])
 
+private let precedences: [String: Int] = [
+    "||" : 1,
+    "*" : 2,  "/" : 2, "%" : 2,
+    "+" : 3, "-" : 3,
+    "<<" : 4, ">>" : 4, "&" : 4, "|" : 4,
+    "<" : 5, "<=" : 5, ">" : 5, ">=" : 5,
+    "=" : 6, "==" : 6, "!=" : 6, "<>" : 6, "IS" : 6, "IS NOT" : 6,
+    "IN" : 6, "LIKE" : 6, "NOT LIKE" : 6,
+    "AND" : 7,
+    "OR" : 8
+]
+
 extension SQL.BinaryExpr {
     
     fileprivate func isParenthesesNecessary(_ expr: SQLExprType) -> Bool {
-        let isOpExpr = expr.needBoxed
-
-        guard newLinedOperators.contains(op) else { return isOpExpr }
-
-        guard let b = expr as? SQL.BinaryExpr else { return false }
-        guard newLinedOperators.contains(b.op) else { return false }
-
-        return op != b.op
+        guard let precedence = precedences[op] else { return expr.needBoxed }
+        
+        if let b = expr as? SQL.BinaryExpr {
+            guard let p = precedences[b.op] else { return true }
+            return precedence < p
+        } else {
+            return expr.needBoxed
+        }
     }
     
 }

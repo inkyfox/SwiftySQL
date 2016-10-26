@@ -1,5 +1,5 @@
 //
-//  SuffixUnaryExprTests.swift
+//  PostfixUnaryExprTests.swift
 //  SwiftySQLTests
 //
 //  Created by Yongha Yoo (inkyfox) on 2016. 10. 26..
@@ -12,7 +12,7 @@ import XCTest
 
 @testable import SwiftySQL
 
-class SuffixUnaryExprTests: XCTestCase {
+class PostfixUnaryExprTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -33,36 +33,36 @@ class SuffixUnaryExprTests: XCTestCase {
     }
     
     func testIsNull() {
-        XCTAssertSQL(student.birth.isNull(), "stu.birth ISNULL")
+        XCTAssertSQL(student.birth.isNull, "stu.birth ISNULL")
         XCTAssertSQL(
-            SQL.select(student.birth).from(student).where(student.id.eq(1234))
-            .isNull()
+            SQL.select(student.birth).from(student).where(student.id == 1234)
+            .isNull
             ,
             "(SELECT stu.birth FROM student AS stu WHERE stu.id = 1234) ISNULL"
         )
-        XCTAssertSQL("test".isNull(), "\"test\" ISNULL")
+        XCTAssertSQL("test".isNull, "\"test\" ISNULL")
         XCTAssertSQL(
-            SQL.Case(when: student.grade.lt(2),
+            SQL.Case(when: student.grade < 2,
                      then: student.id,
                      else: SQL.Keyword.null)
-            .isNull()
+            .isNull
             ,
             "CASE WHEN stu.grade < 2 THEN stu.id ELSE NULL END ISNULL"
         )
     }
     
     func testIsNotNull() {
-        XCTAssertSQL(student.birth.isNotNull(), "stu.birth NOTNULL")
+        XCTAssertSQL(student.birth.isNotNull, "stu.birth NOTNULL")
         XCTAssertSQL(
-            SQL.select(student.birth).from(student).where(student.id.eq(1234))
-                .isNotNull(),
+            SQL.select(student.birth).from(student).where(student.id == 1234)
+                .isNotNull,
             "(SELECT stu.birth FROM student AS stu WHERE stu.id = 1234) NOTNULL")
-        XCTAssertSQL("test".isNotNull(), "\"test\" NOTNULL")
+        XCTAssertSQL("test".isNotNull, "\"test\" NOTNULL")
         XCTAssertSQL(
-            SQL.Case(when: student.grade.lt(2),
+            SQL.Case(when: student.grade < 2,
                      then: student.id,
                      else: SQL.Keyword.null)
-                .isNotNull()
+                .isNotNull
             ,
             "CASE WHEN stu.grade < 2 THEN stu.id ELSE NULL END NOTNULL"
         )

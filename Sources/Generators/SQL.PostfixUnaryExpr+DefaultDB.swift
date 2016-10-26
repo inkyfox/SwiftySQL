@@ -1,5 +1,5 @@
 //
-//  SQL.SuffixUnaryExpr+DefaultDB.swift
+//  SQL.PostfixUnaryExpr+DefaultDB.swift
 //  SwiftySQL
 //
 //  Created by indy on 2016. 10. 23..
@@ -8,15 +8,15 @@
 
 import Foundation
 
-extension SQL.SuffixUnaryExpr {
+extension SQL.PostfixUnaryExpr {
     
-    class Generator: SQLElementGenerator<SQL.SuffixUnaryExpr> {
+    class Generator: SQLElementGenerator<SQL.PostfixUnaryExpr> {
         
-        override func generate(_ element: SQL.SuffixUnaryExpr) -> String {
+        override func generate(_ element: SQL.PostfixUnaryExpr) -> String {
             return element.lhs.sqlStringBoxedIfNeeded(by: generator) + " " + element.op
         }
         
-        override func generateFormatted(_ element: SQL.SuffixUnaryExpr,
+        override func generateFormatted(_ element: SQL.PostfixUnaryExpr,
                                         withIndent indent: Int) -> String {
             return
                 element.lhs.formattedSQLStringBoxedIfNeeded(withIndent: indent, by: generator) +

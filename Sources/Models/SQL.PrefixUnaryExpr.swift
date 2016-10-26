@@ -26,18 +26,6 @@ extension SQL {
 
 extension SQL {
     
-    public static func not(_ expr: SQLConditionType) -> SQL.PrefixUnaryExpr {
-        return SQL.PrefixUnaryExpr(op: "NOT", expr)
-    }
-    
-    public static func minus(_ expr: SQLValueType) -> SQL.PrefixUnaryExpr {
-        return SQL.PrefixUnaryExpr(op: "-", expr)
-    }
-    
-    public static func bitwiseNot(_ expr: SQLValueType) -> SQL.PrefixUnaryExpr {
-        return SQL.PrefixUnaryExpr(op: "~", expr)
-    }
-    
     public static func exists(_ select: SQL.Select) -> SQL.PrefixUnaryExpr {
         return SQL.PrefixUnaryExpr(op: "EXISTS", select)
     }
@@ -47,4 +35,25 @@ extension SQL {
         return SQL.PrefixUnaryExpr(op: "NOT EXISTS", select)
     }
 
+}
+
+public prefix func !(value: SQLConditionType) -> SQL.PrefixUnaryExpr {
+    return SQL.PrefixUnaryExpr(op: "NOT", value)
+}
+
+public prefix func -(value: SQLValueType) -> SQL.PrefixUnaryExpr {
+    return SQL.PrefixUnaryExpr(op: "-", value)
+}
+
+public prefix func ~(value: SQLValueType) -> SQL.PrefixUnaryExpr {
+    return SQL.PrefixUnaryExpr(op: "~", value)
+}
+
+public func exists(_ select: SQL.Select) -> SQL.PrefixUnaryExpr {
+    return SQL.exists(select)
+}
+
+
+public func notExists(_ select: SQL.Select) -> SQL.PrefixUnaryExpr {
+    return SQL.notExists(select)
 }

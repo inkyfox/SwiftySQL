@@ -14,7 +14,7 @@
 		A93E53631DBC4EDA00062A95 /* SQL.Alias+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E53621DBC4EDA00062A95 /* SQL.Alias+DefaultDB.swift */; };
 		A93E536B1DBC8C7500062A95 /* SQL.Literal+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E536A1DBC8C7500062A95 /* SQL.Literal+DefaultDB.swift */; };
 		A93E53771DBCB69C00062A95 /* SQL.PrefixUnaryExpr+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E53761DBCB69C00062A95 /* SQL.PrefixUnaryExpr+DefaultDB.swift */; };
-		A93E53791DBCB6AD00062A95 /* SQL.SuffixUnaryExpr+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E53781DBCB6AD00062A95 /* SQL.SuffixUnaryExpr+DefaultDB.swift */; };
+		A93E53791DBCB6AD00062A95 /* SQL.PostfixUnaryExpr+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E53781DBCB6AD00062A95 /* SQL.PostfixUnaryExpr+DefaultDB.swift */; };
 		A93E537B1DBCB6CB00062A95 /* SQL.TernaryExpr+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E537A1DBCB6CB00062A95 /* SQL.TernaryExpr+DefaultDB.swift */; };
 		A93E537D1DBD209800062A95 /* SQL.In+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E537C1DBD209800062A95 /* SQL.In+DefaultDB.swift */; };
 		A93E53831DBD2C5F00062A95 /* SQL.Tuple+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E53821DBD2C5F00062A95 /* SQL.Tuple+DefaultDB.swift */; };
@@ -33,7 +33,7 @@
 		A9604F6F1DBF2B3C00F79239 /* SQL.Literal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F5C1DBF2B3C00F79239 /* SQL.Literal.swift */; };
 		A9604F701DBF2B3C00F79239 /* SQL.Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F5D1DBF2B3C00F79239 /* SQL.Order.swift */; };
 		A9604F711DBF2B3C00F79239 /* SQL.Select.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F5E1DBF2B3C00F79239 /* SQL.Select.swift */; };
-		A9604F721DBF2B3C00F79239 /* SQL.SuffixUnaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F5F1DBF2B3C00F79239 /* SQL.SuffixUnaryExpr.swift */; };
+		A9604F721DBF2B3C00F79239 /* SQL.PostfixUnaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F5F1DBF2B3C00F79239 /* SQL.PostfixUnaryExpr.swift */; };
 		A9604F731DBF2B3C00F79239 /* SQL.TernaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F601DBF2B3C00F79239 /* SQL.TernaryExpr.swift */; };
 		A9604F741DBF2B3C00F79239 /* SQL.Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F611DBF2B3C00F79239 /* SQL.Tuple.swift */; };
 		A9604F751DBF2B3C00F79239 /* SQL.Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F621DBF2B3C00F79239 /* SQL.Update.swift */; };
@@ -43,7 +43,7 @@
 		A9604F7A1DBF35FC00F79239 /* SwiftSQLTestEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F791DBF35FC00F79239 /* SwiftSQLTestEnv.swift */; };
 		A9604F801DBF4ADF00F79239 /* NativeType+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F7E1DBF4A0600F79239 /* NativeType+DefaultDB.swift */; };
 		A9604F821DBFAF9000F79239 /* PrefixUnaryExprTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F811DBFAF9000F79239 /* PrefixUnaryExprTests.swift */; };
-		A9604F841DBFBA0900F79239 /* SuffixUnaryExprTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F831DBFBA0900F79239 /* SuffixUnaryExprTests.swift */; };
+		A9604F841DBFBA0900F79239 /* PostfixUnaryExprTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9604F831DBFBA0900F79239 /* PostfixUnaryExprTests.swift */; };
 		A9AE671F1DBFCADF00DD9962 /* BinaryExprTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AE671E1DBFCADF00DD9962 /* BinaryExprTests.swift */; };
 		A9B39B4C1DB9D76C00A208FC /* SwiftySQL-macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A9B39B4A1DB9D76C00A208FC /* SwiftySQL-macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9B39B581DB9D84D00A208FC /* SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39B521DB9D84D00A208FC /* SQL.swift */; };
@@ -105,7 +105,7 @@
 		A93E53621DBC4EDA00062A95 /* SQL.Alias+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Alias+DefaultDB.swift"; sourceTree = "<group>"; };
 		A93E536A1DBC8C7500062A95 /* SQL.Literal+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Literal+DefaultDB.swift"; sourceTree = "<group>"; };
 		A93E53761DBCB69C00062A95 /* SQL.PrefixUnaryExpr+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.PrefixUnaryExpr+DefaultDB.swift"; sourceTree = "<group>"; };
-		A93E53781DBCB6AD00062A95 /* SQL.SuffixUnaryExpr+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.SuffixUnaryExpr+DefaultDB.swift"; sourceTree = "<group>"; };
+		A93E53781DBCB6AD00062A95 /* SQL.PostfixUnaryExpr+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.PostfixUnaryExpr+DefaultDB.swift"; sourceTree = "<group>"; };
 		A93E537A1DBCB6CB00062A95 /* SQL.TernaryExpr+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.TernaryExpr+DefaultDB.swift"; sourceTree = "<group>"; };
 		A93E537C1DBD209800062A95 /* SQL.In+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.In+DefaultDB.swift"; sourceTree = "<group>"; };
 		A93E53821DBD2C5F00062A95 /* SQL.Tuple+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Tuple+DefaultDB.swift"; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 		A9604F5C1DBF2B3C00F79239 /* SQL.Literal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Literal.swift; sourceTree = "<group>"; };
 		A9604F5D1DBF2B3C00F79239 /* SQL.Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Order.swift; sourceTree = "<group>"; };
 		A9604F5E1DBF2B3C00F79239 /* SQL.Select.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Select.swift; sourceTree = "<group>"; };
-		A9604F5F1DBF2B3C00F79239 /* SQL.SuffixUnaryExpr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.SuffixUnaryExpr.swift; sourceTree = "<group>"; };
+		A9604F5F1DBF2B3C00F79239 /* SQL.PostfixUnaryExpr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.PostfixUnaryExpr.swift; sourceTree = "<group>"; };
 		A9604F601DBF2B3C00F79239 /* SQL.TernaryExpr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.TernaryExpr.swift; sourceTree = "<group>"; };
 		A9604F611DBF2B3C00F79239 /* SQL.Tuple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Tuple.swift; sourceTree = "<group>"; };
 		A9604F621DBF2B3C00F79239 /* SQL.Update.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.Update.swift; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 		A9604F791DBF35FC00F79239 /* SwiftSQLTestEnv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSQLTestEnv.swift; sourceTree = "<group>"; };
 		A9604F7E1DBF4A0600F79239 /* NativeType+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NativeType+DefaultDB.swift"; sourceTree = "<group>"; };
 		A9604F811DBFAF9000F79239 /* PrefixUnaryExprTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefixUnaryExprTests.swift; sourceTree = "<group>"; };
-		A9604F831DBFBA0900F79239 /* SuffixUnaryExprTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuffixUnaryExprTests.swift; sourceTree = "<group>"; };
+		A9604F831DBFBA0900F79239 /* PostfixUnaryExprTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostfixUnaryExprTests.swift; sourceTree = "<group>"; };
 		A9AE671E1DBFCADF00DD9962 /* BinaryExprTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryExprTests.swift; sourceTree = "<group>"; };
 		A9B39B481DB9D76C00A208FC /* SwiftySQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftySQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B39B4A1DB9D76C00A208FC /* SwiftySQL-macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftySQL-macOS.h"; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				A9604F541DBF2B3C00F79239 /* SQL.PrefixUnaryExpr.swift */,
-				A9604F5F1DBF2B3C00F79239 /* SQL.SuffixUnaryExpr.swift */,
+				A9604F5F1DBF2B3C00F79239 /* SQL.PostfixUnaryExpr.swift */,
 				A9604F561DBF2B3C00F79239 /* SQL.BinaryExpr.swift */,
 				A9604F601DBF2B3C00F79239 /* SQL.TernaryExpr.swift */,
 				A9604F5C1DBF2B3C00F79239 /* SQL.Literal.swift */,
@@ -264,7 +264,7 @@
 				A9604F791DBF35FC00F79239 /* SwiftSQLTestEnv.swift */,
 				A9B39B641DB9D89C00A208FC /* NativeTypeTests.swift */,
 				A9604F811DBFAF9000F79239 /* PrefixUnaryExprTests.swift */,
-				A9604F831DBFBA0900F79239 /* SuffixUnaryExprTests.swift */,
+				A9604F831DBFBA0900F79239 /* PostfixUnaryExprTests.swift */,
 				A9AE671E1DBFCADF00DD9962 /* BinaryExprTests.swift */,
 				A9B39B661DB9D89C00A208FC /* Info.plist */,
 			);
@@ -289,7 +289,7 @@
 				A9B39BA61DBBA52100A208FC /* SQLGenerator.swift */,
 				A9604F7E1DBF4A0600F79239 /* NativeType+DefaultDB.swift */,
 				A93E53761DBCB69C00062A95 /* SQL.PrefixUnaryExpr+DefaultDB.swift */,
-				A93E53781DBCB6AD00062A95 /* SQL.SuffixUnaryExpr+DefaultDB.swift */,
+				A93E53781DBCB6AD00062A95 /* SQL.PostfixUnaryExpr+DefaultDB.swift */,
 				A9B39BB81DBC3C0F00A208FC /* SQL.BinaryExpr+DefaultDB.swift */,
 				A93E537A1DBCB6CB00062A95 /* SQL.TernaryExpr+DefaultDB.swift */,
 				A93E536A1DBC8C7500062A95 /* SQL.Literal+DefaultDB.swift */,
@@ -479,7 +479,7 @@
 				A9604F741DBF2B3C00F79239 /* SQL.Tuple.swift in Sources */,
 				A9604F731DBF2B3C00F79239 /* SQL.TernaryExpr.swift in Sources */,
 				A9604F681DBF2B3C00F79239 /* SQL.Alias.swift in Sources */,
-				A9604F721DBF2B3C00F79239 /* SQL.SuffixUnaryExpr.swift in Sources */,
+				A9604F721DBF2B3C00F79239 /* SQL.PostfixUnaryExpr.swift in Sources */,
 				A9604F6B1DBF2B3C00F79239 /* SQL.Column.swift in Sources */,
 				A9604F6C1DBF2B3C00F79239 /* SQL.Func.swift in Sources */,
 				A9604F6D1DBF2B3C00F79239 /* SQL.In.swift in Sources */,
@@ -496,7 +496,7 @@
 				A93E537D1DBD209800062A95 /* SQL.In+DefaultDB.swift in Sources */,
 				A93E53831DBD2C5F00062A95 /* SQL.Tuple+DefaultDB.swift in Sources */,
 				A93E53771DBCB69C00062A95 /* SQL.PrefixUnaryExpr+DefaultDB.swift in Sources */,
-				A93E53791DBCB6AD00062A95 /* SQL.SuffixUnaryExpr+DefaultDB.swift in Sources */,
+				A93E53791DBCB6AD00062A95 /* SQL.PostfixUnaryExpr+DefaultDB.swift in Sources */,
 				A9B39BB91DBC3C0F00A208FC /* SQL.BinaryExpr+DefaultDB.swift in Sources */,
 				A93E537B1DBCB6CB00062A95 /* SQL.TernaryExpr+DefaultDB.swift in Sources */,
 				A93E53611DBC4EA400062A95 /* SQL.Limit+DefaultDB.swift in Sources */,
@@ -522,7 +522,7 @@
 				A9604F821DBFAF9000F79239 /* PrefixUnaryExprTests.swift in Sources */,
 				A9B39B651DB9D89C00A208FC /* NativeTypeTests.swift in Sources */,
 				A9AE671F1DBFCADF00DD9962 /* BinaryExprTests.swift in Sources */,
-				A9604F841DBFBA0900F79239 /* SuffixUnaryExprTests.swift in Sources */,
+				A9604F841DBFBA0900F79239 /* PostfixUnaryExprTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

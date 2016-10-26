@@ -89,47 +89,48 @@ let query =
                lecture.name,
                "Literal string",
                1234,
-               SQL.Case([(when: student.age.eq(15),
+               SQL.Case([(when: student.age == 15,
                           then: student.age),
                          (when: SQL.select(student.age)
                             .from(student)
-                            .where(student.age.le(45))
-                            .eq(5),
+                            .where(student.age <= 45)
+                            == 5,
                           then: lecture.studentName)
                 ],
                         else: 145),
                SQL.select(student.age)
                 .from(student)
-                .where(21.ne(student.age)))
+                .where(21 != student.age)
+        )
         .from(student.as("T1"),
               student
                 .join(lecture)
                 .leftJoin(lecture,
-                          on: student.name.eq(lecture.studentName))
+                          on: student.name == lecture.studentName)
                 .naturalJoin(lecture,
-                             on: student.name.eq(lecture.studentName)),
+                             on: student.name == lecture.studentName),
               SQL.select(student.age)
                 .from(student)
-                .where(student.age.le(45))
+                .where(student.age < 45)
                 .as("ag"),
               lecture
         )
-        .where(student.name.eq("Yoo")
-            .or(student.name.eq("Lee"))
-            .and(student.age.lt(lecture.name))
-            .and(student.age.lt(lecture.name))
-            .and(student.name.eq("Hey")
-                .or(lecture.name.eq("Test")))
-            .and(student.age.lt(lecture.name))
-            .or(lecture.name.eq("Science"))
-            .or(student.name.eq("WOW"))
-            .and(student.name.eq("Hey")
-                .or(lecture.name.eq("Test")))
-            .or(lecture.name.eq("Science"))
-            .or(student.name.eq("Hey")
-                .and(lecture.name.eq("Test"))))
+        .where(student.name == "Yoo"
+            || student.name == "Lee"
+            && student.age < lecture.name
+            && student.age < lecture.name
+            && (student.name == "Hey"
+                || lecture.name == "Test")
+            && student.age < lecture.name
+            || lecture.name == "Science"
+            || student.name == "WOW"
+            && (student.name == "Hey"
+                || lecture.name == "Test")
+            || lecture.name == "Science"
+            || (student.name == "Hey"
+                && lecture.name == "Test"))
         .groupBy(student.age)
-        .having(lecture.name.eq("Science"))
+        .having(lecture.name == "Science")
         .orderBy([student.name.asc, lecture.name])
         .limit(10, offset: 100)
 
@@ -166,7 +167,7 @@ test(SQL.Func("FUNC",
               args: [1,
                      SQL.select(lecture.studentCount)
                         .from(lecture)
-                        .where(21.lt(lecture.studentCount)),
+                        .where(21 < lecture.studentCount),
                      2,
                      SQL.Keyword.null,
                      "AAA"]))
@@ -179,23 +180,22 @@ test(SQL.abs(-5))
 /* OpExpr */
 // unary
 print("--")
-test(student.attendCount.isNull())
-test(student.attendCount.isNotNull())
+test(student.attendCount.isNull)
+test(student.attendCount.isNotNull)
 
-test(SQL.minus(student.attendCount))
-test(SQL
-    .minus(SQL.select(lecture.studentCount)
-        .from(lecture)
-        .where(21.lt(lecture.studentCount))
-        .orderBy(lecture.name, .asc)
-        .limit(1))
+test(-student.attendCount)
+test(-SQL.select(lecture.studentCount)
+    .from(lecture)
+    .where(21 < lecture.studentCount)
+    .orderBy(lecture.name, .asc)
+    .limit(1)
 )
-test(SQL.not(student.attendCount))
+test(!student.attendCount)
 
 test(SQL
     .exists(SQL.select(lecture.studentCount)
         .from(lecture)
-        .where(21.lt(lecture.studentCount))
+        .where(21 < lecture.studentCount)
         .orderBy(lecture.name, .asc)
         .limit(1))
 )
@@ -203,26 +203,27 @@ test(SQL
 // binary
 
 print("--")
-test(student.attendCount.eq(lecture.studentCount))
-test(student.attendCount.ne(lecture.studentCount))
+test(student.attendCount == lecture.studentCount)
+test(student.attendCount != lecture.studentCount)
 test(
-    student.attendCount.ge(SQL.select(lecture.studentCount)
-        .from(lecture)
-        .where(21.lt(lecture.studentCount))
-        .orderBy(lecture.name, .asc)
-        .limit(1))
+    student.attendCount >=
+        SQL.select(lecture.studentCount)
+            .from(lecture)
+            .where(21 < lecture.studentCount)
+            .orderBy(lecture.name, .asc)
+            .limit(1)
 )
 
-test(student.attendCount.plus(lecture.studentCount))
-test(student.attendCount.minus(lecture.studentCount))
-test(student.attendCount.multiply(lecture.studentCount))
-test(student.attendCount.divide(lecture.studentCount))
-test(student.attendCount.mod(lecture.studentCount))
+test(student.attendCount + lecture.studentCount)
+test(student.attendCount - lecture.studentCount)
+test(student.attendCount * lecture.studentCount)
+test(student.attendCount / lecture.studentCount)
+test(student.attendCount % lecture.studentCount)
 test(student.attendCount.is(lecture.studentCount))
 test(student.attendCount.isNot(lecture.studentCount))
 test(student.attendCount.concat(lecture.studentCount))
-test(student.attendCount.bitwiseAnd(lecture.studentCount))
-test(student.attendCount.bitwiseOr(lecture.studentCount))
+test(student.attendCount & lecture.studentCount)
+test(student.attendCount | lecture.studentCount)
 
 test(student.name.like("%JONE%"))
 test(student.name.notLike("%JONE%"))
@@ -233,8 +234,8 @@ test(student.name.hasPrefix("abc"))
 test(student.name.hasSuffix("abc"))
 
 print("--")
-test(student.attendCount.eq(.prepared))
-test(student.attendCount.multiply(.prepared))
+test(student.attendCount == .prepared)
+test(student.attendCount * .prepared)
 test(student.name.like(.prepared))
 test(student.name.notLike(.prepared))
 test(student.name.likeIgnoreCase(.prepared))
@@ -249,7 +250,7 @@ test(student.name.notBetween(1, and: 100))
 test(student.name
     .in(SQL.select(lecture.studentCount)
         .from(lecture)
-        .where(21.lt(lecture.studentCount)))
+        .where(21 < lecture.studentCount))
 )
 
 test(student.name.in(student.table))
@@ -261,23 +262,21 @@ test(student.name.in(SQL.Tuple("a", "b", 1)))
 // combination
 print("--")
 test(
-    student.name.eq("Yoo")
-        .or(student.name.eq("Lee"))
-        .and(student.age.lt(lecture.name))
-        .and(student.age.lt(lecture.name))
-        .and(SQL.not(student.name.eq("Hey"))
-            .or(lecture.name.eq("Test")))
-        .and(SQL.minus(student.age.lt(lecture.name)))
-        .or(SQL.not(lecture.name).eq("Science"))
-        .or(student.name.eq("WOW"))
-        .and(student.name.eq("Hey")
-            .or(lecture.name.eq("Test")))
-        .or(lecture.name.eq("Science"))
-        .or(student.name.eq("Hey")
-            .and(lecture.name.eq("Test")))
+    student.name == "Yoo"
+        || student.name == "Lee"
+        && student.age < lecture.name
+        && student.age < lecture.name
+        && (student.name == "Hey"
+            || lecture.name == "Test")
+        && student.age < lecture.name
+        || lecture.name == "Science"
+        || student.name == "WOW"
+        && (student.name == "Hey"
+            || lecture.name == "Test")
+        || lecture.name == "Science"
+        || (student.name == "Hey"
+            && lecture.name == "Test")
 )
-
-
 
 /* Date */
 
@@ -303,7 +302,7 @@ test(
         .columns(student.name, student.age, student.attendCount)
         .select(SQL.select(lecture.studentCount)
             .from(lecture)
-            .where(21.lt(lecture.studentCount)))
+            .where(21 < lecture.studentCount))
 )
 
 test(
@@ -321,40 +320,75 @@ test(
         .set([student.name, student.age],
              SQL.select(lecture.studentName, lecture.studentCount)
                 .from(lecture)
-                .where(21.lt(lecture.studentCount)))
+                .where(21 < lecture.studentCount))
         .set([student.name, student.age],
              [
                 SQL.select(lecture.studentName)
                     .from(lecture)
-                    .where(21.lt(lecture.studentCount)),
+                    .where(21 < lecture.studentCount),
                 SQL.select(lecture.studentCount)
                     .from(lecture)
-                    .where(21.lt(lecture.studentCount)),
+                    .where(21 < lecture.studentCount),
             ])
-        .where(21.lt(lecture.studentCount))
+        .where(21 < lecture.studentCount)
 )
 
 /* Delete */
 
 test(
     SQL.delete(from: student.table)
-        .where(student.name.eq("Yoo")
-            .or(student.name.eq("Lee"))
-            .and(student.age.lt(lecture.name))
-            .and(student.age.lt(lecture.name))
-            .and(student.name.eq("Hey")
-                .or(lecture.name.eq("Test")))
-            .and(student.age.lt(lecture.name))
-            .or(lecture.name.eq("Science"))
-            .or(student.name.eq("WOW"))
-            .and(student.name.eq("Hey")
-                .or(lecture.name.eq("Test")))
-            .or(lecture.name.eq("Science"))
-            .or(student.name.eq("Hey")
-                .and(lecture.name.eq("Test"))))
+        .where(student.name == "Yoo"
+            || student.name == "Lee"
+            && student.age < lecture.name
+            && student.age < lecture.name
+            && (student.name == "Hey"
+                || lecture.name == "Test")
+            && student.age < lecture.name
+            || lecture.name == "Science"
+            || student.name == "WOW"
+            && (student.name == "Hey"
+                || lecture.name == "Test")
+            || lecture.name == "Science"
+            || (student.name == "Hey"
+                && lecture.name == "Test"))
 )
 
-test( SQL.select(1.plus(-2)))
+test(
+    SQL.delete(from: student.table)
+        .where(student.name == "Yoo"
+            || student.name == "Lee"
+            && student.age < lecture.name
+            && student.age < lecture.name
+            && (student.name == "Hey"
+                || lecture.name == "Test")
+            && student.age < lecture.name
+            || lecture.name == "Science"
+            || student.name == "WOW"
+            && (student.name == "Hey"
+                || lecture.name == "Test")
+            || lecture.name == "Science"
+            || (student.name == "Hey"
+                && lecture.name == "Test"))
+)
 
-test(SQL.bitwiseNot(SQL.Hex(0x123)))
 
+test(~SQL.Hex(0x123))
+
+test(student.age + student.age)
+
+test(student.age + 100)
+
+test("ab" + student.age)
+
+test(!student.age)
+
+
+test(student.age == 100)
+
+test(student.age == .prepared)
+
+test(student.age > 100)
+
+test(student.age > .prepared)
+
+test(student.age + .prepared == .prepared)

@@ -29,7 +29,7 @@ public class SQLGenerator {
                 ObjectIdentifier(SQL.Delete.self)          : SQL.Delete.Generator(),
                 ObjectIdentifier(SQL.Column.self)          : SQL.Column.Generator(),
                 ObjectIdentifier(SQL.PrefixUnaryExpr.self) : SQL.PrefixUnaryExpr.Generator(),
-                ObjectIdentifier(SQL.SuffixUnaryExpr.self) : SQL.SuffixUnaryExpr.Generator(),
+                ObjectIdentifier(SQL.PostfixUnaryExpr.self) : SQL.PostfixUnaryExpr.Generator(),
                 ObjectIdentifier(SQL.BinaryExpr.self)      : SQL.BinaryExpr.Generator(),
                 ObjectIdentifier(SQL.TernaryExpr.self)     : SQL.TernaryExpr.Generator(),
                 ObjectIdentifier(SQL.Table.self)           : SQL.Table.Generator(),

@@ -31,61 +31,61 @@ class BinaryExprTests: XCTestCase {
     }
     
     func testEq() {
-        XCTAssertSQL(student.id.eq(attending.studentID), "stu.id = atd.student_id")
-        XCTAssertSQL(1234.eq(attending.studentID), "1234 = atd.student_id")
-        XCTAssertSQL(SQL.Hex(0x1234).eq(attending.studentID), "0x1234 = atd.student_id")
-        XCTAssertSQL(student.id.eq(1234), "stu.id = 1234")
+        XCTAssertSQL(student.id == attending.studentID, "stu.id = atd.student_id")
+        XCTAssertSQL(1234 == attending.studentID, "1234 = atd.student_id")
+        XCTAssertSQL(SQL.Hex(0x1234) == attending.studentID, "0x1234 = atd.student_id")
+        XCTAssertSQL(student.id == 1234, "stu.id = 1234")
         XCTAssertSQL(
-            SQL.Case(when: student.name.eq("Soyul"), then: 2, else: 1).eq(2),
+            SQL.Case(when: student.name == "Soyul", then: 2, else: 1) == 2,
             "CASE WHEN stu.name = \"Soyul\" THEN 2 ELSE 1 END = 2")
         XCTAssertSQL(
-            attending.studentID
-                .eq(SQL.select(student.id)
+            attending.studentID ==
+                SQL.select(student.id)
                     .from(student)
-                    .where(student.name.eq("Yongha"))
-                    .limit(1))
+                    .where(student.name == "Yongha")
+                    .limit(1)
             ,
             "atd.student_id = (SELECT stu.id FROM student AS stu WHERE stu.name = \"Yongha\" LIMIT 1)")
     }
     
     func testGt() {
-        XCTAssertSQL(student.id.gt(100), "stu.id > 100")
+        XCTAssertSQL(student.id > 100, "stu.id > 100")
     }
     
     func testGe() {
-        XCTAssertSQL(student.id.ge(100), "stu.id >= 100")
+        XCTAssertSQL(student.id >= 100, "stu.id >= 100")
     }
     
     func testLt() {
-        XCTAssertSQL(student.id.lt(100), "stu.id < 100")
+        XCTAssertSQL(student.id < 100, "stu.id < 100")
     }
     
     func testLe() {
-        XCTAssertSQL(student.id.le(100), "stu.id <= 100")
+        XCTAssertSQL(student.id <= 100, "stu.id <= 100")
     }
     
     func testNe() {
-        XCTAssertSQL(student.id.ne(100), "stu.id <> 100")
+        XCTAssertSQL(student.id != 100, "stu.id <> 100")
     }
 
     func testAnd() {
         XCTAssertSQL(
-            student.name.eq("Yongha")
-                .and(student.id.gt(100))
-                .and(student.grade.le(3))
-                .andNot(student.name.hasSuffix("er"))
-                .andExists(
+            student.name == "Yongha"
+                && student.id > 100
+                && student.grade <= 3
+                && !student.name.hasSuffix("er")
+                && exists(
                     SQL.select()
                         .from(attending)
-                        .where(attending.studentID.eq(student.id))
+                        .where(attending.studentID == student.id)
                 )
-                .andNotExists(
+                && notExists(
                     SQL.select()
                         .from(attending)
-                        .where(attending.studentID.eq(student.id)
-                            .and(attending.lectureID.eq(1900)))
+                        .where(attending.studentID == student.id
+                            && attending.lectureID == 1900)
                 )
-                .and(student.id.plus(30).lt(200))
+                && student.id + 30 < 200
             ,
             "stu.name = \"Yongha\" AND " +
             "stu.id > 100 AND " +
@@ -93,11 +93,9 @@ class BinaryExprTests: XCTestCase {
             "NOT (stu.name LIKE \"%er\") AND " +
             "EXISTS (SELECT * FROM user.attending AS atd WHERE atd.student_id = stu.id) AND " +
             "NOT EXISTS (SELECT * FROM user.attending AS atd WHERE atd.student_id = stu.id AND atd.lecture_id = 1900) AND " +
-            "(stu.id + 30) < 200")
+            "stu.id + 30 < 200")
         XCTAssertSQL(
-            student.name.eq("Yongha")
-                .and(student.id.gt(100)
-                    .and(student.grade.le(3)))
+            student.name == "Yongha" && (student.id > 100 && student.grade <= 3)
             ,
             "stu.name = \"Yongha\" AND stu.id > 100 AND stu.grade <= 3")
     }
@@ -106,22 +104,22 @@ class BinaryExprTests: XCTestCase {
 
     func testOr() {
         XCTAssertSQL(
-            student.name.eq("Yongha")
-                .or(student.id.gt(100))
-                .or(student.grade.le(3))
-                .orNot(student.name.hasSuffix("er"))
-                .orExists(
+            student.name == "Yongha"
+                || student.id > 100
+                || student.grade <= 3
+                || !student.name.hasSuffix("er")
+                || exists(
                     SQL.select()
                         .from(attending)
-                        .where(attending.studentID.eq(student.id))
+                        .where(attending.studentID == student.id)
                 )
-                .orNotExists(
+                || notExists(
                     SQL.select()
                         .from(attending)
-                        .where(attending.studentID.eq(student.id)
-                            .and(attending.lectureID.eq(1900)))
+                        .where(attending.studentID == student.id &&
+                            attending.lectureID == 1900)
                 )
-                .or(student.id.plus(30).lt(200))
+                || student.id + 30 < 200
             ,
             "stu.name = \"Yongha\" OR " +
             "stu.id > 100 OR " +
@@ -129,31 +127,39 @@ class BinaryExprTests: XCTestCase {
             "NOT (stu.name LIKE \"%er\") OR " +
             "EXISTS (SELECT * FROM user.attending AS atd WHERE atd.student_id = stu.id) OR " +
             "NOT EXISTS (SELECT * FROM user.attending AS atd WHERE atd.student_id = stu.id AND atd.lecture_id = 1900) OR " +
-            "(stu.id + 30) < 200")
+            "stu.id + 30 < 200")
         XCTAssertSQL(
-            student.name.eq("Yongha")
-                .or(student.id.gt(100)
-                    .or(student.grade.le(3)))
+            student.name == "Yongha" || (student.id > 100 || student.grade <= 3)
             ,
             "stu.name = \"Yongha\" OR stu.id > 100 OR stu.grade <= 3")
     }
 
     func testAndOrCombination() {
         XCTAssertSQL(
-            student.name.eq("Yongha")
-                .and(student.id.gt(100).or(student.id.lt(70)))
-                .and(student.grade.le(3))
-                .and(student.name.hasPrefix("A")
-                    .or(student.name.hasPrefix("B")))
-                .or(student.name.contains("Jones"))
-            
+            student.name == "Yongha"
+                && (student.id > 100 || student.id < 70)
+                && student.grade <= 3
+                && (student.name.hasPrefix("A") || student.name.hasPrefix("B"))
+                || student.name.contains("Jones")
             ,
-            "(stu.name = \"Yongha\" AND " +
-             "(stu.id > 100 OR stu.id < 70) AND " +
-             "stu.grade <= 3 AND " +
-             "(stu.name LIKE \"A%\" OR stu.name LIKE \"B%\")" +
-            ") OR " +
+            "stu.name = \"Yongha\" AND " +
+            "(stu.id > 100 OR stu.id < 70) AND " +
+            "stu.grade <= 3 AND " +
+            "(stu.name LIKE \"A%\" OR stu.name LIKE \"B%\")" +
+            " OR " +
             "stu.name LIKE \"%Jones%\"")
+    }
+
+    func testAdd() {
+        XCTAssertSQL(student.grade + 0.5, "stu.grade + 0.5")
+        XCTAssertSQL(100 + student.grade, "100 + stu.grade")
+        XCTAssertSQL(student.id + 100 < attending.studentID, "stu.id + 100 < atd.student_id")
+    }
+    
+    func testSubtract() {
+        XCTAssertSQL(student.grade - 0.5, "stu.grade - 0.5")
+        XCTAssertSQL(100 - student.grade, "100 - stu.grade")
+        XCTAssertSQL(student.id - 100 < attending.studentID, "stu.id - 100 < atd.student_id")
     }
 
 }

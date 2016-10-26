@@ -49,47 +49,47 @@ class ViewController: NSViewController {
                         lecture.name,
                         "Literal string",
                         1234,
-                        SQL.Case([(when: student.age.eq(15),
+                        SQL.Case([(when: student.age == 15,
                                    then: student.age),
                                   (when: SQL.select(student.age)
                                     .from(student)
-                                    .where(student.age.le(45))
-                                    .eq(5),
+                                    .where(student.age <= 45)
+                                    == 5,
                                    then: lecture.studentName)
                                   ],
                                  else: 145),
                         SQL.select(student.age)
                             .from(student)
-                            .where(21.ne(student.age))])
+                            .where(21 != student.age)])
                 .from([student.as("TABLE"),
                        student
                         .join(lecture)
                         .leftJoin(lecture,
-                                  on: student.name.eq(lecture.studentName))
+                                  on: student.name == lecture.studentName)
                         .naturalJoin(lecture,
-                                     on: student.name.eq(lecture.studentName)),
+                                     on: student.name == lecture.studentName),
                        SQL.select(student.age)
                         .from(student)
-                        .where(student.age.le(45))
+                        .where(student.age <= 45)
                         .as("ag"),
                        lecture
                     ])
-                .where(student.name.eq("Yoo")
-                    .or(student.name.eq("Lee"))
-                    .and(student.age.lt(lecture.name))
-                    .and(student.age.lt(lecture.name))
-                    .and(student.name.eq("Hey")
-                        .or(lecture.name.eq("Test")))
-                    .and(student.age.lt(lecture.name))
-                    .or(lecture.name.eq("Science"))
-                    .or(student.name.eq("WOW"))
-                    .and(student.name.eq("Hey")
-                        .or(lecture.name.eq("Test")))
-                    .or(lecture.name.eq("Science"))
-                    .or(student.name.eq("Hey")
-                        .and(lecture.name.eq("Test"))))
+                .where(student.name == "Yoo"
+                    || student.name == "Lee"
+                    && student.age < lecture.name
+                    && student.age < lecture.name
+                    && (student.name == "Hey"
+                        || lecture.name == "Test")
+                    && student.age < lecture.name
+                    || lecture.name == "Science"
+                    || student.name == "WOW"
+                    && (student.name == "Hey"
+                        || lecture.name == "Test")
+                    || lecture.name == "Science"
+                    || (student.name == "Hey"
+                        && lecture.name == "Test"))
                 .groupBy(student.age)
-                .having(lecture.name.eq("Science"))
+                .having(lecture.name == "Science")
                 .orderBy([student.name.asc, lecture.name])
                 .limit(10, offset: 100)
         
