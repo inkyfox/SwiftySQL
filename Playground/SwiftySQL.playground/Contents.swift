@@ -392,3 +392,14 @@ test(student.age > 100)
 test(student.age > .prepared)
 
 test(student.age + .prepared == .prepared)
+
+test(student.age >> 2)
+test(student.age << 2)
+test(student.age >> .prepared)
+
+test(.prepared == 1)
+test(.prepared + 1)
+test(.prepared + .prepared == 2)
+test(.prepared + 2 == .prepared)
+
+test(student.age <> .prepared)

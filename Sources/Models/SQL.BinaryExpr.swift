@@ -22,15 +22,11 @@ extension SQL {
             self.rhs = rhs
         }
 
-        public init(_ lhs: SQLExprType, _ op: String, _ rhs: Keyword) {
-            self.lhs = lhs
-            self.op = op.trimmingCharacters(in: whiteSpaces).uppercased()
-            self.rhs = rhs
-        }
-
     }
     
 }
+
+infix operator <> : ComparisonPrecedence
 
 public func ==(lhs: SQLValueType, rhs: SQLValueType) -> SQL.BinaryExpr {
     return SQL.BinaryExpr(lhs, "=", rhs)
@@ -53,6 +49,10 @@ public func <=(lhs: SQLValueType, rhs: SQLValueType) -> SQL.BinaryExpr {
 }
 
 public func !=(lhs: SQLValueType, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<>", rhs)
+}
+
+public func <>(lhs: SQLValueType, rhs: SQLValueType) -> SQL.BinaryExpr {
     return SQL.BinaryExpr(lhs, "<>", rhs)
 }
 
@@ -90,6 +90,14 @@ public func &(lhs: SQLValueType, rhs: SQLValueType) -> SQL.BinaryExpr {
 
 public func |(lhs: SQLValueType, rhs: SQLValueType) -> SQL.BinaryExpr {
     return SQL.BinaryExpr(lhs, "|", rhs)
+}
+
+public func >>(lhs: SQLValueType, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, ">>", rhs)
+}
+
+public func <<(lhs: SQLValueType, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<<", rhs)
 }
 
 extension SQLValueType {
@@ -140,90 +148,230 @@ extension SQLValueType {
     
 }
 
-public func ==(lhs: SQLValueType, prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "=", prepared)
+public func ==(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "=", rhs)
 }
 
-public func >(lhs: SQLValueType, prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, ">", prepared)
+public func >(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, ">", rhs)
 }
 
-public func >=(lhs: SQLValueType, prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, ">=", prepared)
+public func >=(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, ">=", rhs)
 }
 
-public func <(lhs: SQLValueType, prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "<", prepared)
+public func <(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<", rhs)
 }
 
-public func <=(lhs: SQLValueType, prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "<=", prepared)
+public func <=(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<=", rhs)
 }
 
-public func !=(lhs: SQLValueType, prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "<>", prepared)
+public func !=(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<>", rhs)
 }
 
-public func +(lhs: SQLValueType, prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "+", prepared)
+public func <>(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<>", rhs)
 }
 
-public func -(lhs: SQLValueType, prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "-", prepared)
+public func +(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "+", rhs)
 }
 
-public func *(lhs: SQLValueType, prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "*", prepared)
+public func -(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "-", rhs)
 }
 
-public func /(lhs: SQLValueType, prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "/", prepared)
+public func *(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "*", rhs)
 }
 
-public func %(lhs: SQLValueType, prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "%", prepared)
+public func /(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "/", rhs)
 }
 
-public func &(lhs: SQLValueType, prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "&", prepared)
+public func %(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "%", rhs)
 }
 
-public func |(lhs: SQLValueType, prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "|", prepared)
+public func &(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "&", rhs)
+}
+
+public func |(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "|", rhs)
+}
+
+public func >>(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, ">>", rhs)
+}
+
+public func <<(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<<", rhs)
+}
+
+public func ==(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "=", rhs)
+}
+
+public func >(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, ">", rhs)
+}
+
+public func >=(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, ">=", rhs)
+}
+
+public func <(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<", rhs)
+}
+
+public func <=(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<=", rhs)
+}
+
+public func !=(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<>", rhs)
+}
+
+public func <>(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<>", rhs)
+}
+
+public func +(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "+", rhs)
+}
+
+public func -(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "-", rhs)
+}
+
+public func *(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "*", rhs)
+}
+
+public func /(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "/", rhs)
+}
+
+public func %(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "%", rhs)
+}
+
+public func &(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "&", rhs)
+}
+
+public func |(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "|", rhs)
+}
+
+public func >>(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, ">>", rhs)
+}
+
+public func <<(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<<", rhs)
+}
+
+public func ==(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "=", rhs)
+}
+
+public func >(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, ">", rhs)
+}
+
+public func >=(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, ">=", rhs)
+}
+
+public func <(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<", rhs)
+}
+
+public func <=(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<=", rhs)
+}
+
+public func !=(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<>", rhs)
+}
+
+public func <>(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<>", rhs)
+}
+
+public func +(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "+", rhs)
+}
+
+public func -(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "-", rhs)
+}
+
+public func *(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "*", rhs)
+}
+
+public func /(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "/", rhs)
+}
+
+public func %(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "%", rhs)
+}
+
+public func &(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "&", rhs)
+}
+
+public func |(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "|", rhs)
+}
+
+public func >>(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, ">>", rhs)
+}
+
+public func <<(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+    return SQL.BinaryExpr(lhs, "<<", rhs)
 }
 
 extension SQLValueType {
     
-    public func `is`(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(self, "IS", prepared)
+    public func `is`(_ rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "IS", rhs)
     }
     
-    public func isNot(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(self, "IS NOT", prepared)
+    public func isNot(_ rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "IS NOT", rhs)
     }
     
-    public func concat(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(self, "||", prepared)
+    public func concat(_ rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "||", rhs)
     }
     
 }
 
 extension SQLValueType {
     
-    public func like(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(self, "LIKE", prepared)
+    public func like(_ rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "LIKE", rhs)
     }
     
-    public func notLike(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(self, "NOT LIKE", prepared)
+    public func notLike(_ rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "NOT LIKE", rhs)
     }
     
-    public func likeIgnoreCase(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(SQL.upper(self), "LIKE", SQL.upper(prepared))
+    public func likeIgnoreCase(_ rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(SQL.upper(self), "LIKE", SQL.upper(rhs))
     }
     
-    public func notLikeIgnoreCase(_ prepared: SQL.PreparedMark) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(SQL.upper(self), "NOT LIKE", SQL.upper(prepared))
+    public func notLikeIgnoreCase(_ rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(SQL.upper(self), "NOT LIKE", SQL.upper(rhs))
     }
     
 }
