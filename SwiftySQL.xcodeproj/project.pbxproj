@@ -79,6 +79,7 @@
 		A9B39BB91DBC3C0F00A208FC /* SQL.BinaryExpr+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BB81DBC3C0F00A208FC /* SQL.BinaryExpr+DefaultDB.swift */; };
 		A9B39BBB1DBC40BD00A208FC /* SQL.Table+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BBA1DBC40BD00A208FC /* SQL.Table+DefaultDB.swift */; };
 		A9B39BBD1DBC411F00A208FC /* SQL.Join+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BBC1DBC411F00A208FC /* SQL.Join+DefaultDB.swift */; };
+		A9D9DFEA1DC2BB83005CF80D /* DeleteTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D9DFE91DC2BB83005CF80D /* DeleteTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +190,7 @@
 		A9B39BB81DBC3C0F00A208FC /* SQL.BinaryExpr+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.BinaryExpr+DefaultDB.swift"; sourceTree = "<group>"; };
 		A9B39BBA1DBC40BD00A208FC /* SQL.Table+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Table+DefaultDB.swift"; sourceTree = "<group>"; };
 		A9B39BBC1DBC411F00A208FC /* SQL.Join+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Join+DefaultDB.swift"; sourceTree = "<group>"; };
+		A9D9DFE91DC2BB83005CF80D /* DeleteTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +313,7 @@
 				A92578CA1DC1CE27000B162B /* SelectTests.swift */,
 				A92578CC1DC1D8B0000B162B /* InsertTests.swift */,
 				A92578CE1DC236F0000B162B /* UpdateTests.swift */,
+				A9D9DFE91DC2BB83005CF80D /* DeleteTest.swift */,
 				A9B39B661DB9D89C00A208FC /* Info.plist */,
 			);
 			path = "SwiftySQLTests-macOS";
@@ -570,6 +573,7 @@
 				A9604F7A1DBF35FC00F79239 /* SwiftSQLTestEnv.swift in Sources */,
 				A9604F821DBFAF9000F79239 /* PrefixUnaryExprTests.swift in Sources */,
 				A92578C71DC1CA70000B162B /* TableTests.swift in Sources */,
+				A9D9DFEA1DC2BB83005CF80D /* DeleteTest.swift in Sources */,
 				A92578BB1DC19BE7000B162B /* ColumnTests.swift in Sources */,
 				A92578B91DC19A55000B162B /* TupleTests.swift in Sources */,
 				A92578CB1DC1CE27000B162B /* SelectTests.swift in Sources */,

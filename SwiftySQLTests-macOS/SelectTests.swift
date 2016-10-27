@@ -258,5 +258,5 @@ class SelectTests: XCTestCase {
             "LIMIT 100, 120"
         )
     }
-    
+   
 }

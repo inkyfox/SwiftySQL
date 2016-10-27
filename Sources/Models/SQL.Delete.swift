@@ -12,10 +12,10 @@ extension SQL {
     
     public class Delete: SQLQueryType {
         
-        let table: Table
+        let table: SQLSourceTableType
         var condition: SQLConditionType? = nil
         
-        init(from table: Table) {
+        init(from table: SQLSourceTableType) {
             self.table = table
         }
         
@@ -45,7 +45,7 @@ extension SQL.Delete {
 
 extension SQL {
     
-    public static func delete(from table: Table) -> Delete {
+    public static func delete(from table: SQLSourceTableType) -> Delete {
         return Delete(from: table)
     }
     
