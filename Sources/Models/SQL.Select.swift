@@ -114,21 +114,16 @@ extension SQL.Select {
         return self
     }
     
-    public func orderBy(_ order: [SQLOrderType]) -> SQL.Select {
+    public func orderBy(_ orders: [SQLOrderType]) -> SQL.Select {
         self.orders += orders
         return self
     }
 
-    public func orderBy(_ order: SQLOrderType...) -> SQL.Select {
+    public func orderBy(_ orders: SQLOrderType...) -> SQL.Select {
         self.orders += orders
         return self
     }
 
-    public func limit(_ limit: SQL.Limit) -> SQL.Select {
-        self.limit = limit
-        return self
-    }
-    
     public func limit(_ limit: UInt, offset: UInt? = nil) -> SQL.Select {
         self.limit = SQL.Limit(limit: limit, offset: offset)
         return self

@@ -14,6 +14,7 @@ public protocol SQLStringConvertible: CustomStringConvertible, CustomDebugString
     
     func formattedSQLString(withIndent indent: Int,
                             by generator: SQLGenerator) -> String
+
 }
 
 extension SQLStringConvertible {

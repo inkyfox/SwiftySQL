@@ -35,14 +35,17 @@ extension SQL.Insert {
         override func generateQuery(_ element: SQL.Insert) -> String {
             var query = actionString(element.action) + " INTO "
             query += element.table.sqlString(by: generator) + " "
-            query += element.columns.map { $0.columnName }.joined(separator: ", ").boxed + " "
+            
+            if element.columns.count > 0 {
+                query += element.columns.map { $0.columnName }.joined(separator: ", ").boxed + " "
+            }
             
             if element.values.count > 0 {
                 query += "VALUES "
                 query += element.values.map { sqlJoin($0, by: generator).boxed }.joined(separator: ", ")
             } else if let select = element.select {
                 query += select.query(by: generator)
-            } else {
+            } else if element.columns.count == 0 {
                 query += "DEFAULT VALUES"
             }
             
@@ -55,9 +58,12 @@ extension SQL.Insert {
             let paramIndent = indent + query.characters.count
             
             query += element.table.formattedSQLString(withIndent: paramIndent, by: generator)
-            query += "\n\(space(paramIndent))"
-            query += element.columns.map { $0.columnName }.joined(separator: ", ").boxedWithSpace + "\n"
-            //query += element.columns.map { $0.columnName }.joined(separator: ",\n" + space(paramIndent + 2)).boxedWithSpace + "\n"
+            query += "\n"
+            if element.columns.count > 0 {
+                query += "\(space(paramIndent))"
+                query += element.columns.map { $0.columnName }.joined(separator: ", ").boxedWithSpace + "\n"
+                //query += element.columns.map { $0.columnName }.joined(separator: ",\n" + space(paramIndent + 2)).boxedWithSpace + "\n"
+            }
             
             if element.values.count > 0 {
                 query += space(indent) + "VALUES" + space(paramIndent - indent - 6)
@@ -66,7 +72,7 @@ extension SQL.Insert {
                     .joined(separator: ",\n" + space(paramIndent))
             } else if let select = element.select {
                 query += space(indent) + select.formattedQuery(withIndent: indent, by: generator)
-            } else {
+            } else if element.columns.count == 0 {
                 query += space(indent) + "DEFAULT VALUES"
             }
             

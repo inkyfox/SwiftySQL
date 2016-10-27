@@ -160,8 +160,6 @@ test(SQL.select(1, 2, "string", Character("c"), Date()))
 
 /* Func */
 print("--")
-test(SQL.Func("COUNT", args: []))
-test(SQL.Func("COUNT", arg: .all))
 
 test(SQL.Func("FUNC",
               args: [1,
@@ -238,8 +236,6 @@ test(student.attendCount == .prepared)
 test(student.attendCount * .prepared)
 test(student.name.like(.prepared))
 test(student.name.notLike(.prepared))
-test(student.name.likeIgnoreCase(.prepared))
-test(student.name.notLikeIgnoreCase(.prepared))
 
 // ternary
 print("--")

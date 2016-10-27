@@ -12,9 +12,9 @@ extension SQL.Update {
     
     class Generator: SQLQueryGenerator<SQL.Update> {
         
-        func actionString(_ action: SQL.Update.OrAction) -> String {
-            switch action {
-            case .only: return "UPDATE"
+        func actionString(_ orAction: SQL.Update.OrAction?) -> String {
+            guard let or = orAction else { return "UPDATE" }
+            switch or {
             case .replace: return "UPDATE OR REPLACE"
             case .rollback: return "UPDATE OR ROLLBACK"
             case .abort: return "UPDATE OR ABORT"

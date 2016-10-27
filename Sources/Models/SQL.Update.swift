@@ -13,15 +13,15 @@ extension SQL {
     public class Update: SQLQueryType {
         
         public enum OrAction {
-            case only, replace, rollback, abort, fail, ignore
+            case replace, rollback, abort, fail, ignore
         }
         
-        let orAction: OrAction
+        let orAction: OrAction?
         let table: Table
         var sets: [([Column], [SQLValueType])] = []
         var condition: SQLConditionType?
         
-        init(_ orAction: OrAction, _ table: Table) {
+        init(_ orAction: OrAction?, _ table: Table) {
             self.orAction = orAction
             self.table = table
         }
@@ -53,7 +53,7 @@ extension SQL.Update {
 extension SQL {
     
     public static func update(_ table: Table) -> Update {
-        return Update(.only, table)
+        return Update(nil, table)
     }
 
     public static func update(or orAction: Update.OrAction, _ table: Table) -> Update {

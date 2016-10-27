@@ -9,11 +9,15 @@
 import Foundation
 
 public protocol SQLExprType: SQLStringConvertible { }
+
 public protocol SQLValueType: SQLExprType { }
+
 public protocol SQLConditionType: SQLExprType { }
+
 public protocol SQLOperaorExprType: SQLExprType { }
 
 public protocol SQLSourceTableType: SQLStringConvertible { }
+
 public protocol SQLOrderType: SQLStringConvertible { }
 
 public protocol SQLAliasable: SQLStringConvertible { }
@@ -28,6 +32,8 @@ public protocol SQLQueryType: SQLStringConvertible {
 }
 
 public protocol SQLNumberType: SQLValueType, SQLAliasable, SQLConditionType { }
+
+extension SQLNumberType { }
 
 extension Int: SQLNumberType { }
 

@@ -15,7 +15,7 @@ extension SQL {
         let expr: SQLExprType
         let isIn: Bool
         let table: SQLSourceTableType
-        
+
         public init(_ expr: SQLExprType, in table: SQLSourceTableType) {
             self.expr = expr
             self.isIn = true

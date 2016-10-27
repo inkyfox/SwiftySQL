@@ -13,7 +13,7 @@ extension SQL {
     open class Alias: SQLValueType, SQLSourceTableType {
         let sql: SQLAliasable
         let alias: String
-        
+
         public init(_ sql: SQLAliasable, alias: String) {
             self.sql = sql
             self.alias = alias
