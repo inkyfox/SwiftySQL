@@ -89,15 +89,15 @@ let query =
                lecture.name,
                "Literal string",
                1234,
-               SQL.Case([(when: student.age == 15,
-                          then: student.age),
-                         (when: SQL.select(student.age)
-                            .from(student)
-                            .where(student.age <= 45)
-                            == 5,
-                          then: lecture.studentName)
-                ],
-                        else: 145),
+//               SQL.Case([(when: student.age == 15,
+//                          then: student.age),
+//                         (when: SQL.select(student.age)
+//                            .from(student)
+//                            .where(student.age <= 45)
+//                            == 5,
+//                          then: lecture.studentName)
+//                ],
+//                        else: 145),
                SQL.select(student.age)
                 .from(student)
                 .where(21 != student.age)
@@ -169,7 +169,7 @@ test(SQL.Func("FUNC",
                         .from(lecture)
                         .where(21 < lecture.studentCount),
                      2,
-                     SQL.Keyword.null,
+                     SQL.null,
                      "AAA"]))
 
 test(SQL.count(.all))
@@ -402,4 +402,48 @@ test(.prepared + 1)
 test(.prepared + .prepared == 2)
 test(.prepared + 2 == .prepared)
 
-test(student.age <> .prepared)
+//test(student.age <> .prepared)
+
+//test(
+//    ((student.age > 100) => 100)
+//)
+//test(
+//    ((student.age > 100) => 100).else(200)
+//)
+//test(
+//    [(student.age < 100) => 100,
+//     (student.age < 200) => 200,
+//     (student.age < 300) => 300]
+//    .else(400)
+//)
+
+//case(when(student.age > 100, then: 100), else: 200))
+
+test(
+    when(student.age <= 100, then: 100)
+)
+
+test(
+    when(student.age <= 100, then: 100).else(200)
+)
+
+test(
+    when(student.age <= 100, then: 100)
+        .when(student.age <= 200, then: 200)
+        .when(student.age <= 300, then: 300)
+)
+
+test(
+    when(student.age <= 100, then: 100)
+        .when(student.age <= 200, then: 200)
+        .when(student.age <= 300, then: 300)
+        .else(400)
+)
+
+test(
+    [when(student.age <= 100, then: 100),
+     when(student.age <= 200, then: 200),
+     when(student.age <= 300, then: 300)]
+        .else(400)
+)
+

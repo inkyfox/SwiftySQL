@@ -49,15 +49,15 @@ class ViewController: NSViewController {
                         lecture.name,
                         "Literal string",
                         1234,
-                        SQL.Case([(when: student.age == 15,
-                                   then: student.age),
-                                  (when: SQL.select(student.age)
-                                    .from(student)
-                                    .where(student.age <= 45)
-                                    == 5,
-                                   then: lecture.studentName)
-                                  ],
-                                 else: 145),
+//                        SQL.Case([(when: student.age == 15,
+//                                   then: student.age),
+//                                  (when: SQL.select(student.age)
+//                                    .from(student)
+//                                    .where(student.age <= 45)
+//                                    == 5,
+//                                   then: lecture.studentName)
+//                                  ],
+//                                 else: 145),
                         SQL.select(student.age)
                             .from(student)
                             .where(21 != student.age)])

@@ -12,11 +12,6 @@ extension SQL {
     
     public struct Keyword: SQLValueType, SQLAliasable {
         
-        public static let null: Keyword = Keyword(.null)
-        public static let currentDate: Keyword = Keyword(.currentDate)
-        public static let currentTime: Keyword = Keyword(.currentTime)
-        public static let currentTimestamp: Keyword = Keyword(.currentTimestamp)
-        
         enum Name {
             case null, currentDate, currentTime, currentTimestamp
         }

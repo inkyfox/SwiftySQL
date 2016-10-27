@@ -36,7 +36,7 @@ class BinaryExprTests: XCTestCase {
         XCTAssertSQL(SQL.Hex(0x1234) == attending.studentID, "0x1234 = atd.student_id")
         XCTAssertSQL(student.id == 1234, "stu.id = 1234")
         XCTAssertSQL(
-            SQL.Case(when: student.name == "Soyul", then: 2, else: 1) == 2,
+            when(student.name == "Soyul", then: 2).else(1) == 2,
             "CASE WHEN stu.name = \"Soyul\" THEN 2 ELSE 1 END = 2")
         XCTAssertSQL(
             attending.studentID ==
@@ -54,7 +54,7 @@ class BinaryExprTests: XCTestCase {
         XCTAssertSQL(student.id < 100, "stu.id < 100")
         XCTAssertSQL(student.id <= 100, "stu.id <= 100")
         XCTAssertSQL(student.id != 100, "stu.id <> 100")
-        XCTAssertSQL(student.id <> 100, "stu.id <> 100")
+        //XCTAssertSQL(student.id <> 100, "stu.id <> 100")
     }
 
     func testAnd() {
@@ -227,9 +227,9 @@ class BinaryExprTests: XCTestCase {
         XCTAssertSQL(.prepared != student.grade, "? <> stu.grade")
         XCTAssertSQL(.prepared != .prepared, "? <> ?")
         
-        XCTAssertSQL(student.grade <> .prepared, "stu.grade <> ?")
-        XCTAssertSQL(.prepared <> student.grade, "? <> stu.grade")
-        XCTAssertSQL(.prepared <> .prepared, "? <> ?")
+        //XCTAssertSQL(student.grade <> .prepared, "stu.grade <> ?")
+        //XCTAssertSQL(.prepared <> student.grade, "? <> stu.grade")
+        //XCTAssertSQL(.prepared <> .prepared, "? <> ?")
         
         XCTAssertSQL(student.grade + .prepared, "stu.grade + ?")
         XCTAssertSQL(.prepared + student.grade, "? + stu.grade")

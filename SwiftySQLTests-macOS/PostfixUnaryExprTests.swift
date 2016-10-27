@@ -42,10 +42,9 @@ class PostfixUnaryExprTests: XCTestCase {
         )
         XCTAssertSQL("test".isNull, "\"test\" ISNULL")
         XCTAssertSQL(
-            SQL.Case(when: student.grade < 2,
-                     then: student.id,
-                     else: SQL.Keyword.null)
-            .isNull
+            when(student.grade < 2, then: student.id)
+                .else(SQL.null)
+                .isNull
             ,
             "CASE WHEN stu.grade < 2 THEN stu.id ELSE NULL END ISNULL"
         )
@@ -59,9 +58,8 @@ class PostfixUnaryExprTests: XCTestCase {
             "(SELECT stu.birth FROM student AS stu WHERE stu.id = 1234) NOTNULL")
         XCTAssertSQL("test".isNotNull, "\"test\" NOTNULL")
         XCTAssertSQL(
-            SQL.Case(when: student.grade < 2,
-                     then: student.id,
-                     else: SQL.Keyword.null)
+            when(student.grade < 2, then: student.id)
+                .else(SQL.null)
                 .isNotNull
             ,
             "CASE WHEN stu.grade < 2 THEN stu.id ELSE NULL END NOTNULL"

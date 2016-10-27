@@ -36,6 +36,7 @@ public class SQLGenerator {
                 ObjectIdentifier(SQL.Join.self)            : SQL.Join.Generator(),
                 ObjectIdentifier(SQL.Order.self)           : SQL.Order.Generator(),
                 ObjectIdentifier(SQL.Case.self)            : SQL.Case.Generator(),
+                ObjectIdentifier(SQL.WhenThens.self)       : SQL.WhenThens.Generator(),
                 ObjectIdentifier(SQL.Func.self)            : SQL.Func.Generator(),
                 ObjectIdentifier(SQL.Limit.self)           : SQL.Limit.Generator(),
                 ObjectIdentifier(SQL.Alias.self)           : SQL.Alias.Generator(),

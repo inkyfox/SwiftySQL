@@ -30,7 +30,7 @@ extension SQL {
     
 }
 
-extension SQLExprType {
+extension SQLValueType {
     
     public func like(_ pattern: String, escape: Character) -> SQL.TernaryExpr {
         return SQL.TernaryExpr(self, "LIKE", pattern, "ESCAPE", escape)
@@ -40,11 +40,11 @@ extension SQLExprType {
         return SQL.TernaryExpr(self, "NOT LIKE", pattern, "ESCAPE", escape)
     }
 
-    public func between(_ from: SQLExprType, and to: SQLExprType) -> SQL.TernaryExpr {
+    public func between(_ from: SQLValueType, and to: SQLValueType) -> SQL.TernaryExpr {
         return SQL.TernaryExpr(self, "BETWEEN", from, "AND", to)
     }
     
-    public func notBetween(_ from: SQLExprType, and to: SQLExprType) -> SQL.TernaryExpr {
+    public func notBetween(_ from: SQLValueType, and to: SQLValueType) -> SQL.TernaryExpr {
         return SQL.TernaryExpr(self, "NOT BETWEEN", from, "AND", to)
     }
 

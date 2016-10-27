@@ -26,8 +26,6 @@ extension SQL {
     
 }
 
-infix operator <> : ComparisonPrecedence
-
 public func ==(lhs: SQLValueType, rhs: SQLValueType) -> SQL.BinaryExpr {
     return SQL.BinaryExpr(lhs, "=", rhs)
 }
@@ -49,10 +47,6 @@ public func <=(lhs: SQLValueType, rhs: SQLValueType) -> SQL.BinaryExpr {
 }
 
 public func !=(lhs: SQLValueType, rhs: SQLValueType) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "<>", rhs)
-}
-
-public func <>(lhs: SQLValueType, rhs: SQLValueType) -> SQL.BinaryExpr {
     return SQL.BinaryExpr(lhs, "<>", rhs)
 }
 
@@ -172,10 +166,6 @@ public func !=(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
     return SQL.BinaryExpr(lhs, "<>", rhs)
 }
 
-public func <>(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "<>", rhs)
-}
-
 public func +(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
     return SQL.BinaryExpr(lhs, "+", rhs)
 }
@@ -236,10 +226,6 @@ public func !=(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
     return SQL.BinaryExpr(lhs, "<>", rhs)
 }
 
-public func <>(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "<>", rhs)
-}
-
 public func +(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
     return SQL.BinaryExpr(lhs, "+", rhs)
 }
@@ -297,10 +283,6 @@ public func <=(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
 }
 
 public func !=(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
-    return SQL.BinaryExpr(lhs, "<>", rhs)
-}
-
-public func <>(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
     return SQL.BinaryExpr(lhs, "<>", rhs)
 }
 
@@ -375,3 +357,25 @@ extension SQLValueType {
     }
     
 }
+
+
+////
+
+//infix operator <> : ComparisonPrecedence
+//
+//public func <>(lhs: SQLValueType, rhs: SQLValueType) -> SQL.BinaryExpr {
+//    return SQL.BinaryExpr(lhs, "<>", rhs)
+//}
+//
+//public func <>(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+//    return SQL.BinaryExpr(lhs, "<>", rhs)
+//}
+//
+//public func <>(lhs: SQL.PreparedMark, rhs: SQLValueType) -> SQL.BinaryExpr {
+//    return SQL.BinaryExpr(lhs, "<>", rhs)
+//}
+//
+//
+//public func <>(lhs: SQL.PreparedMark, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
+//    return SQL.BinaryExpr(lhs, "<>", rhs)
+//}
