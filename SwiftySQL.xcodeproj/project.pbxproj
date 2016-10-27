@@ -14,6 +14,9 @@
 		A92578B71DC1977A000B162B /* SQL.Tuple+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92578B41DC1974D000B162B /* SQL.Tuple+DefaultDB.swift */; };
 		A92578B91DC19A55000B162B /* TupleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92578B81DC19A55000B162B /* TupleTests.swift */; };
 		A92578BB1DC19BE7000B162B /* ColumnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92578BA1DC19BE7000B162B /* ColumnTests.swift */; };
+		A92578BD1DC19E2E000B162B /* FuncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92578BC1DC19E2E000B162B /* FuncTests.swift */; };
+		A92578BF1DC1C539000B162B /* AliasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92578BE1DC1C539000B162B /* AliasTests.swift */; };
+		A92578C11DC1C72C000B162B /* InTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92578C01DC1C72C000B162B /* InTests.swift */; };
 		A93E53591DBC4A4A00062A95 /* SQL.Order+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E53581DBC4A4A00062A95 /* SQL.Order+DefaultDB.swift */; };
 		A93E535D1DBC4E0300062A95 /* SQL.Case+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E535C1DBC4E0300062A95 /* SQL.Case+DefaultDB.swift */; };
 		A93E535F1DBC4E7A00062A95 /* SQL.Func+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E535E1DBC4E7A00062A95 /* SQL.Func+DefaultDB.swift */; };
@@ -110,6 +113,9 @@
 		A92578B41DC1974D000B162B /* SQL.Tuple+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Tuple+DefaultDB.swift"; sourceTree = "<group>"; };
 		A92578B81DC19A55000B162B /* TupleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TupleTests.swift; sourceTree = "<group>"; };
 		A92578BA1DC19BE7000B162B /* ColumnTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnTests.swift; sourceTree = "<group>"; };
+		A92578BC1DC19E2E000B162B /* FuncTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncTests.swift; sourceTree = "<group>"; };
+		A92578BE1DC1C539000B162B /* AliasTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AliasTests.swift; sourceTree = "<group>"; };
+		A92578C01DC1C72C000B162B /* InTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InTests.swift; sourceTree = "<group>"; };
 		A93E53581DBC4A4A00062A95 /* SQL.Order+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Order+DefaultDB.swift"; sourceTree = "<group>"; };
 		A93E535C1DBC4E0300062A95 /* SQL.Case+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Case+DefaultDB.swift"; sourceTree = "<group>"; };
 		A93E535E1DBC4E7A00062A95 /* SQL.Func+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Func+DefaultDB.swift"; sourceTree = "<group>"; };
@@ -281,6 +287,9 @@
 				A92578B01DC1939E000B162B /* LiteralTests.swift */,
 				A92578B81DC19A55000B162B /* TupleTests.swift */,
 				A92578BA1DC19BE7000B162B /* ColumnTests.swift */,
+				A92578BC1DC19E2E000B162B /* FuncTests.swift */,
+				A92578BE1DC1C539000B162B /* AliasTests.swift */,
+				A92578C01DC1C72C000B162B /* InTests.swift */,
 				A9B39B661DB9D89C00A208FC /* Info.plist */,
 			);
 			path = "SwiftySQLTests-macOS";
@@ -482,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9604F6F1DBF2B3C00F79239 /* SQL.Literal.swift in Sources */,
 				A92578B61DC1977A000B162B /* SQL.Tuple.swift in Sources */,
 				A9604F781DBF2B3C00F79239 /* SQL.Table.swift in Sources */,
 				A9B39BA21DBB3E1100A208FC /* SQLTypes.swift in Sources */,
@@ -501,7 +511,6 @@
 				A9604F761DBF2B3C00F79239 /* SQL.Join.swift in Sources */,
 				A9604F6E1DBF2B3C00F79239 /* SQL.Insert.swift in Sources */,
 				A9604F671DBF2B3C00F79239 /* SQL.PrefixUnaryExpr.swift in Sources */,
-				A9604F6F1DBF2B3C00F79239 /* SQL.Literal.swift in Sources */,
 				A9604F751DBF2B3C00F79239 /* SQL.Update.swift in Sources */,
 				A9604F701DBF2B3C00F79239 /* SQL.Order.swift in Sources */,
 				A9604F711DBF2B3C00F79239 /* SQL.Select.swift in Sources */,
@@ -533,7 +542,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A92578BF1DC1C539000B162B /* AliasTests.swift in Sources */,
 				A92578AD1DC0A287000B162B /* TernaryExprTests.swift in Sources */,
+				A92578C11DC1C72C000B162B /* InTests.swift in Sources */,
 				A9604F7A1DBF35FC00F79239 /* SwiftSQLTestEnv.swift in Sources */,
 				A9604F821DBFAF9000F79239 /* PrefixUnaryExprTests.swift in Sources */,
 				A92578BB1DC19BE7000B162B /* ColumnTests.swift in Sources */,
@@ -543,6 +554,7 @@
 				A92578B11DC1939E000B162B /* LiteralTests.swift in Sources */,
 				A9AE671F1DBFCADF00DD9962 /* BinaryExprTests.swift in Sources */,
 				A9604F841DBFBA0900F79239 /* PostfixUnaryExprTests.swift in Sources */,
+				A92578BD1DC19E2E000B162B /* FuncTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

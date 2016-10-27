@@ -140,6 +140,18 @@ extension SQLValueType {
         return SQL.BinaryExpr(self, "LIKE", "%\(suffix)")
     }
     
+    public func containsIgnoreCase(_ substring: String) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(SQL.upper(self), "LIKE", SQL.upper("%\(substring)%"))
+    }
+    
+    public func hasPrefixIgnoreCase(_ prefix: String) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(SQL.upper(self), "LIKE", SQL.upper("\(prefix)%"))
+    }
+    
+    public func hasSuffixIgnoreCase(_ suffix: String) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(SQL.upper(self), "LIKE", SQL.upper("%\(suffix)"))
+    }
+    
 }
 
 public func ==(lhs: SQLValueType, rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
@@ -338,6 +350,15 @@ extension SQLValueType {
     
 }
 
+extension SQL.PreparedMark {
+    
+    public func concat(_ expr: SQLValueType) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(self, "||", expr)
+    }
+    
+}
+
+
 extension SQLValueType {
     
     public func like(_ rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
@@ -348,12 +369,19 @@ extension SQLValueType {
         return SQL.BinaryExpr(self, "NOT LIKE", rhs)
     }
     
-    public func likeIgnoreCase(_ rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(SQL.upper(self), "LIKE", SQL.upper(rhs))
+    public func containsIgnoreCase(_ substring: SQL.PreparedMark) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(SQL.upper(self), "LIKE",
+                              SQL.upper("%".concat(SQL.prepared).concat("%")))
     }
     
-    public func notLikeIgnoreCase(_ rhs: SQL.PreparedMark) -> SQL.BinaryExpr {
-        return SQL.BinaryExpr(SQL.upper(self), "NOT LIKE", SQL.upper(rhs))
+    public func hasPrefixIgnoreCase(_ prefix: SQL.PreparedMark) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(SQL.upper(self), "LIKE",
+                              SQL.upper(SQL.prepared.concat("%")))
+    }
+    
+    public func hasSuffixIgnoreCase(_ suffix: SQL.PreparedMark) -> SQL.BinaryExpr {
+        return SQL.BinaryExpr(SQL.upper(self), "LIKE",
+                              SQL.upper("%".concat(SQL.prepared)))
     }
     
 }

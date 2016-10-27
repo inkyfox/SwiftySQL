@@ -200,6 +200,14 @@ class BinaryExprTests: XCTestCase {
             ,
             "stu.name LIKE '%Yoo%' OR stu.name LIKE 'Jones%' OR stu.name LIKE '%ha'"
         )
+        
+        XCTAssertSQL(student.name.containsIgnoreCase("yoo"),
+                     "UPPER(stu.name) LIKE UPPER('%yoo%')")
+        XCTAssertSQL(student.name.hasPrefixIgnoreCase("yoo"),
+                     "UPPER(stu.name) LIKE UPPER('yoo%')")
+        XCTAssertSQL(student.name.hasSuffixIgnoreCase("yoo"),
+                     "UPPER(stu.name) LIKE UPPER('%yoo')")
+
     }
     
     func testPreparedStatements() {
@@ -273,8 +281,13 @@ class BinaryExprTests: XCTestCase {
 
         XCTAssertSQL(student.name.like(.prepared), "stu.name LIKE ?")
         XCTAssertSQL(student.name.notLike(.prepared), "stu.name NOT LIKE ?")
-        XCTAssertSQL(student.name.likeIgnoreCase(.prepared), "UPPER(stu.name) LIKE UPPER(?)")
-        XCTAssertSQL(student.name.notLikeIgnoreCase(.prepared), "UPPER(stu.name) NOT LIKE UPPER(?)")
+
+        XCTAssertSQL(student.name.containsIgnoreCase(.prepared),
+                     "UPPER(stu.name) LIKE UPPER('%' || ? || '%')")
+        XCTAssertSQL(student.name.hasPrefixIgnoreCase(.prepared),
+                     "UPPER(stu.name) LIKE UPPER(? || '%')")
+        XCTAssertSQL(student.name.hasSuffixIgnoreCase(.prepared),
+                     "UPPER(stu.name) LIKE UPPER('%' || ?)")
 
     }
     
