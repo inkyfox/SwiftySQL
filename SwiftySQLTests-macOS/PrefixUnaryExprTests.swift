@@ -32,7 +32,7 @@ class PrefixUnaryExprTests: XCTestCase {
     
     func testNot() {
         XCTAssertSQL(!(student.id == attending.studentID), "NOT (stu.id = atd.student_id)")
-        XCTAssertSQL(!student.name.hasPrefix("Yoo"), "NOT (stu.name LIKE \"Yoo%\")")
+        XCTAssertSQL(!student.name.hasPrefix("Yoo"), "NOT (stu.name LIKE 'Yoo%')")
         XCTAssertSQL(!1, "NOT 1")
     }
     

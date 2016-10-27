@@ -39,8 +39,16 @@ extension SQLExprType {
         return SQL.In(self, in: table)
     }
     
+    public func `in`(_ exprs: SQLExprType...) -> SQL.In {
+        return SQL.In(self, in: SQL.Tuple(exprs))
+    }
+    
     public func notIn(_ table: SQLSourceTableType) -> SQL.In {
         return SQL.In(self, notIn: table)
+    }
+    
+    public func notIn(_ exprs: SQLExprType...) -> SQL.In {
+        return SQL.In(self, notIn: SQL.Tuple(exprs))
     }
     
 }

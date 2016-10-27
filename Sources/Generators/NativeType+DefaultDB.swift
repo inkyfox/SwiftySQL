@@ -49,7 +49,7 @@ extension String {
     class Generator: SQLElementGenerator<String> {
         
         override func generate(_ element: String) -> String {
-            return "\"\(element)\""
+            return "'\(element)'"
         }
         
     }

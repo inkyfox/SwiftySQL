@@ -37,7 +37,7 @@ class BinaryExprTests: XCTestCase {
         XCTAssertSQL(student.id == 1234, "stu.id = 1234")
         XCTAssertSQL(
             when(student.name == "Soyul", then: 2).else(1) == 2,
-            "CASE WHEN stu.name = \"Soyul\" THEN 2 ELSE 1 END = 2")
+            "CASE WHEN stu.name = 'Soyul' THEN 2 ELSE 1 END = 2")
         XCTAssertSQL(
             attending.studentID ==
                 SQL.select(student.id)
@@ -45,7 +45,7 @@ class BinaryExprTests: XCTestCase {
                     .where(student.name == "Yongha")
                     .limit(1)
             ,
-            "atd.student_id = (SELECT stu.id FROM student AS stu WHERE stu.name = \"Yongha\" LIMIT 1)")
+            "atd.student_id = (SELECT stu.id FROM student AS stu WHERE stu.name = 'Yongha' LIMIT 1)")
     }
     
     func testCompares() {
@@ -76,17 +76,17 @@ class BinaryExprTests: XCTestCase {
                 )
                 && student.id + 30 < 200
             ,
-            "stu.name = \"Yongha\" AND " +
+            "stu.name = 'Yongha' AND " +
             "stu.id > 100 AND " +
             "stu.grade <= 3 AND " +
-            "NOT (stu.name LIKE \"%er\") AND " +
+            "NOT (stu.name LIKE '%er') AND " +
             "EXISTS (SELECT * FROM user.attending AS atd WHERE atd.student_id = stu.id) AND " +
             "NOT EXISTS (SELECT * FROM user.attending AS atd WHERE atd.student_id = stu.id AND atd.lecture_id = 1900) AND " +
             "stu.id + 30 < 200")
         XCTAssertSQL(
             student.name == "Yongha" && (student.id > 100 && student.grade <= 3)
             ,
-            "stu.name = \"Yongha\" AND stu.id > 100 AND stu.grade <= 3")
+            "stu.name = 'Yongha' AND stu.id > 100 AND stu.grade <= 3")
     }
     
     
@@ -110,17 +110,17 @@ class BinaryExprTests: XCTestCase {
                 )
                 || student.id + 30 < 200
             ,
-            "stu.name = \"Yongha\" OR " +
+            "stu.name = 'Yongha' OR " +
             "stu.id > 100 OR " +
             "stu.grade * 2 <= 30 OR " +
-            "NOT (stu.name LIKE \"%er\") OR " +
+            "NOT (stu.name LIKE '%er') OR " +
             "EXISTS (SELECT * FROM user.attending AS atd WHERE atd.student_id = stu.id) OR " +
             "NOT EXISTS (SELECT * FROM user.attending AS atd WHERE atd.student_id = stu.id AND atd.lecture_id = 1900) OR " +
             "stu.id + 30 < 200")
         XCTAssertSQL(
             student.name == "Yongha" || (student.id > 100 || student.grade <= 3)
             ,
-            "stu.name = \"Yongha\" OR stu.id > 100 OR stu.grade <= 3")
+            "stu.name = 'Yongha' OR stu.id > 100 OR stu.grade <= 3")
     }
 
     func testAndOrCombination() {
@@ -131,12 +131,12 @@ class BinaryExprTests: XCTestCase {
                 && (student.name.hasPrefix("A") || student.name.hasPrefix("B"))
                 || student.name.contains("Jones")
             ,
-            "stu.name = \"Yongha\" AND " +
+            "stu.name = 'Yongha' AND " +
             "(stu.id > 100 OR stu.id < 70) AND " +
             "stu.grade * 2 <= 30 AND " +
-            "(stu.name LIKE \"A%\" OR stu.name LIKE \"B%\")" +
+            "(stu.name LIKE 'A%' OR stu.name LIKE 'B%')" +
             " OR " +
-            "stu.name LIKE \"%Jones%\"")
+            "stu.name LIKE '%Jones%'")
     }
 
     func testOperators() {
@@ -175,30 +175,30 @@ class BinaryExprTests: XCTestCase {
         XCTAssertSQL(
             student.name.concat(" ").concat(student.grade)
             ,
-            "stu.name || \" \" || stu.grade"
+            "stu.name || ' ' || stu.grade"
         )
         XCTAssertSQL(
             "Mrs.".concat(student.name).concat(" ").concat(student.grade)
             ,
-            "\"Mrs.\" || stu.name || \" \" || stu.grade"
+            "'Mrs.' || stu.name || ' ' || stu.grade"
         )
     }
     
     func testLike() {
-        XCTAssertSQL(student.name.like("Y%"), "stu.name LIKE \"Y%\"")
-        XCTAssertSQL(student.name.notLike("Y%"), "stu.name NOT LIKE \"Y%\"")
+        XCTAssertSQL(student.name.like("Y%"), "stu.name LIKE 'Y%'")
+        XCTAssertSQL(student.name.notLike("Y%"), "stu.name NOT LIKE 'Y%'")
         XCTAssertSQL(
             student.name.likeIgnoreCase("Y%")
             ,
-            "UPPER(stu.name) LIKE UPPER(\"Y%\")"
+            "UPPER(stu.name) LIKE UPPER('Y%')"
         )
-        XCTAssertSQL(student.name.notLikeIgnoreCase("Y%"), "UPPER(stu.name) NOT LIKE UPPER(\"Y%\")")
+        XCTAssertSQL(student.name.notLikeIgnoreCase("Y%"), "UPPER(stu.name) NOT LIKE UPPER('Y%')")
         XCTAssertSQL(
             student.name.contains("Yoo")
             || student.name.hasPrefix("Jones")
             || student.name.hasSuffix("ha")
             ,
-            "stu.name LIKE \"%Yoo%\" OR stu.name LIKE \"Jones%\" OR stu.name LIKE \"%ha\""
+            "stu.name LIKE '%Yoo%' OR stu.name LIKE 'Jones%' OR stu.name LIKE '%ha'"
         )
     }
     

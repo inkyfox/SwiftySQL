@@ -52,9 +52,9 @@ class NativeTypeTests: XCTestCase {
     }
 
     func testString() {
-        XCTAssertSQL("Test", "\"Test\"")
-        XCTAssertSQLEqual("Test\nNew Line", "\"Test\nNew Line\"")
-        XCTAssertSQL("Test \"quote\"", "\"Test \"quote\"\"")
+        XCTAssertSQL("Test", "'Test'")
+        XCTAssertSQLEqual("Test\nNew Line", "'Test\nNew Line'")
+        XCTAssertSQL("Test 'quote'", "'Test 'quote''")
     }
     
     func testCharacter() {

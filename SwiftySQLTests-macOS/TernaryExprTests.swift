@@ -32,9 +32,9 @@ class TernaryExprTests: XCTestCase {
     
     func testLike() {
         XCTAssertSQL(lecture.name.like("STU%", escape: "-"),
-                     "lec.name LIKE \"STU%\" ESCAPE '-'")
+                     "lec.name LIKE 'STU%' ESCAPE '-'")
         XCTAssertSQL(lecture.name.notLike("STU%", escape: "-"),
-                     "lec.name NOT LIKE \"STU%\" ESCAPE '-'")
+                     "lec.name NOT LIKE 'STU%' ESCAPE '-'")
     }
 
     func testBetween() {

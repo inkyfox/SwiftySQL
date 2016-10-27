@@ -36,7 +36,7 @@ class CaseTests: XCTestCase {
         XCTAssertSQL(when(student.grade <= 100, then: student.name),
                      "CASE WHEN stu.grade <= 100 THEN stu.name END")
         XCTAssertSQL(when(student.grade <= 100, then: "text"),
-                     "CASE WHEN stu.grade <= 100 THEN \"text\" END")
+                     "CASE WHEN stu.grade <= 100 THEN 'text' END")
         XCTAssertSQL(when(student.grade <= 100 || student.id == 5, then: student.name),
                      "CASE WHEN stu.grade <= 100 OR stu.id = 5 THEN stu.name END")
     }
