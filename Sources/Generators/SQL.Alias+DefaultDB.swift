@@ -12,15 +12,27 @@ extension SQL.Alias {
     
     class Generator: SQLElementGenerator<SQL.Alias> {
         
-        override func generate(_ element: SQL.Alias) -> String {
-            return element.sql.sqlStringBoxedIfNeeded(by: generator) + " AS " + element.alias
+        override func generate(_ element: SQL.Alias, forRead: Bool) -> String {
+            let name = element.sql.sqlStringBoxedIfNeeded(forRead: forRead, by: generator)
+            
+            if forRead {
+                return name + " AS " + element.alias
+            } else {
+                return name
+            }
         }
         
         override func generateFormatted(_ element: SQL.Alias,
+                                        forRead: Bool,
                                         withIndent indent: Int) -> String {
-            return
-                element.sql.formattedSQLStringBoxedIfNeeded(withIndent: indent, by: generator) +
-                    " AS " + element.alias
+            let name = element.sql.formattedSQLStringBoxedIfNeeded(forRead: forRead,
+                                                                   withIndent: indent,
+                                                                   by: generator)
+            if forRead {
+                return name + " AS " + element.alias
+            } else {
+                return name
+            }
         }
         
     }

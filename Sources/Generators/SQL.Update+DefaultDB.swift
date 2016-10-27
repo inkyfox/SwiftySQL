@@ -23,42 +23,50 @@ extension SQL.Update {
             }
         }
         
-        override func generate(_ element: SQL.Update) -> String {
-            return generateQuery(element)
+        override func generate(_ element: SQL.Update, forRead: Bool) -> String {
+            return generateQuery(element, forRead: forRead)
         }
         
-        override func generateFormatted(_ element: SQL.Update, withIndent indent: Int) -> String {
-            return generateFormattedQuery(element, withIndent: indent)
+        override func generateFormatted(_ element: SQL.Update,
+                                        forRead: Bool,
+                                        withIndent indent: Int) -> String {
+            return generateFormattedQuery(element, forRead: forRead, withIndent: indent)
         }
         
-        override func generateQuery(_ element: SQL.Update) -> String {
+        override func generateQuery(_ element: SQL.Update, forRead: Bool) -> String {
             var query = actionString(element.orAction) + " "
-            query += element.table.sqlString(by: generator)
+            query += element.table.sqlString(forRead: false, by: generator)
             query += " SET "
             query +=
                 element.sets
                     .filter { $0.0.count > 0 && $0.1.count > 0 }
                     .map { (columns, values) -> String in
                         return (columns.count == 1 ?
-                            columns[0].columnName :
-                            columns.map { $0.columnName }.joined(separator: ", ").boxed)
+                            columns[0].sqlString(forRead: false, by: generator) :
+                            sqlJoin(columns, forRead: false, by: generator).boxed)
                             + " = "
                             + (values.count == 1 ?
-                                values[0].sqlString(by: generator) : sqlJoin(values, by: generator).boxed)
+                                values[0].sqlString(forRead: false, by: generator) :
+                                sqlJoin(values, forRead: false, by: generator).boxed)
                     }
                     .joined(separator: ", ")
             
             if let condition = element.condition {
-                query += " WHERE " + condition.sqlString(by: generator)
+                query += " WHERE " + condition.sqlString(forRead: false, by: generator)
             }
             
             return query
         }
         
-        override func generateFormattedQuery(_ element: SQL.Update, withIndent indent: Int) -> String {
+        override func generateFormattedQuery(_ element: SQL.Update,
+                                             forRead: Bool,
+                                             withIndent indent: Int) -> String {
             var query = actionString(element.orAction) + " "
             let paramIndent = indent + query.characters.count
-            query += element.table.formattedSQLString(withIndent: paramIndent, by: generator) + "\n"
+            query += element.table.formattedSQLString(forRead: false,
+                                                      withIndent: paramIndent,
+                                                      by: generator)
+            query += "\n"
             query += space(indent) + "SET    "
             query +=
                 element.sets
@@ -81,15 +89,19 @@ extension SQL.Update {
                             rhsIndent = paramIndent + query.characters.count
                         }
                         query += (values.count == 1 ?
-                            values[0].formattedSQLString(withIndent: rhsIndent, by: generator) :
-                            formattedSQLJoinBoxed(values, withIndent: rhsIndent, by: generator))
+                            values[0].formattedSQLString(forRead: false, withIndent: rhsIndent, by: generator) :
+                            formattedSQLJoinBoxed(values, forRead: false, withIndent: rhsIndent, by: generator))
 
                         return query
                     }
                     .joined(separator: ",\n" + space(paramIndent))
             
             if let condition = element.condition {
-                query += "\n" + space(indent) + "WHERE  " + condition.formattedSQLString(withIndent: indent + 7,by: generator)
+                query += "\n" + space(indent)
+                query += "WHERE  "
+                query += condition.formattedSQLString(forRead: false,
+                                                      withIndent: indent + 7,
+                                                      by: generator)
             }
             
             return query

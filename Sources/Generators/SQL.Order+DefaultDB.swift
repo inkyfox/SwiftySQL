@@ -19,13 +19,18 @@ extension SQL.Order {
             }
         }
         
-        override func generate(_ element: SQL.Order) -> String {
-            return "\(element.column.sqlString(by: generator)) \(sortString(element.sort))"
+        override func generate(_ element: SQL.Order, forRead: Bool) -> String {
+            return element.column.sqlString(forRead: forRead, by: generator)
+                + " " + sortString(element.sort)
         }
         
         override func generateFormatted(_ element: SQL.Order,
+                                        forRead: Bool,
                                         withIndent indent: Int) -> String {
-            return "\(element.column.formattedSQLString(withIndent: indent, by: generator)) \(sortString(element.sort))"
+            return element.column.formattedSQLString(forRead: forRead,
+                                                     withIndent: indent,
+                                                     by: generator)
+                + " " + sortString(element.sort)
         }
 
     }

@@ -22,24 +22,35 @@ extension SQL.Join {
             }
         }
         
-        override func generate(_ element: SQL.Join) -> String {
-            let join = "\(element.left.sqlString(by: generator)) \(typeString(element.type)) \(element.right.sqlString(by: generator))"
+        override func generate(_ element: SQL.Join, forRead: Bool) -> String {
+            let join = element.left.sqlString(forRead: forRead, by: generator)
+                + " " + typeString(element.type)
+                + " " + element.right.sqlString(forRead: forRead, by: generator)
             
             if let on = element.on {
-                return "\(join) ON \(on.sqlString(by: generator))"
+                return "\(join) ON \(on.sqlString(forRead: forRead, by: generator))"
             } else {
                 return join
             }
         }
         
         override func generateFormatted(_ element: SQL.Join,
+                                        forRead: Bool,
                                         withIndent indent: Int) -> String {
-            let line0 = "\(element.left.formattedSQLString(withIndent: indent, by: generator))\n"
-            var line1 = "\(space(indent))\(typeString(element.type)) "
+            let line0 = element.left.formattedSQLString(forRead: forRead,
+                                                        withIndent: indent,
+                                                        by: generator)
+                + "\n"
+            var line1 = space(indent) + typeString(element.type) + " "
             let line2Indent = line1.characters.count - 3
-            line1 += "\(element.right.formattedSQLString(withIndent: indent + line1.characters.count, by: generator))"
+            line1 += element.right.formattedSQLString(forRead: forRead,
+                                                      withIndent: indent + line1.characters.count,
+                                                      by: generator)
             if let on = element.on {
-                let line2 = "\n\(space(line2Indent))ON \(on.formattedSQLString(withIndent: indent + 3, by: generator))"
+                let line2 = "\n" + space(line2Indent)
+                    + "ON " + on.formattedSQLString(forRead: forRead,
+                                                    withIndent: indent + 3,
+                                                    by: generator)
                 return line0 + line1 + line2
             } else {
                 return line0 + line1

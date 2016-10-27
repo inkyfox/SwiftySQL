@@ -21,7 +21,7 @@ extension SQL.Keyword {
             }
         }
         
-        override func generate(_ element: SQL.Keyword) -> String {
+        override func generate(_ element: SQL.Keyword, forRead: Bool) -> String {
             return keywordString(element.name)
         }
         
@@ -33,7 +33,7 @@ extension SQL.Hex {
     
     class Generator: SQLElementGenerator<SQL.Hex> {
         
-        override func generate(_ element: SQL.Hex) -> String {
+        override func generate(_ element: SQL.Hex, forRead: Bool) -> String {
             if element.hex.hasPrefix("0x") {
                 return element.hex
             } else {
@@ -49,7 +49,7 @@ extension SQL.AsteriskMark {
 
     class Generator: SQLElementGenerator<SQL.AsteriskMark> {
         
-        override func generate(_ element: SQL.AsteriskMark) -> String {
+        override func generate(_ element: SQL.AsteriskMark, forRead: Bool) -> String {
             return "*"
         }
         
@@ -60,7 +60,7 @@ extension SQL.PreparedMark {
     
     class Generator: SQLElementGenerator<SQL.PreparedMark> {
         
-        override func generate(_ element: SQL.PreparedMark) -> String {
+        override func generate(_ element: SQL.PreparedMark, forRead: Bool) -> String {
             return "?"
         }
         

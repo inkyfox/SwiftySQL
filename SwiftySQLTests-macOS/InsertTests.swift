@@ -31,25 +31,25 @@ class InsertTests: XCTestCase {
     }
     
     func testActions() {
-        XCTAssertSQL(SQL.insert(into: student.table),
+        XCTAssertSQL(SQL.insert(into: student),
                      "INSERT INTO student DEFAULT VALUES")
-        XCTAssertSQL(SQL.replace(into: student.table),
+        XCTAssertSQL(SQL.replace(into: student),
                      "REPLACE INTO student DEFAULT VALUES")
-        XCTAssertSQL(SQL.insert(or: .replace, into: student.table),
+        XCTAssertSQL(SQL.insert(or: .replace, into: student),
                      "INSERT OR REPLACE INTO student DEFAULT VALUES")
-        XCTAssertSQL(SQL.insert(or: .rollback, into: student.table),
+        XCTAssertSQL(SQL.insert(or: .rollback, into: student),
                      "INSERT OR ROLLBACK INTO student DEFAULT VALUES")
-        XCTAssertSQL(SQL.insert(or: .abort, into: student.table),
+        XCTAssertSQL(SQL.insert(or: .abort, into: student),
                      "INSERT OR ABORT INTO student DEFAULT VALUES")
-        XCTAssertSQL(SQL.insert(or: .fail, into: student.table),
+        XCTAssertSQL(SQL.insert(or: .fail, into: student),
                      "INSERT OR FAIL INTO student DEFAULT VALUES")
-        XCTAssertSQL(SQL.insert(or: .ignore, into: student.table),
+        XCTAssertSQL(SQL.insert(or: .ignore, into: student),
                      "INSERT OR IGNORE INTO student DEFAULT VALUES")
     }
    
     func testInsertValues() {
         XCTAssertSQL(
-            SQL.insert(into: student.table)
+            SQL.insert(into: student)
             .columns([student.id, student.name])
             .values([10, "Yongha"])
             ,
@@ -58,7 +58,7 @@ class InsertTests: XCTestCase {
             "VALUES (10, 'Yongha')"
         )
         XCTAssertSQL(
-            SQL.insert(into: student.table)
+            SQL.insert(into: student)
                 .columns(student.id, student.name)
                 .values(10, "Yongha")
             ,
@@ -67,7 +67,7 @@ class InsertTests: XCTestCase {
             "VALUES (10, 'Yongha')"
         )
         XCTAssertSQL(
-            SQL.insert(into: student.table)
+            SQL.insert(into: student)
                 .columns(student.id, student.name)
                 .values(SQL.Tuple(10, "Yongha"))
             ,
@@ -76,7 +76,7 @@ class InsertTests: XCTestCase {
             "VALUES (10, 'Yongha')"
         )
         XCTAssertSQL(
-            SQL.insert(into: student.table)
+            SQL.insert(into: student)
                 .columns(student.id, student.name)
                 .values(.prepared)
             ,
@@ -88,7 +88,7 @@ class InsertTests: XCTestCase {
     
     func testInsertSelect() {
         XCTAssertSQL(
-            SQL.insert(into: student.table)
+            SQL.insert(into: student)
                 .columns(student.id, student.name)
                 .select(SQL.select(100, "Indy"))
             ,
@@ -101,7 +101,7 @@ class InsertTests: XCTestCase {
         f.dateFormat = "yyyy-MM-dd"
         
         XCTAssertSQL(
-            SQL.insert(into: student.table)
+            SQL.insert(into: student)
                 .values(100, "Jones", f.date(from: "1977-08-29")!, 100)
             ,
             "INSERT INTO student VALUES (100, 'Jones', \(Int(f.date(from: "1977-08-29")!.timeIntervalSince1970)), 100)"
@@ -110,7 +110,7 @@ class InsertTests: XCTestCase {
     
     func testInsertMultipleValues() {
         XCTAssertSQL(
-            SQL.insert(into: student.table)
+            SQL.insert(into: student)
                 .columns([student.id, student.name])
                 .values(10, "Yongha")
                 .values(20, "Soyul")

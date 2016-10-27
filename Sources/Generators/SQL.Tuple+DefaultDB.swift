@@ -12,13 +12,17 @@ extension SQL.Tuple {
     
     class Generator: SQLElementGenerator<SQL.Tuple> {
         
-        override func generate(_ element: SQL.Tuple) -> String {
-            return sqlJoin(element.exprs, by: generator).boxed
+        override func generate(_ element: SQL.Tuple, forRead: Bool) -> String {
+            return sqlJoin(element.exprs, forRead: forRead, by: generator).boxed
         }
         
         override func generateFormatted(_ element: SQL.Tuple,
+                                        forRead: Bool,
                                         withIndent indent: Int) -> String {
-            return formattedSQLJoinBoxed(element.exprs, withIndent: indent, by: generator)
+            return formattedSQLJoinBoxed(element.exprs,
+                                         forRead: forRead,
+                                         withIndent: indent,
+                                         by: generator)
         }
         
     }

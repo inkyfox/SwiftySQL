@@ -58,12 +58,15 @@ func unformat(_ query: String) -> String {
 
 extension SQLStringConvertible {
     func sql(by generator: SQLGenerator) -> String {
-        return (self as? SQLQueryType)?.query(by: generator) ?? self.sqlString(by: generator)
+        return (self as? SQLQueryType)?.query(by: generator) ??
+            self.sqlString(forRead: true, by: generator)
     }
 
     func formattedSQL(withIndent indent: Int, by generator: SQLGenerator) -> String {
         return (self as? SQLQueryType)?.formattedQuery(withIndent: indent, by: generator) ??
-            self.formattedSQLString(withIndent: indent, by: generator)
+            self.formattedSQLString(forRead: true,
+                                    withIndent: indent,
+                                    by: generator)
     }
 }
 
@@ -443,3 +446,12 @@ test(
         .else(400)
 )
 
+
+test(
+    SQL.update(student)
+        .set([student.name, student.age],
+             SQL.select(student.name, student.age)
+                .from(student)
+                .where(student.name == 20))
+        .where(student.name == 10)
+)

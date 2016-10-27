@@ -33,23 +33,29 @@ internal func space(_ indent: Int) -> String {
 }
 
 
-internal func sqlJoin(_ sqls: [SQLStringConvertible], by generator: SQLGenerator) -> String {
+internal func sqlJoin(_ sqls: [SQLStringConvertible],
+                      forRead: Bool,
+                      by generator: SQLGenerator) -> String {
     return sqls
-        .map { $0.sqlString(by: generator) }
+        .map { $0.sqlString(forRead: forRead, by: generator) }
         .joined(separator: ", ")
 }
 
 internal func formattedSQLJoin(_ sqls: [SQLStringConvertible],
-                            withIndent indent: Int, by generator: SQLGenerator) -> String {
+                               forRead: Bool,
+                               withIndent indent: Int,
+                               by generator: SQLGenerator) -> String {
     return sqls
-        .map { $0.formattedSQLString(withIndent: indent, by: generator) }
+        .map { $0.formattedSQLString(forRead: forRead, withIndent: indent, by: generator) }
         .joined(separator: ",\n" + space(indent))
 }
 
 internal func formattedSQLJoinBoxed(_ sqls: [SQLStringConvertible],
-                               withIndent indent: Int, by generator: SQLGenerator) -> String {
+                                    forRead: Bool,
+                                    withIndent indent: Int,
+                                    by generator: SQLGenerator) -> String {
     return sqls
-        .map { $0.formattedSQLString(withIndent: indent + 2, by: generator) }
+        .map { $0.formattedSQLString(forRead: forRead, withIndent: indent + 2, by: generator) }
         .joined(separator: ",\n" + space(indent + 2))
         .boxedWithSpace
 }

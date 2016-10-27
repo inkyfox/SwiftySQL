@@ -12,29 +12,41 @@ extension SQL.Delete {
     
     class Generator: SQLQueryGenerator<SQL.Delete> {
         
-        override func generate(_ element: SQL.Delete) -> String {
-            return generateQuery(element)
+        override func generate(_ element: SQL.Delete, forRead: Bool) -> String {
+            return generateQuery(element, forRead: forRead)
         }
         
-        override func generateFormatted(_ element: SQL.Delete, withIndent indent: Int) -> String {
-            return generateFormattedQuery(element, withIndent: indent)
+        override func generateFormatted(_ element: SQL.Delete,
+                                        forRead: Bool,
+                                        withIndent indent: Int) -> String {
+            return generateFormattedQuery(element, forRead: forRead, withIndent: indent)
         }
         
-        override func generateQuery(_ element: SQL.Delete) -> String {
-            var query = "DELETE FROM " + element.table.sqlString(by: generator)
+        override func generateQuery(_ element: SQL.Delete, forRead: Bool) -> String {
+            var query = "DELETE FROM " + element.table.sqlString(forRead: false, by: generator)
 
             if let condition = element.condition {
-                query += " WHERE " + condition.sqlString(by: generator)
+                query += " WHERE " + condition.sqlString(forRead: false, by: generator)
             }
             
             return query
         }
         
-        override func generateFormattedQuery(_ element: SQL.Delete, withIndent indent: Int) -> String {
-            var query = "DELETE FROM " + element.table.formattedSQLString(withIndent: indent + 12, by: generator)
+        override func generateFormattedQuery(_ element: SQL.Delete,
+                                             forRead: Bool,
+                                             withIndent indent: Int) -> String {
+            var query = "DELETE FROM "
+            query += element.table.formattedSQLString(forRead: false,
+                                                      withIndent: indent + 12,
+                                                      by: generator)
             
             if let condition = element.condition {
-                query += "\n" + space(indent) + "WHERE  " + condition.formattedSQLString(withIndent: indent + 7,by: generator)
+                query += "\n"
+                query += space(indent)
+                query += "WHERE  "
+                query += condition.formattedSQLString(forRead: false,
+                                                      withIndent: indent + 7,
+                                                      by: generator)
             }
             
             return query

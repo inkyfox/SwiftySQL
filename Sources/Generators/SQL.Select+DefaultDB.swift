@@ -12,89 +12,113 @@ extension SQL.Select {
     
     class Generator: SQLQueryGenerator<SQL.Select> {
         
-        override func generate(_ element: SQL.Select) -> String {
-            return generateQuery(element).boxed
+        override func generate(_ element: SQL.Select, forRead: Bool) -> String {
+            return generateQuery(element, forRead: forRead).boxed
         }
         
-        override func generateFormatted(_ element: SQL.Select, withIndent indent: Int) -> String {
-            return generateFormattedQuery(element, withIndent: indent + 2).boxedWithSpace
+        override func generateFormatted(_ element: SQL.Select,
+                                        forRead: Bool,
+                                        withIndent indent: Int) -> String {
+            return generateFormattedQuery(element,
+                                          forRead: forRead,
+                                          withIndent: indent + 2).boxedWithSpace
         }
         
-        override func generateQuery(_ element: SQL.Select) -> String {
+        override func generateQuery(_ element: SQL.Select, forRead: Bool) -> String {
             var query = ""
             
             if element.columns.count > 0 {
-                query += "SELECT " + sqlJoin(element.columns, by: generator)
+                query += "SELECT " + sqlJoin(element.columns, forRead: true, by: generator)
             } else {
                 query += "SELECT *"
             }
             
             if element.tables.count > 0 {
-                query += " FROM " + sqlJoin(element.tables, by: generator)
+                query += " FROM " + sqlJoin(element.tables, forRead: true, by: generator)
             }
             
             if let condition = element.condition {
-                query += " WHERE " + condition.sqlString(by: generator)
+                query += " WHERE " + condition.sqlString(forRead: true, by: generator)
             }
             
             if element.groups.count > 0 {
-                query += " GROUP BY " + sqlJoin(element.groups, by: generator)
+                query += " GROUP BY " + sqlJoin(element.groups, forRead: true, by: generator)
             }
             
             if let having = element.having {
-                query += " HAVING " + having.sqlString(by: generator)
+                query += " HAVING " + having.sqlString(forRead: true, by: generator)
             }
             
             if element.orders.count > 0 {
-                query += " ORDER BY " + sqlJoin(element.orders, by: generator)
+                query += " ORDER BY " + sqlJoin(element.orders, forRead: true, by: generator)
             }
             
             if let limit = element.limit {
-                query += " LIMIT " + limit.sqlString(by: generator)
+                query += " LIMIT " + limit.sqlString(forRead: true, by: generator)
             }
             
             return query
         }
         
-        override func generateFormattedQuery(_ element: SQL.Select, withIndent indent: Int) -> String {
+        override func generateFormattedQuery(_ element: SQL.Select,
+                                             forRead: Bool,
+                                             withIndent indent: Int) -> String {
             
             var query = ""
             
             if element.columns.count > 0 {
                 query += "SELECT "
-                query += formattedSQLJoin(element.columns, withIndent: indent + 7, by: generator)
+                query += formattedSQLJoin(element.columns,
+                                          forRead: true,
+                                          withIndent: indent + 7,
+                                          by: generator)
             } else {
                 query += "SELECT *"
             }
             
             if element.tables.count > 0 {
                 query += "\n\(space(indent))FROM   "
-                query += formattedSQLJoin(element.tables, withIndent: indent + 7, by: generator)
+                query += formattedSQLJoin(element.tables,
+                                          forRead: true,
+                                          withIndent: indent + 7,
+                                          by: generator)
             }
             
             if let condition = element.condition {
                 query += "\n\(space(indent))WHERE  "
-                query += condition.formattedSQLString(withIndent: indent + 7, by: generator)
+                query += condition.formattedSQLString(forRead: true,
+                                                      withIndent: indent + 7,
+                                                      by: generator)
             }
             
             if element.groups.count > 0 {
                 query += "\n\(space(indent))GROUP  BY "
-                query += formattedSQLJoin(element.groups, withIndent: indent + 10, by: generator)
+                query += formattedSQLJoin(element.groups,
+                                          forRead: true,
+                                          withIndent: indent + 10,
+                                          by: generator)
             }
             
             if let having = element.having {
                 query += "\n\(space(indent))HAVING "
-                query += having.formattedSQLString(withIndent: indent + 7, by: generator)
+                query += having.formattedSQLString(forRead: true,
+                                                   withIndent: indent + 7,
+                                                   by: generator)
             }
             
             if element.orders.count > 0 {
                 query += "\n\(space(indent))ORDER  BY "
-                query += formattedSQLJoin(element.orders, withIndent: indent + 10, by: generator)
+                query += formattedSQLJoin(element.orders,
+                                          forRead: true,
+                                          withIndent: indent + 10,
+                                          by: generator)
             }
             
             if let limit = element.limit {
                 query += "\n\(space(indent))LIMIT  "
-                query += limit.formattedSQLString(withIndent: indent + 7, by: generator)
+                query += limit.formattedSQLString(forRead: true,
+                                                  withIndent: indent + 7,
+                                                  by: generator)
             }
             
             return query

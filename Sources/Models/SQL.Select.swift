@@ -29,11 +29,11 @@ extension SQL {
 extension SQL.Select {
     
     public func query(by generator: SQLGenerator) -> String {
-        return generator.generateQuery(self)
+        return generator.generateQuery(self, forRead: true)
     }
     
     public func formattedQuery(withIndent indent: Int = 0, by generator: SQLGenerator) -> String {
-        return generator.generateFormattedQuery(self, withIndent: indent)
+        return generator.generateFormattedQuery(self, forRead: true, withIndent: indent)
     }
     
     public var description: String {

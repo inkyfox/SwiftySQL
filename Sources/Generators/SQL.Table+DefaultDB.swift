@@ -12,11 +12,12 @@ extension SQL.Table {
 
     class Generator: SQLElementGenerator<SQL.Table> {
         
-        override func generate(_ element: SQL.Table) -> String {
+        override func generate(_ element: SQL.Table, forRead: Bool) -> String {
             if let schemaName = element.schemaName {
                 return "\(schemaName).\(element.tableName)"
+            } else {
+                return element.tableName
             }
-            return element.tableName
         }
         
     }

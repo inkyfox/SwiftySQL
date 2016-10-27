@@ -12,14 +12,17 @@ extension SQL.PostfixUnaryExpr {
     
     class Generator: SQLElementGenerator<SQL.PostfixUnaryExpr> {
         
-        override func generate(_ element: SQL.PostfixUnaryExpr) -> String {
-            return element.lhs.sqlStringBoxedIfNeeded(by: generator) + " " + element.op
+        override func generate(_ element: SQL.PostfixUnaryExpr, forRead: Bool) -> String {
+            return element.lhs.sqlStringBoxedIfNeeded(forRead: forRead, by: generator) + " " + element.op
         }
         
         override func generateFormatted(_ element: SQL.PostfixUnaryExpr,
+                                        forRead: Bool,
                                         withIndent indent: Int) -> String {
             return
-                element.lhs.formattedSQLStringBoxedIfNeeded(withIndent: indent, by: generator) +
+                element.lhs.formattedSQLStringBoxedIfNeeded(forRead: forRead,
+                                                            withIndent: indent,
+                                                            by: generator) +
                 " " + element.op
         }
         

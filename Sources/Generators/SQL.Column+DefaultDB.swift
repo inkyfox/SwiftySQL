@@ -12,8 +12,8 @@ extension SQL.Column {
     
     class Generator: SQLElementGenerator<SQL.Column> {
         
-        override func generate(_ element: SQL.Column) -> String {
-            if let t = element.tableName {
+        override func generate(_ element: SQL.Column, forRead: Bool) -> String {
+            if let t = element.tableName, forRead {
                 return "\(t).\(element.columnName)"
             } else {
                 return element.columnName

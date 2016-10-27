@@ -17,11 +17,11 @@ extension SQL {
         }
         
         let orAction: OrAction?
-        let table: Table
+        let table: SQLSourceTableType
         var sets: [([Column], [SQLValueType])] = []
         var condition: SQLConditionType?
         
-        init(_ orAction: OrAction?, _ table: Table) {
+        init(_ orAction: OrAction?, _ table: SQLSourceTableType) {
             self.orAction = orAction
             self.table = table
         }
@@ -33,11 +33,11 @@ extension SQL {
 extension SQL.Update {
     
     public func query(by generator: SQLGenerator) -> String {
-        return generator.generateQuery(self)
+        return generator.generateQuery(self, forRead: false)
     }
     
     public func formattedQuery(withIndent indent: Int = 0, by generator: SQLGenerator) -> String {
-        return generator.generateFormattedQuery(self, withIndent: indent)
+        return generator.generateFormattedQuery(self, forRead: false, withIndent: indent)
     }
     
     public var description: String {
@@ -52,11 +52,12 @@ extension SQL.Update {
 
 extension SQL {
     
-    public static func update(_ table: Table) -> Update {
+    public static func update(_ table: SQLSourceTableType) -> Update {
         return Update(nil, table)
     }
 
-    public static func update(or orAction: Update.OrAction, _ table: Table) -> Update {
+    public static func update(or orAction: Update.OrAction,
+                              _ table: SQLSourceTableType) -> Update {
         return Update(orAction, table)
     }
 
@@ -69,6 +70,12 @@ extension SQL.Update {
         return self
     }
     
+    public func set(_ column: SQL.Column, _ value: SQL.Select) -> SQL.Update {
+        self.sets.append(([column], [value]))
+        return self
+    }
+    
+
     public func set(_ columns: [SQL.Column], _ value: SQL.Select) -> SQL.Update {
         self.sets.append((columns, [value]))
         return self

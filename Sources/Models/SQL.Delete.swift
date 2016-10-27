@@ -26,11 +26,11 @@ extension SQL {
 extension SQL.Delete {
     
     public func query(by generator: SQLGenerator) -> String {
-        return generator.generateQuery(self)
+        return generator.generateQuery(self, forRead: false)
     }
     
     public func formattedQuery(withIndent indent: Int = 0, by generator: SQLGenerator) -> String {
-        return generator.generateFormattedQuery(self, withIndent: indent)
+        return generator.generateFormattedQuery(self, forRead: false, withIndent: indent)
     }
     
     public var description: String {

@@ -12,7 +12,7 @@ extension SQL.Limit {
     
     class Generator: SQLElementGenerator<SQL.Limit> {
         
-        override func generate(_ element: SQL.Limit) -> String {
+        override func generate(_ element: SQL.Limit, forRead: Bool) -> String {
             if let offset = element.offset {
                 return "\(element.limit), \(offset)"
             } else {

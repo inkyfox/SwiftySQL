@@ -42,15 +42,15 @@ extension SQL.BinaryExpr {
     
     class Generator: SQLElementGenerator<SQL.BinaryExpr> {
         
-        override func generate(_ element: SQL.BinaryExpr) -> String {
+        override func generate(_ element: SQL.BinaryExpr, forRead: Bool) -> String {
             var query: String
             
             let lhs = element.lhs
             
             if element.isParenthesesNecessary(lhs) {
-                query = lhs.sqlString(by: generator).boxed
+                query = lhs.sqlString(forRead: forRead, by: generator).boxed
             } else {
-                query = lhs.sqlString(by: generator)
+                query = lhs.sqlString(forRead: forRead, by: generator)
             }
             
             query += " \(element.op) "
@@ -58,24 +58,29 @@ extension SQL.BinaryExpr {
             let rhs = element.rhs
 
             if element.isParenthesesNecessary(rhs) {
-                query += rhs.sqlString(by: generator).boxed
+                query += rhs.sqlString(forRead: forRead, by: generator).boxed
             } else {
-                query += rhs.sqlString(by: generator)
+                query += rhs.sqlString(forRead: forRead, by: generator)
             }
             
             return query
         }
         
         override func generateFormatted(_ element: SQL.BinaryExpr,
+                                        forRead: Bool,
                                         withIndent indent: Int) -> String {
             var query: String
 
             let lhs = element.lhs
 
             if element.isParenthesesNecessary(lhs) {
-                query = lhs.formattedSQLStringBoxed(withIndent: indent, by: generator)
+                query = lhs.formattedSQLStringBoxed(forRead: forRead,
+                                                    withIndent: indent,
+                                                    by: generator)
             } else {
-                query = lhs.formattedSQLString(withIndent: indent, by: generator)
+                query = lhs.formattedSQLString(forRead: forRead,
+                                               withIndent: indent,
+                                               by: generator)
             }
 
             var nextIndent: Int
@@ -91,9 +96,13 @@ extension SQL.BinaryExpr {
             let rhs = element.rhs
 
             if element.isParenthesesNecessary(rhs) {
-                query += rhs.formattedSQLStringBoxed(withIndent: nextIndent, by: generator)
+                query += rhs.formattedSQLStringBoxed(forRead: forRead,
+                                                     withIndent: nextIndent,
+                                                     by: generator)
             } else {
-                query += rhs.formattedSQLString(withIndent: nextIndent, by: generator)
+                query += rhs.formattedSQLString(forRead: forRead,
+                                                withIndent: nextIndent,
+                                                by: generator)
             }
             
             return query

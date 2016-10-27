@@ -39,12 +39,16 @@ func unformat(_ query: String) -> String {
 
 extension SQLStringConvertible {
     func sql(by generator: SQLGenerator) -> String {
-        return (self as? SQLQueryType)?.query(by: generator) ?? self.sqlString(by: generator)
+        return (self as? SQLQueryType)?.query(by: generator) ??
+            self.sqlString(forRead: true, by: generator)
     }
     
     func formattedSQL(withIndent indent: Int, by generator: SQLGenerator) -> String {
-        return (self as? SQLQueryType)?.formattedQuery(withIndent: indent, by: generator) ??
-            self.formattedSQLString(withIndent: indent, by: generator)
+        return (self as? SQLQueryType)?.formattedQuery(withIndent: indent,
+                                                       by: generator) ??
+            self.formattedSQLString(forRead: true,
+                                    withIndent: indent,
+                                    by: generator)
     }
 }
 
@@ -56,7 +60,7 @@ extension XCTestCase {
         let formatted = sql.formattedSQL(withIndent: 0, by: generator)
         let unformatted = unformat(formatted)
         if query != unformatted {
-            recordFailure(withDescription: "Formatted SQL != Unformatted SQL:\n[\(query)]\n!=\n[\(unformatted)]",
+            recordFailure(withDescription: "Unformatted SQL != Formatted SQL:\n[\(query)]\n!=\n[\(unformatted)]",
                 inFile: file, atLine: line, expected: true)
         }
     }

@@ -32,13 +32,13 @@ extension SQL {
         }
 
         let action: Action
-        let table: Table
+        let table: SQLSourceTableType
         var columns: [Column] = []
         
         var values: [[SQLExprType]] = []
         var select: Select? = nil
         
-        init(_ action: Action, into table: Table) {
+        init(_ action: Action, into table: SQLSourceTableType) {
             self.action = action
             self.table = table
         }
@@ -50,11 +50,11 @@ extension SQL {
 extension SQL.Insert {
     
     public func query(by generator: SQLGenerator) -> String {
-        return generator.generateQuery(self)
+        return generator.generateQuery(self, forRead: false)
     }
     
     public func formattedQuery(withIndent indent: Int = 0, by generator: SQLGenerator) -> String {
-        return generator.generateFormattedQuery(self, withIndent: indent)
+        return generator.generateFormattedQuery(self, forRead: false, withIndent: indent)
     }
     
     public var description: String {
@@ -69,15 +69,15 @@ extension SQL.Insert {
 
 extension SQL {
     
-    public static func insert(into table: Table) -> Insert {
+    public static func insert(into table: SQLSourceTableType) -> Insert {
         return Insert(.insert, into: table)
     }
     
-    public static func replace(into table: Table) -> Insert {
+    public static func replace(into table: SQLSourceTableType) -> Insert {
         return Insert(.replace, into: table)
     }
     
-    public static func insert(or orAction: Insert.OrAction, into table: Table) -> Insert {
+    public static func insert(or orAction: Insert.OrAction, into table: SQLSourceTableType) -> Insert {
         return Insert(orAction.action, into: table)
     }
     

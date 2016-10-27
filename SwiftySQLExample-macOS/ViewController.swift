@@ -124,15 +124,15 @@ class ViewController: NSViewController {
 
     func test(_ sql: SQLStringConvertible) {
         let generator = SQLGenerator.default
-        let query = sql.sqlString(by: generator)
-        let formatted = sql.formattedSQLString(withIndent: 0, by: generator)
+        let query = sql.sqlString(forRead: true, by: generator)
+        let formatted = sql.formattedSQLString(forRead: true, withIndent: 0, by: generator)
         let passed = query == unformat(formatted)
         let result = passed ? "[Passed] " : "[Failed] "
         let indent = result.characters.count
         if passed {
-            print("\(result)\(sql.formattedSQLString(withIndent: indent, by: generator))")
+            print("\(result)\(sql.formattedSQLString(forRead: true, withIndent: indent, by: generator))")
         } else {
-            print("\(result)\(sql.formattedSQLString(withIndent: indent, by: generator))")
+            print("\(result)\(sql.formattedSQLString(forRead: true, withIndent: indent, by: generator))")
             print("    \(query)")
             print("    \(unformat(formatted))")
         }
