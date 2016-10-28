@@ -13,8 +13,8 @@
 `SwiftySQL` is the easiest way to write SQL in Swift:
 
 - Minimize SQL String literals.
-- Use Swift variables for table and column names.
-- Use Swift operators and expressions for SQL expressions.
+- Use **Swift variables** for table and column names with **auto completion** and **syntax highlighting**.
+- Use **Swift operators** and expressions for SQL expressions.
 
 For example, you can write Swift codes:
 
