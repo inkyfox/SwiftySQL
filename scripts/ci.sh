@@ -2,9 +2,9 @@
 
 set -e
 
-xcodebuild -project SwiftySQL.xcodeproj -scheme "SwiftySQLTests-iOS" -destination "platform=iOS Simulator,name=iPhone 6" test
+xcodebuild -workspace SwiftySQL.xcworkspace -scheme "SwiftySQL-iOS" -destination "platform=iOS Simulator,OS=9.3,name=iPhone 6s" test
 
-xcodebuild -project SwiftySQL.xcodeproj -scheme "SwiftySQLTests-macOS" test
+xcodebuild -workspace SwiftySQL.xcworkspace -scheme "SwiftySQL-macOS" test
 
-xcodebuild -project SwiftySQL.xcodeproj -scheme "SwiftySQLTests-tvOS" -destination "platform=tvOS Simulator,name=Apple TV 1080p" test
+xcodebuild -workspace SwiftySQL.xcworkspace -scheme "SwiftySQL-tvOS" -destination "platform=tvOS Simulator,OS=9.0,name=Apple TV 1080p" test
 

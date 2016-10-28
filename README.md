@@ -40,16 +40,14 @@ SQL.select(s.name,
            s.birth)
   .from(s, a)
   .where(s.id == a.studentID)
-  .orderBy(s.name.asc)
-    </pre></td>
+  .orderBy(s.name.asc) </pre></td>
     <td width="50%"><pre lang="sql" style="border: none;">
 SELECT s.name,
        s.birth
 FROM   student AS s,
        attending AS a
 WHERE  s = a.student_id
-ORDER  BY s.name ASC
-    </pre></td>
+ORDER  BY s.name ASC </pre></td>
   </tr>
 </table>
 
@@ -83,8 +81,7 @@ SQL.select(s.name,
     && (t.office.hasPrefix("A")
         || t.office.isNull)
   )
-  .orderBy(s.name.asc)
-    </pre></td>
+  .orderBy(s.name.asc) </pre></td>
     <td width="50%"><pre lang="sql" style="border: none;">
 SELECT s.name,
        CASE 
@@ -106,8 +103,7 @@ WHERE  s.year >= 2
        AND s.year <= 3
        AND ( t.office LIKE 'A%'
              OR t.office ISNULL )
-ORDER  BY s.name ASC
-    </pre></td>
+ORDER  BY s.name ASC </pre></td>
   </tr>
 </table>
 
