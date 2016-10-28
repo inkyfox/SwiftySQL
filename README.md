@@ -1,6 +1,12 @@
 # SwiftySQL
 ======================================
 
+![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
+[![Travis CI](https://travis-ci.org/inkyfox/SwiftySQL.svg?branch=master)](https://travis-ci.org/inkyfox/SwiftySQL)
+![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-333333.svg)
+[![Version](https://img.shields.io/cocoapods/v/SwiftySQL.svg?style=flat)](http://cocoapods.org/pods/SwiftySQL)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 ## Write your SQL in Swift
 
 `SwiftySQL` is the easiest way to write SQL in Swift:
@@ -12,7 +18,7 @@
 For example, you can write Swift codes:
 
 ``` swift
-SQL.select(student.name).from(student).where(student.year >= 3 && student.id < 100)
+SQL.select(s.name).from(s).where(s.year >= 3 && s.id < 100)
 ```
 
 to generate SQL string:
@@ -23,25 +29,24 @@ SELECT s.name FROM student AS s WHERE s.year >= 3 AND s.id < 100
 
 More complex SQL:
 
-<table>
+<table width="100%">
   <tr>
     <th width="50%">Swift</th>
     <th width="50%">SQL</th>
   </tr>
   <tr>
     <td width="50%"><pre lang="swift" style="border: none;">
-SQL.select(student.name, 
-           student.birth)
-  .from(student,
-        attending)
-  .where(student.id == attending.studentID)
-  .orderBy(student.name.asc)
+SQL.select(s.name, 
+           s.birth)
+  .from(s, a)
+  .where(s.id == a.studentID)
+  .orderBy(s.name.asc)
     </pre></td>
     <td width="50%"><pre lang="sql" style="border: none;">
 SELECT s.name,
        s.birth
 FROM   student AS s,
-       user.attending AS a
+       attending AS a
 WHERE  s = a.student_id
 ORDER  BY s.name ASC
     </pre></td>
@@ -50,35 +55,35 @@ ORDER  BY s.name ASC
 
 Even more complex SQL:
 
-<table>
+<table width="100%">
   <tr>
     <th width="50%">Swift</th>
     <th width="50%">SQL</th>
   </tr>
   <tr>
     <td width="50%"><pre lang="swift" style="border: none;">
-SQL.select(student.name,
-           when(lecture.name.isNotNull,
-                then: lecture.name)
+SQL.select(s.name,
+           when(l.name.isNotNull,
+                then: l.name)
             .else("N/A"),
-           when(teature.name.isNotNull,
-                then: teature.name)
+           when(t.name.isNotNull,
+                then: t.name)
             .else("N/A")
            )
-  .from(student
-    .leftJoin(attending,
-              on: student.id == attending.studentID)
-    .leftJoin(lecture, 
-              on: lecture.id == attending.lectureID)
-    .leftJoin(teature, 
-              on: teature.id == lecture.teatureID)
+  .from(s
+    .leftJoin(a,
+              on: s.id == a.studentID)
+    .leftJoin(l, 
+              on: l.id == a.lectureID)
+    .leftJoin(t, 
+              on: t.id == l.teatureID)
   )
-  .where(student.year >= 2 
-    && student.year <= 3
-    && (teature.office.hasPrefix("A")
-        || teature.office.isNull)
+  .where(s.year >= 2 
+    && s.year <= 3
+    && (t.office.hasPrefix("A")
+        || t.office.isNull)
   )
-  .orderBy(student.name.asc)
+  .orderBy(s.name.asc)
     </pre></td>
     <td width="50%"><pre lang="sql" style="border: none;">
 SELECT s.name,
@@ -140,24 +145,3 @@ github "inkyfox/SwiftySQL"
 ```
 $ carthage update
 ```
-
-### [Swift Package Manager](https://github.com/apple/swift-package-manager)
-
-Create a `Package.swift` file.
-
-```
-import PackageDescription
-
-let package = Package(
-    name: "TestProject",
-    targets: [],
-    dependencies: [
-        .Package(url: "https://github.com/inkyfox/SwiftySQL.git")
-    ]
-)
-```
-
-```
-$ swift build
-```
-
