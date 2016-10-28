@@ -6,6 +6,7 @@
 ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-333333.svg)
 [![Version](https://img.shields.io/cocoapods/v/SwiftySQL.svg?style=flat)](http://cocoapods.org/pods/SwiftySQL)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 
 ## Write your SQL in Swift
 
@@ -140,4 +141,24 @@ github "inkyfox/SwiftySQL"
 
 ```
 $ carthage update
+```
+
+### [Swift Package Manager](https://github.com/apple/swift-package-manager)
+
+Create a `Package.swift` file.
+
+```
+import PackageDescription
+
+let package = Package(
+    name: "TestProject",
+    targets: [],
+    dependencies: [
+        .Package(url: "https://github.com/inkyfox/SwiftySQL.git")
+    ]
+)
+```
+
+```
+$ swift build
 ```
