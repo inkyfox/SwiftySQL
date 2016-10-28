@@ -44,7 +44,7 @@ extension SQL.Join {
             var line1 = space(indent) + typeString(element.type) + " "
             let line2Indent = line1.characters.count - 3
             line1 += element.right.formattedSQLString(forRead: forRead,
-                                                      withIndent: indent + line1.characters.count,
+                                                      withIndent: line1.characters.count,
                                                       by: generator)
             if let on = element.on {
                 let line2 = "\n" + space(line2Indent)

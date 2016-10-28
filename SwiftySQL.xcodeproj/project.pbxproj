@@ -80,6 +80,7 @@
 		A9B39BBB1DBC40BD00A208FC /* SQL.Table+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BBA1DBC40BD00A208FC /* SQL.Table+DefaultDB.swift */; };
 		A9B39BBD1DBC411F00A208FC /* SQL.Join+DefaultDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B39BBC1DBC411F00A208FC /* SQL.Join+DefaultDB.swift */; };
 		A9D9DFEA1DC2BB83005CF80D /* DeleteTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D9DFE91DC2BB83005CF80D /* DeleteTest.swift */; };
+		A9D9DFEC1DC2F152005CF80D /* SwiftSQLTestEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D9DFEB1DC2F152005CF80D /* SwiftSQLTestEnv.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +192,7 @@
 		A9B39BBA1DBC40BD00A208FC /* SQL.Table+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Table+DefaultDB.swift"; sourceTree = "<group>"; };
 		A9B39BBC1DBC411F00A208FC /* SQL.Join+DefaultDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQL.Join+DefaultDB.swift"; sourceTree = "<group>"; };
 		A9D9DFE91DC2BB83005CF80D /* DeleteTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTest.swift; sourceTree = "<group>"; };
+		A9D9DFEB1DC2F152005CF80D /* SwiftSQLTestEnv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSQLTestEnv.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +326,7 @@
 			children = (
 				A9B39B731DB9D90900A208FC /* AppDelegate.swift */,
 				A9B39B751DB9D90900A208FC /* ViewController.swift */,
+				A9D9DFEB1DC2F152005CF80D /* SwiftSQLTestEnv.swift */,
 				A9B39B771DB9D90900A208FC /* Assets.xcassets */,
 				A9B39B791DB9D90900A208FC /* Main.storyboard */,
 				A9B39B7C1DB9D90900A208FC /* Info.plist */,
@@ -595,6 +598,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9B39B761DB9D90900A208FC /* ViewController.swift in Sources */,
+				A9D9DFEC1DC2F152005CF80D /* SwiftSQLTestEnv.swift in Sources */,
 				A9B39B741DB9D90900A208FC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
