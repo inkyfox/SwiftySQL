@@ -52,6 +52,142 @@
 		A9CACA5B1DC394C500076318 /* SQLCaseGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA581DC394C500076318 /* SQLCaseGenerator.swift */; };
 		A9CACA5C1DC394C500076318 /* SQLInGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA591DC394C500076318 /* SQLInGenerator.swift */; };
 		A9CACA5D1DC394C500076318 /* SQLOrderGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA5A1DC394C500076318 /* SQLOrderGenerator.swift */; };
+		A9CACA5F1DC3988A00076318 /* SwiftySQL.h in Headers */ = {isa = PBXBuildFile; fileRef = A9CACA5E1DC3988A00076318 /* SwiftySQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9CACA601DC3988A00076318 /* SwiftySQL.h in Headers */ = {isa = PBXBuildFile; fileRef = A9CACA5E1DC3988A00076318 /* SwiftySQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9CACA611DC3988A00076318 /* SwiftySQL.h in Headers */ = {isa = PBXBuildFile; fileRef = A9CACA5E1DC3988A00076318 /* SwiftySQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9CACA621DC3988A00076318 /* SwiftySQL.h in Headers */ = {isa = PBXBuildFile; fileRef = A9CACA5E1DC3988A00076318 /* SwiftySQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9CACA631DC39AD000076318 /* SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA521DC3949800076318 /* SQL.swift */; };
+		A9CACA641DC39AD000076318 /* SQLStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA501DC3949800076318 /* SQLStringConvertible.swift */; };
+		A9CACA651DC39AD000076318 /* SQLTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA561DC394BB00076318 /* SQLTypes.swift */; };
+		A9CACA661DC39AD000076318 /* SQLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA511DC3949800076318 /* SQLUtils.swift */; };
+		A9CACA671DC39AD000076318 /* SQLCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA281DC3948900076318 /* SQLCase.swift */; };
+		A9CACA681DC39AD000076318 /* SQLInsert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA291DC3948900076318 /* SQLInsert.swift */; };
+		A9CACA691DC39AD000076318 /* SQLAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2A1DC3948900076318 /* SQLAlias.swift */; };
+		A9CACA6A1DC39AD000076318 /* SQLBinaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2B1DC3948900076318 /* SQLBinaryExpr.swift */; };
+		A9CACA6B1DC39AD000076318 /* SQLColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2C1DC3948900076318 /* SQLColumn.swift */; };
+		A9CACA6C1DC39AD000076318 /* SQLDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2D1DC3948900076318 /* SQLDelete.swift */; };
+		A9CACA6D1DC39AD000076318 /* SQLFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2E1DC3948900076318 /* SQLFunc.swift */; };
+		A9CACA6E1DC39AD000076318 /* SQLIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2F1DC3948900076318 /* SQLIn.swift */; };
+		A9CACA6F1DC39AD000076318 /* SQLJoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA301DC3948900076318 /* SQLJoin.swift */; };
+		A9CACA701DC39AD000076318 /* SQLLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA311DC3948900076318 /* SQLLimit.swift */; };
+		A9CACA711DC39AD000076318 /* SQLLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA321DC3948900076318 /* SQLLiteral.swift */; };
+		A9CACA721DC39AD000076318 /* SQLOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA331DC3948900076318 /* SQLOrder.swift */; };
+		A9CACA731DC39AD000076318 /* SQLPostfixUnaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA341DC3948900076318 /* SQLPostfixUnaryExpr.swift */; };
+		A9CACA741DC39AD000076318 /* SQLPrefixUnaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA351DC3948900076318 /* SQLPrefixUnaryExpr.swift */; };
+		A9CACA751DC39AD000076318 /* SQLSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA361DC3948900076318 /* SQLSelect.swift */; };
+		A9CACA761DC39AD000076318 /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA371DC3948900076318 /* SQLTable.swift */; };
+		A9CACA771DC39AD000076318 /* SQLTernaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA381DC3948900076318 /* SQLTernaryExpr.swift */; };
+		A9CACA781DC39AD000076318 /* SQLTuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA391DC3948900076318 /* SQLTuple.swift */; };
+		A9CACA791DC39AD000076318 /* SQLUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA3B1DC3948900076318 /* SQLUpdate.swift */; };
+		A9CACA7A1DC39AD000076318 /* SQLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA261DC3946500076318 /* SQLGenerator.swift */; };
+		A9CACA7B1DC39AD000076318 /* SQLCaseGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA581DC394C500076318 /* SQLCaseGenerator.swift */; };
+		A9CACA7C1DC39AD000076318 /* SQLInGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA591DC394C500076318 /* SQLInGenerator.swift */; };
+		A9CACA7D1DC39AD000076318 /* SQLOrderGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA5A1DC394C500076318 /* SQLOrderGenerator.swift */; };
+		A9CACA7E1DC39AD000076318 /* SQLAliasGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA041DC3945A00076318 /* SQLAliasGenerator.swift */; };
+		A9CACA7F1DC39AD000076318 /* SQLBinaryExprGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA051DC3945A00076318 /* SQLBinaryExprGenerator.swift */; };
+		A9CACA801DC39AD000076318 /* SQLColumnGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA061DC3945B00076318 /* SQLColumnGenerator.swift */; };
+		A9CACA811DC39AD000076318 /* SQLDeleteGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA071DC3945B00076318 /* SQLDeleteGenerator.swift */; };
+		A9CACA821DC39AD000076318 /* SQLFuncGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA081DC3945B00076318 /* SQLFuncGenerator.swift */; };
+		A9CACA831DC39AD000076318 /* SQLInsertGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA091DC3945B00076318 /* SQLInsertGenerator.swift */; };
+		A9CACA841DC39AD000076318 /* SQLJoinGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0A1DC3945B00076318 /* SQLJoinGenerator.swift */; };
+		A9CACA851DC39AD000076318 /* SQLLimitGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0B1DC3945B00076318 /* SQLLimitGenerator.swift */; };
+		A9CACA861DC39AD000076318 /* SQLLiteralGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0C1DC3945B00076318 /* SQLLiteralGenerator.swift */; };
+		A9CACA871DC39AD000076318 /* SQLNativeTypeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0D1DC3945B00076318 /* SQLNativeTypeGenerator.swift */; };
+		A9CACA881DC39AD000076318 /* SQLPostfixUnaryExprGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0E1DC3945B00076318 /* SQLPostfixUnaryExprGenerator.swift */; };
+		A9CACA891DC39AD000076318 /* SQLPrefixUnaryExprGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0F1DC3945B00076318 /* SQLPrefixUnaryExprGenerator.swift */; };
+		A9CACA8A1DC39AD000076318 /* SQLSelectGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA101DC3945B00076318 /* SQLSelectGenerator.swift */; };
+		A9CACA8B1DC39AD000076318 /* SQLTableGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA111DC3945B00076318 /* SQLTableGenerator.swift */; };
+		A9CACA8C1DC39AD000076318 /* SQLTernaryExprGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA121DC3945B00076318 /* SQLTernaryExprGenerator.swift */; };
+		A9CACA8D1DC39AD000076318 /* SQLTupleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA131DC3945B00076318 /* SQLTupleGenerator.swift */; };
+		A9CACA8E1DC39AD000076318 /* SQLUpdateGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA141DC3945B00076318 /* SQLUpdateGenerator.swift */; };
+		A9CACA8F1DC39AD100076318 /* SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA521DC3949800076318 /* SQL.swift */; };
+		A9CACA901DC39AD100076318 /* SQLStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA501DC3949800076318 /* SQLStringConvertible.swift */; };
+		A9CACA911DC39AD100076318 /* SQLTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA561DC394BB00076318 /* SQLTypes.swift */; };
+		A9CACA921DC39AD100076318 /* SQLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA511DC3949800076318 /* SQLUtils.swift */; };
+		A9CACA931DC39AD100076318 /* SQLCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA281DC3948900076318 /* SQLCase.swift */; };
+		A9CACA941DC39AD100076318 /* SQLInsert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA291DC3948900076318 /* SQLInsert.swift */; };
+		A9CACA951DC39AD100076318 /* SQLAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2A1DC3948900076318 /* SQLAlias.swift */; };
+		A9CACA961DC39AD100076318 /* SQLBinaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2B1DC3948900076318 /* SQLBinaryExpr.swift */; };
+		A9CACA971DC39AD100076318 /* SQLColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2C1DC3948900076318 /* SQLColumn.swift */; };
+		A9CACA981DC39AD100076318 /* SQLDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2D1DC3948900076318 /* SQLDelete.swift */; };
+		A9CACA991DC39AD100076318 /* SQLFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2E1DC3948900076318 /* SQLFunc.swift */; };
+		A9CACA9A1DC39AD100076318 /* SQLIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2F1DC3948900076318 /* SQLIn.swift */; };
+		A9CACA9B1DC39AD100076318 /* SQLJoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA301DC3948900076318 /* SQLJoin.swift */; };
+		A9CACA9C1DC39AD100076318 /* SQLLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA311DC3948900076318 /* SQLLimit.swift */; };
+		A9CACA9D1DC39AD100076318 /* SQLLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA321DC3948900076318 /* SQLLiteral.swift */; };
+		A9CACA9E1DC39AD100076318 /* SQLOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA331DC3948900076318 /* SQLOrder.swift */; };
+		A9CACA9F1DC39AD100076318 /* SQLPostfixUnaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA341DC3948900076318 /* SQLPostfixUnaryExpr.swift */; };
+		A9CACAA01DC39AD100076318 /* SQLPrefixUnaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA351DC3948900076318 /* SQLPrefixUnaryExpr.swift */; };
+		A9CACAA11DC39AD100076318 /* SQLSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA361DC3948900076318 /* SQLSelect.swift */; };
+		A9CACAA21DC39AD100076318 /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA371DC3948900076318 /* SQLTable.swift */; };
+		A9CACAA31DC39AD100076318 /* SQLTernaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA381DC3948900076318 /* SQLTernaryExpr.swift */; };
+		A9CACAA41DC39AD100076318 /* SQLTuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA391DC3948900076318 /* SQLTuple.swift */; };
+		A9CACAA51DC39AD100076318 /* SQLUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA3B1DC3948900076318 /* SQLUpdate.swift */; };
+		A9CACAA61DC39AD100076318 /* SQLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA261DC3946500076318 /* SQLGenerator.swift */; };
+		A9CACAA71DC39AD100076318 /* SQLCaseGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA581DC394C500076318 /* SQLCaseGenerator.swift */; };
+		A9CACAA81DC39AD100076318 /* SQLInGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA591DC394C500076318 /* SQLInGenerator.swift */; };
+		A9CACAA91DC39AD100076318 /* SQLOrderGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA5A1DC394C500076318 /* SQLOrderGenerator.swift */; };
+		A9CACAAA1DC39AD100076318 /* SQLAliasGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA041DC3945A00076318 /* SQLAliasGenerator.swift */; };
+		A9CACAAB1DC39AD100076318 /* SQLBinaryExprGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA051DC3945A00076318 /* SQLBinaryExprGenerator.swift */; };
+		A9CACAAC1DC39AD100076318 /* SQLColumnGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA061DC3945B00076318 /* SQLColumnGenerator.swift */; };
+		A9CACAAD1DC39AD100076318 /* SQLDeleteGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA071DC3945B00076318 /* SQLDeleteGenerator.swift */; };
+		A9CACAAE1DC39AD100076318 /* SQLFuncGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA081DC3945B00076318 /* SQLFuncGenerator.swift */; };
+		A9CACAAF1DC39AD100076318 /* SQLInsertGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA091DC3945B00076318 /* SQLInsertGenerator.swift */; };
+		A9CACAB01DC39AD100076318 /* SQLJoinGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0A1DC3945B00076318 /* SQLJoinGenerator.swift */; };
+		A9CACAB11DC39AD100076318 /* SQLLimitGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0B1DC3945B00076318 /* SQLLimitGenerator.swift */; };
+		A9CACAB21DC39AD100076318 /* SQLLiteralGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0C1DC3945B00076318 /* SQLLiteralGenerator.swift */; };
+		A9CACAB31DC39AD100076318 /* SQLNativeTypeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0D1DC3945B00076318 /* SQLNativeTypeGenerator.swift */; };
+		A9CACAB41DC39AD100076318 /* SQLPostfixUnaryExprGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0E1DC3945B00076318 /* SQLPostfixUnaryExprGenerator.swift */; };
+		A9CACAB51DC39AD100076318 /* SQLPrefixUnaryExprGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0F1DC3945B00076318 /* SQLPrefixUnaryExprGenerator.swift */; };
+		A9CACAB61DC39AD100076318 /* SQLSelectGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA101DC3945B00076318 /* SQLSelectGenerator.swift */; };
+		A9CACAB71DC39AD100076318 /* SQLTableGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA111DC3945B00076318 /* SQLTableGenerator.swift */; };
+		A9CACAB81DC39AD100076318 /* SQLTernaryExprGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA121DC3945B00076318 /* SQLTernaryExprGenerator.swift */; };
+		A9CACAB91DC39AD100076318 /* SQLTupleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA131DC3945B00076318 /* SQLTupleGenerator.swift */; };
+		A9CACABA1DC39AD100076318 /* SQLUpdateGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA141DC3945B00076318 /* SQLUpdateGenerator.swift */; };
+		A9CACABB1DC39AD200076318 /* SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA521DC3949800076318 /* SQL.swift */; };
+		A9CACABC1DC39AD200076318 /* SQLStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA501DC3949800076318 /* SQLStringConvertible.swift */; };
+		A9CACABD1DC39AD200076318 /* SQLTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA561DC394BB00076318 /* SQLTypes.swift */; };
+		A9CACABE1DC39AD200076318 /* SQLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA511DC3949800076318 /* SQLUtils.swift */; };
+		A9CACABF1DC39AD200076318 /* SQLCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA281DC3948900076318 /* SQLCase.swift */; };
+		A9CACAC01DC39AD200076318 /* SQLInsert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA291DC3948900076318 /* SQLInsert.swift */; };
+		A9CACAC11DC39AD200076318 /* SQLAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2A1DC3948900076318 /* SQLAlias.swift */; };
+		A9CACAC21DC39AD200076318 /* SQLBinaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2B1DC3948900076318 /* SQLBinaryExpr.swift */; };
+		A9CACAC31DC39AD200076318 /* SQLColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2C1DC3948900076318 /* SQLColumn.swift */; };
+		A9CACAC41DC39AD200076318 /* SQLDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2D1DC3948900076318 /* SQLDelete.swift */; };
+		A9CACAC51DC39AD200076318 /* SQLFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2E1DC3948900076318 /* SQLFunc.swift */; };
+		A9CACAC61DC39AD200076318 /* SQLIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA2F1DC3948900076318 /* SQLIn.swift */; };
+		A9CACAC71DC39AD200076318 /* SQLJoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA301DC3948900076318 /* SQLJoin.swift */; };
+		A9CACAC81DC39AD200076318 /* SQLLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA311DC3948900076318 /* SQLLimit.swift */; };
+		A9CACAC91DC39AD200076318 /* SQLLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA321DC3948900076318 /* SQLLiteral.swift */; };
+		A9CACACA1DC39AD200076318 /* SQLOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA331DC3948900076318 /* SQLOrder.swift */; };
+		A9CACACB1DC39AD200076318 /* SQLPostfixUnaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA341DC3948900076318 /* SQLPostfixUnaryExpr.swift */; };
+		A9CACACC1DC39AD200076318 /* SQLPrefixUnaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA351DC3948900076318 /* SQLPrefixUnaryExpr.swift */; };
+		A9CACACD1DC39AD200076318 /* SQLSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA361DC3948900076318 /* SQLSelect.swift */; };
+		A9CACACE1DC39AD200076318 /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA371DC3948900076318 /* SQLTable.swift */; };
+		A9CACACF1DC39AD200076318 /* SQLTernaryExpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA381DC3948900076318 /* SQLTernaryExpr.swift */; };
+		A9CACAD01DC39AD200076318 /* SQLTuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA391DC3948900076318 /* SQLTuple.swift */; };
+		A9CACAD11DC39AD200076318 /* SQLUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA3B1DC3948900076318 /* SQLUpdate.swift */; };
+		A9CACAD21DC39AD200076318 /* SQLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA261DC3946500076318 /* SQLGenerator.swift */; };
+		A9CACAD31DC39AD200076318 /* SQLCaseGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA581DC394C500076318 /* SQLCaseGenerator.swift */; };
+		A9CACAD41DC39AD200076318 /* SQLInGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA591DC394C500076318 /* SQLInGenerator.swift */; };
+		A9CACAD51DC39AD200076318 /* SQLOrderGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA5A1DC394C500076318 /* SQLOrderGenerator.swift */; };
+		A9CACAD61DC39AD200076318 /* SQLAliasGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA041DC3945A00076318 /* SQLAliasGenerator.swift */; };
+		A9CACAD71DC39AD200076318 /* SQLBinaryExprGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA051DC3945A00076318 /* SQLBinaryExprGenerator.swift */; };
+		A9CACAD81DC39AD200076318 /* SQLColumnGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA061DC3945B00076318 /* SQLColumnGenerator.swift */; };
+		A9CACAD91DC39AD200076318 /* SQLDeleteGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA071DC3945B00076318 /* SQLDeleteGenerator.swift */; };
+		A9CACADA1DC39AD200076318 /* SQLFuncGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA081DC3945B00076318 /* SQLFuncGenerator.swift */; };
+		A9CACADB1DC39AD200076318 /* SQLInsertGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA091DC3945B00076318 /* SQLInsertGenerator.swift */; };
+		A9CACADC1DC39AD200076318 /* SQLJoinGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0A1DC3945B00076318 /* SQLJoinGenerator.swift */; };
+		A9CACADD1DC39AD200076318 /* SQLLimitGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0B1DC3945B00076318 /* SQLLimitGenerator.swift */; };
+		A9CACADE1DC39AD200076318 /* SQLLiteralGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0C1DC3945B00076318 /* SQLLiteralGenerator.swift */; };
+		A9CACADF1DC39AD200076318 /* SQLNativeTypeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0D1DC3945B00076318 /* SQLNativeTypeGenerator.swift */; };
+		A9CACAE01DC39AD200076318 /* SQLPostfixUnaryExprGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0E1DC3945B00076318 /* SQLPostfixUnaryExprGenerator.swift */; };
+		A9CACAE11DC39AD200076318 /* SQLPrefixUnaryExprGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA0F1DC3945B00076318 /* SQLPrefixUnaryExprGenerator.swift */; };
+		A9CACAE21DC39AD200076318 /* SQLSelectGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA101DC3945B00076318 /* SQLSelectGenerator.swift */; };
+		A9CACAE31DC39AD200076318 /* SQLTableGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA111DC3945B00076318 /* SQLTableGenerator.swift */; };
+		A9CACAE41DC39AD200076318 /* SQLTernaryExprGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA121DC3945B00076318 /* SQLTernaryExprGenerator.swift */; };
+		A9CACAE51DC39AD200076318 /* SQLTupleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA131DC3945B00076318 /* SQLTupleGenerator.swift */; };
+		A9CACAE61DC39AD200076318 /* SQLUpdateGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CACA141DC3945B00076318 /* SQLUpdateGenerator.swift */; };
 		A9D9E0251DC33BED005CF80D /* SwiftySQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D9E01C1DC33BED005CF80D /* SwiftySQL.framework */; };
 		A9D9E05C1DC33CA4005CF80D /* DeleteTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D9E0471DC33CA4005CF80D /* DeleteTest.swift */; };
 		A9D9E05D1DC33CA4005CF80D /* InsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D9E0481DC33CA4005CF80D /* InsertTests.swift */; };
@@ -191,6 +327,7 @@
 		A9CACA581DC394C500076318 /* SQLCaseGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLCaseGenerator.swift; sourceTree = "<group>"; };
 		A9CACA591DC394C500076318 /* SQLInGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLInGenerator.swift; sourceTree = "<group>"; };
 		A9CACA5A1DC394C500076318 /* SQLOrderGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLOrderGenerator.swift; sourceTree = "<group>"; };
+		A9CACA5E1DC3988A00076318 /* SwiftySQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftySQL.h; sourceTree = "<group>"; };
 		A9D9E01C1DC33BED005CF80D /* SwiftySQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftySQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D9E0241DC33BED005CF80D /* SwiftySQLTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftySQLTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D9E0471DC33CA4005CF80D /* DeleteTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTest.swift; sourceTree = "<group>"; };
@@ -335,6 +472,7 @@
 		A9B39B511DB9D83900A208FC /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A9CACA5E1DC3988A00076318 /* SwiftySQL.h */,
 				A9CAC9EF1DC3929E00076318 /* Common */,
 				A9604F521DBF2AB400F79239 /* Models */,
 				A9B39BA51DBBA4F300A208FC /* Generators */,
@@ -447,6 +585,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9CACA5F1DC3988A00076318 /* SwiftySQL.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +593,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9CACA601DC3988A00076318 /* SwiftySQL.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +601,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9CACA611DC3988A00076318 /* SwiftySQL.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +609,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9CACA621DC3988A00076318 /* SwiftySQL.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,6 +944,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9CACA771DC39AD000076318 /* SQLTernaryExpr.swift in Sources */,
+				A9CACA751DC39AD000076318 /* SQLSelect.swift in Sources */,
+				A9CACA631DC39AD000076318 /* SQL.swift in Sources */,
+				A9CACA6E1DC39AD000076318 /* SQLIn.swift in Sources */,
+				A9CACA8D1DC39AD000076318 /* SQLTupleGenerator.swift in Sources */,
+				A9CACA6D1DC39AD000076318 /* SQLFunc.swift in Sources */,
+				A9CACA7F1DC39AD000076318 /* SQLBinaryExprGenerator.swift in Sources */,
+				A9CACA6B1DC39AD000076318 /* SQLColumn.swift in Sources */,
+				A9CACA871DC39AD000076318 /* SQLNativeTypeGenerator.swift in Sources */,
+				A9CACA701DC39AD000076318 /* SQLLimit.swift in Sources */,
+				A9CACA721DC39AD000076318 /* SQLOrder.swift in Sources */,
+				A9CACA641DC39AD000076318 /* SQLStringConvertible.swift in Sources */,
+				A9CACA6C1DC39AD000076318 /* SQLDelete.swift in Sources */,
+				A9CACA8B1DC39AD000076318 /* SQLTableGenerator.swift in Sources */,
+				A9CACA761DC39AD000076318 /* SQLTable.swift in Sources */,
+				A9CACA7E1DC39AD000076318 /* SQLAliasGenerator.swift in Sources */,
+				A9CACA781DC39AD000076318 /* SQLTuple.swift in Sources */,
+				A9CACA7A1DC39AD000076318 /* SQLGenerator.swift in Sources */,
+				A9CACA711DC39AD000076318 /* SQLLiteral.swift in Sources */,
+				A9CACA891DC39AD000076318 /* SQLPrefixUnaryExprGenerator.swift in Sources */,
+				A9CACA6A1DC39AD000076318 /* SQLBinaryExpr.swift in Sources */,
+				A9CACA7D1DC39AD000076318 /* SQLOrderGenerator.swift in Sources */,
+				A9CACA841DC39AD000076318 /* SQLJoinGenerator.swift in Sources */,
+				A9CACA811DC39AD000076318 /* SQLDeleteGenerator.swift in Sources */,
+				A9CACA671DC39AD000076318 /* SQLCase.swift in Sources */,
+				A9CACA821DC39AD000076318 /* SQLFuncGenerator.swift in Sources */,
+				A9CACA881DC39AD000076318 /* SQLPostfixUnaryExprGenerator.swift in Sources */,
+				A9CACA681DC39AD000076318 /* SQLInsert.swift in Sources */,
+				A9CACA8C1DC39AD000076318 /* SQLTernaryExprGenerator.swift in Sources */,
+				A9CACA8A1DC39AD000076318 /* SQLSelectGenerator.swift in Sources */,
+				A9CACA6F1DC39AD000076318 /* SQLJoin.swift in Sources */,
+				A9CACA661DC39AD000076318 /* SQLUtils.swift in Sources */,
+				A9CACA691DC39AD000076318 /* SQLAlias.swift in Sources */,
+				A9CACA791DC39AD000076318 /* SQLUpdate.swift in Sources */,
+				A9CACA801DC39AD000076318 /* SQLColumnGenerator.swift in Sources */,
+				A9CACA861DC39AD000076318 /* SQLLiteralGenerator.swift in Sources */,
+				A9CACA7C1DC39AD000076318 /* SQLInGenerator.swift in Sources */,
+				A9CACA8E1DC39AD000076318 /* SQLUpdateGenerator.swift in Sources */,
+				A9CACA851DC39AD000076318 /* SQLLimitGenerator.swift in Sources */,
+				A9CACA831DC39AD000076318 /* SQLInsertGenerator.swift in Sources */,
+				A9CACA651DC39AD000076318 /* SQLTypes.swift in Sources */,
+				A9CACA7B1DC39AD000076318 /* SQLCaseGenerator.swift in Sources */,
+				A9CACA731DC39AD000076318 /* SQLPostfixUnaryExpr.swift in Sources */,
+				A9CACA741DC39AD000076318 /* SQLPrefixUnaryExpr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -837,6 +1023,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9CACAA31DC39AD100076318 /* SQLTernaryExpr.swift in Sources */,
+				A9CACAA11DC39AD100076318 /* SQLSelect.swift in Sources */,
+				A9CACA8F1DC39AD100076318 /* SQL.swift in Sources */,
+				A9CACA9A1DC39AD100076318 /* SQLIn.swift in Sources */,
+				A9CACAB91DC39AD100076318 /* SQLTupleGenerator.swift in Sources */,
+				A9CACA991DC39AD100076318 /* SQLFunc.swift in Sources */,
+				A9CACAAB1DC39AD100076318 /* SQLBinaryExprGenerator.swift in Sources */,
+				A9CACA971DC39AD100076318 /* SQLColumn.swift in Sources */,
+				A9CACAB31DC39AD100076318 /* SQLNativeTypeGenerator.swift in Sources */,
+				A9CACA9C1DC39AD100076318 /* SQLLimit.swift in Sources */,
+				A9CACA9E1DC39AD100076318 /* SQLOrder.swift in Sources */,
+				A9CACA901DC39AD100076318 /* SQLStringConvertible.swift in Sources */,
+				A9CACA981DC39AD100076318 /* SQLDelete.swift in Sources */,
+				A9CACAB71DC39AD100076318 /* SQLTableGenerator.swift in Sources */,
+				A9CACAA21DC39AD100076318 /* SQLTable.swift in Sources */,
+				A9CACAAA1DC39AD100076318 /* SQLAliasGenerator.swift in Sources */,
+				A9CACAA41DC39AD100076318 /* SQLTuple.swift in Sources */,
+				A9CACAA61DC39AD100076318 /* SQLGenerator.swift in Sources */,
+				A9CACA9D1DC39AD100076318 /* SQLLiteral.swift in Sources */,
+				A9CACAB51DC39AD100076318 /* SQLPrefixUnaryExprGenerator.swift in Sources */,
+				A9CACA961DC39AD100076318 /* SQLBinaryExpr.swift in Sources */,
+				A9CACAA91DC39AD100076318 /* SQLOrderGenerator.swift in Sources */,
+				A9CACAB01DC39AD100076318 /* SQLJoinGenerator.swift in Sources */,
+				A9CACAAD1DC39AD100076318 /* SQLDeleteGenerator.swift in Sources */,
+				A9CACA931DC39AD100076318 /* SQLCase.swift in Sources */,
+				A9CACAAE1DC39AD100076318 /* SQLFuncGenerator.swift in Sources */,
+				A9CACAB41DC39AD100076318 /* SQLPostfixUnaryExprGenerator.swift in Sources */,
+				A9CACA941DC39AD100076318 /* SQLInsert.swift in Sources */,
+				A9CACAB81DC39AD100076318 /* SQLTernaryExprGenerator.swift in Sources */,
+				A9CACAB61DC39AD100076318 /* SQLSelectGenerator.swift in Sources */,
+				A9CACA9B1DC39AD100076318 /* SQLJoin.swift in Sources */,
+				A9CACA921DC39AD100076318 /* SQLUtils.swift in Sources */,
+				A9CACA951DC39AD100076318 /* SQLAlias.swift in Sources */,
+				A9CACAA51DC39AD100076318 /* SQLUpdate.swift in Sources */,
+				A9CACAAC1DC39AD100076318 /* SQLColumnGenerator.swift in Sources */,
+				A9CACAB21DC39AD100076318 /* SQLLiteralGenerator.swift in Sources */,
+				A9CACAA81DC39AD100076318 /* SQLInGenerator.swift in Sources */,
+				A9CACABA1DC39AD100076318 /* SQLUpdateGenerator.swift in Sources */,
+				A9CACAB11DC39AD100076318 /* SQLLimitGenerator.swift in Sources */,
+				A9CACAAF1DC39AD100076318 /* SQLInsertGenerator.swift in Sources */,
+				A9CACA911DC39AD100076318 /* SQLTypes.swift in Sources */,
+				A9CACAA71DC39AD100076318 /* SQLCaseGenerator.swift in Sources */,
+				A9CACA9F1DC39AD100076318 /* SQLPostfixUnaryExpr.swift in Sources */,
+				A9CACAA01DC39AD100076318 /* SQLPrefixUnaryExpr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,6 +1074,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9CACACF1DC39AD200076318 /* SQLTernaryExpr.swift in Sources */,
+				A9CACACD1DC39AD200076318 /* SQLSelect.swift in Sources */,
+				A9CACABB1DC39AD200076318 /* SQL.swift in Sources */,
+				A9CACAC61DC39AD200076318 /* SQLIn.swift in Sources */,
+				A9CACAE51DC39AD200076318 /* SQLTupleGenerator.swift in Sources */,
+				A9CACAC51DC39AD200076318 /* SQLFunc.swift in Sources */,
+				A9CACAD71DC39AD200076318 /* SQLBinaryExprGenerator.swift in Sources */,
+				A9CACAC31DC39AD200076318 /* SQLColumn.swift in Sources */,
+				A9CACADF1DC39AD200076318 /* SQLNativeTypeGenerator.swift in Sources */,
+				A9CACAC81DC39AD200076318 /* SQLLimit.swift in Sources */,
+				A9CACACA1DC39AD200076318 /* SQLOrder.swift in Sources */,
+				A9CACABC1DC39AD200076318 /* SQLStringConvertible.swift in Sources */,
+				A9CACAC41DC39AD200076318 /* SQLDelete.swift in Sources */,
+				A9CACAE31DC39AD200076318 /* SQLTableGenerator.swift in Sources */,
+				A9CACACE1DC39AD200076318 /* SQLTable.swift in Sources */,
+				A9CACAD61DC39AD200076318 /* SQLAliasGenerator.swift in Sources */,
+				A9CACAD01DC39AD200076318 /* SQLTuple.swift in Sources */,
+				A9CACAD21DC39AD200076318 /* SQLGenerator.swift in Sources */,
+				A9CACAC91DC39AD200076318 /* SQLLiteral.swift in Sources */,
+				A9CACAE11DC39AD200076318 /* SQLPrefixUnaryExprGenerator.swift in Sources */,
+				A9CACAC21DC39AD200076318 /* SQLBinaryExpr.swift in Sources */,
+				A9CACAD51DC39AD200076318 /* SQLOrderGenerator.swift in Sources */,
+				A9CACADC1DC39AD200076318 /* SQLJoinGenerator.swift in Sources */,
+				A9CACAD91DC39AD200076318 /* SQLDeleteGenerator.swift in Sources */,
+				A9CACABF1DC39AD200076318 /* SQLCase.swift in Sources */,
+				A9CACADA1DC39AD200076318 /* SQLFuncGenerator.swift in Sources */,
+				A9CACAE01DC39AD200076318 /* SQLPostfixUnaryExprGenerator.swift in Sources */,
+				A9CACAC01DC39AD200076318 /* SQLInsert.swift in Sources */,
+				A9CACAE41DC39AD200076318 /* SQLTernaryExprGenerator.swift in Sources */,
+				A9CACAE21DC39AD200076318 /* SQLSelectGenerator.swift in Sources */,
+				A9CACAC71DC39AD200076318 /* SQLJoin.swift in Sources */,
+				A9CACABE1DC39AD200076318 /* SQLUtils.swift in Sources */,
+				A9CACAC11DC39AD200076318 /* SQLAlias.swift in Sources */,
+				A9CACAD11DC39AD200076318 /* SQLUpdate.swift in Sources */,
+				A9CACAD81DC39AD200076318 /* SQLColumnGenerator.swift in Sources */,
+				A9CACADE1DC39AD200076318 /* SQLLiteralGenerator.swift in Sources */,
+				A9CACAD41DC39AD200076318 /* SQLInGenerator.swift in Sources */,
+				A9CACAE61DC39AD200076318 /* SQLUpdateGenerator.swift in Sources */,
+				A9CACADD1DC39AD200076318 /* SQLLimitGenerator.swift in Sources */,
+				A9CACADB1DC39AD200076318 /* SQLInsertGenerator.swift in Sources */,
+				A9CACABD1DC39AD200076318 /* SQLTypes.swift in Sources */,
+				A9CACAD31DC39AD200076318 /* SQLCaseGenerator.swift in Sources */,
+				A9CACACB1DC39AD200076318 /* SQLPostfixUnaryExpr.swift in Sources */,
+				A9CACACC1DC39AD200076318 /* SQLPrefixUnaryExpr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1124,6 +1398,7 @@
 		A9D9E0311DC33BED005CF80D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Tests/Info-iOS.plist";
@@ -1137,6 +1412,7 @@
 		A9D9E0321DC33BED005CF80D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Tests/Info-iOS.plist";
@@ -1240,6 +1516,7 @@
 		A9D9E0AE1DC33DAB005CF80D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Tests/Info-tvOS.plist";
@@ -1255,6 +1532,7 @@
 		A9D9E0AF1DC33DAB005CF80D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Tests/Info-tvOS.plist";
