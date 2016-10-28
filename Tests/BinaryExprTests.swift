@@ -33,7 +33,7 @@ class BinaryExprTests: XCTestCase {
     func testEq() {
         XCTAssertSQL(student.id == attending.studentID, "stu.id = atd.student_id")
         XCTAssertSQL(1234 == attending.studentID, "1234 = atd.student_id")
-        XCTAssertSQL(SQL.Hex(0x1234) == attending.studentID, "0x1234 = atd.student_id")
+        XCTAssertSQL(SQLHex(0x1234) == attending.studentID, "0x1234 = atd.student_id")
         XCTAssertSQL(student.id == 1234, "stu.id = 1234")
         XCTAssertSQL(
             when(student.name == "Soyul", then: 2).else(1) == 2,
@@ -153,8 +153,8 @@ class BinaryExprTests: XCTestCase {
 
         XCTAssertSQL(student.grade % 5, "stu.grade % 5")
 
-        XCTAssertSQL(student.grade & SQL.Hex(0x1013), "stu.grade & 0x1013")
-        XCTAssertSQL(student.grade | SQL.Hex(0x1013), "stu.grade | 0x1013")
+        XCTAssertSQL(student.grade & SQLHex(0x1013), "stu.grade & 0x1013")
+        XCTAssertSQL(student.grade | SQLHex(0x1013), "stu.grade | 0x1013")
         
         XCTAssertSQL(student.grade >> 4, "stu.grade >> 4")
         XCTAssertSQL(student.grade << 2, "stu.grade << 2")

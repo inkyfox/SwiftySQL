@@ -82,14 +82,14 @@ extension XCTestCase {
     }
 }
 
-class Student: SQL.Alias {
+class Student: SQLAlias {
     
-    let table = SQL.Table("student")
+    let table = SQLTable("student")
     
-    let id = SQL.Column(table: "stu", column: "id")
-    let name = SQL.Column(table: "stu", column: "name")
-    let birth = SQL.Column(table: "stu", column: "birth")
-    let grade = SQL.Column(table: "stu", column: "grade")
+    let id = SQLColumn(table: "stu", column: "id")
+    let name = SQLColumn(table: "stu", column: "name")
+    let birth = SQLColumn(table: "stu", column: "birth")
+    let grade = SQLColumn(table: "stu", column: "grade")
     
     init() {
         super.init(table, alias: "stu")
@@ -97,13 +97,13 @@ class Student: SQL.Alias {
     
 }
 
-class Teature: SQL.Alias {
+class Teature: SQLAlias {
     
-    let table = SQL.Table("teature")
+    let table = SQLTable("teature")
     
-    let id = SQL.Column(table: "tea", column: "id")
-    let name = SQL.Column(table: "tea", column: "name")
-    let office = SQL.Column(table: "tea", column: "office")
+    let id = SQLColumn(table: "tea", column: "id")
+    let name = SQLColumn(table: "tea", column: "name")
+    let office = SQLColumn(table: "tea", column: "office")
     
     init() {
         super.init(table, alias: "tea")
@@ -111,15 +111,15 @@ class Teature: SQL.Alias {
     
 }
 
-class Lecture: SQL.Alias {
+class Lecture: SQLAlias {
     
-    let table = SQL.Table("lecture")
+    let table = SQLTable("lecture")
     
-    let id = SQL.Column(table: "lec", column: "id")
-    let name = SQL.Column(table: "lec", column: "name")
-    let category = SQL.Column(table: "lec", column: "category")
-    let teatureID = SQL.Column(table: "lec", column: "teature_id")
-    let hours = SQL.Column(table: "lec", column: "hours")
+    let id = SQLColumn(table: "lec", column: "id")
+    let name = SQLColumn(table: "lec", column: "name")
+    let category = SQLColumn(table: "lec", column: "category")
+    let teatureID = SQLColumn(table: "lec", column: "teature_id")
+    let hours = SQLColumn(table: "lec", column: "hours")
     
     init() {
         super.init(table, alias: "lec")
@@ -127,12 +127,12 @@ class Lecture: SQL.Alias {
     
 }
 
-class Attending: SQL.Alias {
+class Attending: SQLAlias {
     
-    let table = SQL.Table(schemaName: "user", tableName: "attending")
+    let table = SQLTable(schemaName: "user", tableName: "attending")
     
-    let studentID = SQL.Column(table: "atd", column: "student_id")
-    let lectureID = SQL.Column(table: "atd", column: "lecture_id")
+    let studentID = SQLColumn(table: "atd", column: "student_id")
+    let lectureID = SQLColumn(table: "atd", column: "lecture_id")
     
     init() {
         super.init(table, alias: "atd")

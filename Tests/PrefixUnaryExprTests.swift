@@ -48,7 +48,7 @@ class PrefixUnaryExprTests: XCTestCase {
     
     func testBitwiseNot() {
         XCTAssertSQL(~student.grade, "~stu.grade")
-        XCTAssertSQL(~SQL.Hex(0x123), "~0x123")
+        XCTAssertSQL(~SQLHex(0x123), "~0x123")
     }
     
     func testExists() {

@@ -1,5 +1,5 @@
 //
-//  SQL.Case.swift
+//  SQLCase.swift
 //  SwiftySQL
 //
 //  Created by Yongha Yoo (inkyfox) on 2016. 10. 22..
@@ -8,69 +8,65 @@
 
 import Foundation
 
-extension SQL {
+public class SQLWhenThens: SQLStringConvertible {
     
-    public class WhenThens: SQLStringConvertible {
-        
-        var whenThens: [(when:  SQLConditionType, then: SQLValueType)]
-        
-        init(_ whenThens: [(when:  SQLConditionType, then: SQLValueType)]) {
-            self.whenThens = whenThens
-        }
-
-        init(when: SQLConditionType, then: SQLValueType) {
-            whenThens = [(when, then)]
-        }
-
-        func append(when: SQLConditionType, then: SQLValueType) {
-            whenThens.append((when, then))
-        }
-        
+    var whenThens: [(when:  SQLConditionType, then: SQLValueType)]
+    
+    init(_ whenThens: [(when:  SQLConditionType, then: SQLValueType)]) {
+        self.whenThens = whenThens
     }
-
-    public struct Case: SQLValueType, SQLConditionType, SQLOrderType, SQLAliasable {
-        
-        let whenThens: WhenThens
-        let defaultValue: SQLValueType?
-        
-        init(_ whenThens: WhenThens, else defaultValue: SQLValueType? = nil) {
-            self.whenThens = whenThens
-            self.defaultValue = defaultValue
-        }
-
+    
+    init(when: SQLConditionType, then: SQLValueType) {
+        whenThens = [(when, then)]
+    }
+    
+    func append(when: SQLConditionType, then: SQLValueType) {
+        whenThens.append((when, then))
     }
     
 }
 
-extension SQL.WhenThens {
+public struct SQLCase: SQLValueType, SQLConditionType, SQLOrderType, SQLAliasable {
     
-    public func when(_ when: SQLConditionType, then: SQLValueType) -> SQL.WhenThens {
+    let whenThens: SQLWhenThens
+    let defaultValue: SQLValueType?
+    
+    init(_ whenThens: SQLWhenThens, else defaultValue: SQLValueType? = nil) {
+        self.whenThens = whenThens
+        self.defaultValue = defaultValue
+    }
+    
+}
+
+extension SQLWhenThens {
+    
+    public func when(_ when: SQLConditionType, then: SQLValueType) -> SQLWhenThens {
         self.append(when: when, then: then)
         return self
     }
-
-    public func `else`(_ defaultValue: SQLValueType) -> SQL.Case {
-        return SQL.Case(self, else: defaultValue)
+    
+    public func `else`(_ defaultValue: SQLValueType) -> SQLCase {
+        return SQLCase(self, else: defaultValue)
     }
     
 }
 
-public func when(_ when: SQLConditionType, then: SQLValueType) -> SQL.WhenThens {
-    return SQL.WhenThens(when: when, then: then)
+public func when(_ when: SQLConditionType, then: SQLValueType) -> SQLWhenThens {
+    return SQLWhenThens(when: when, then: then)
 }
 
-extension Array where Element : SQL.WhenThens {
+extension Array where Element : SQLWhenThens {
     
-    public func `else`(_ defaultValue: SQLValueType) -> SQL.Case {
-        return SQL.Case(SQL.WhenThens(self.reduce([]) { $0 + $1.whenThens }),
-                        else: defaultValue)
+    public func `else`(_ defaultValue: SQLValueType) -> SQLCase {
+        return SQLCase(SQLWhenThens(self.reduce([]) { $0 + $1.whenThens }),
+                       else: defaultValue)
     }
-
+    
 }
 
 //infix operator => : TernaryPrecedence
 //
-//public func =>(lhs: SQLConditionType, rhs: SQLValueType) -> SQL.WhenThen {
-//    return SQL.WhenThens(when: lhs, then: rhs)
+//public func =>(lhs: SQLConditionType, rhs: SQLValueType) -> SQLWhenThen {
+//    return SQLWhenThens(when: lhs, then: rhs)
 //}
 

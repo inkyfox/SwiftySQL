@@ -38,10 +38,10 @@ class LiteralTests: XCTestCase {
     }
     
     func testHex() {
-        XCTAssertSQL(SQL.select(SQL.Hex(0x1234)), "SELECT 0x1234")
-        XCTAssertSQL(SQL.select(SQL.Hex(0x12345678)), "SELECT 0x12345678")
-        XCTAssertSQL(SQL.select(SQL.Hex(1024)), "SELECT 0x400")
-        XCTAssertSQL(SQL.select(SQL.Hex(0x12345678)), "SELECT 0x12345678")
+        XCTAssertSQL(SQL.select(SQLHex(0x1234)), "SELECT 0x1234")
+        XCTAssertSQL(SQL.select(SQLHex(0x12345678)), "SELECT 0x12345678")
+        XCTAssertSQL(SQL.select(SQLHex(1024)), "SELECT 0x400")
+        XCTAssertSQL(SQL.select(SQLHex(0x12345678)), "SELECT 0x12345678")
     }
     
     func testAsteriskMark() {

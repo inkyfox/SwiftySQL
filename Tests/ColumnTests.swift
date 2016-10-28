@@ -33,9 +33,9 @@ class ColumnTests: XCTestCase {
     func testColumns() {
         XCTAssertSQL(
             SQL.select(
-                SQL.Column(table: "tbl", column: "name"),
-                SQL.Column(table: "tbl2", column: "id"),
-                SQL.Column("email")
+                SQLColumn(table: "tbl", column: "name"),
+                SQLColumn(table: "tbl2", column: "id"),
+                SQLColumn("email")
             )
             ,
             "SELECT tbl.name, tbl2.id, email")
@@ -50,7 +50,7 @@ class ColumnTests: XCTestCase {
     }
     
     func testColumnOfAlias() {
-        let sub: SQL.Alias = SQL.Alias(SQL.select().from(student.table), alias: "sub")
+        let sub: SQLAlias = SQLAlias(SQL.select().from(student.table), alias: "sub")
         
         XCTAssertSQL(
             SQL.select(student.name.of(sub))

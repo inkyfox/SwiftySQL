@@ -32,10 +32,10 @@ class AliasTests: XCTestCase {
     
     func testAlias() {
         XCTAssertSQL(
-            SQL.Alias(SQL.select().from(student.table), alias: "sub"),
+            SQLAlias(SQL.select().from(student.table), alias: "sub"),
             "(SELECT * FROM student) AS sub")
-        XCTAssertSQL(SQL.Alias(student.name, alias: "name"), "stu.name AS name")
-        XCTAssertSQL(SQL.Alias(1, alias: "count"), "1 AS count")
+        XCTAssertSQL(SQLAlias(student.name, alias: "name"), "stu.name AS name")
+        XCTAssertSQL(SQLAlias(1, alias: "count"), "1 AS count")
     }
 
     func testAliasAs() {

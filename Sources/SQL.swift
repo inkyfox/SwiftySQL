@@ -10,13 +10,13 @@ import Foundation
 
 public struct SQL {
 
-    public static let null: Keyword = Keyword(.null)
-    public static let currentDate: Keyword = Keyword(.currentDate)
-    public static let currentTime: Keyword = Keyword(.currentTime)
-    public static let currentTimestamp: Keyword = Keyword(.currentTimestamp)
+    public static let null: SQLKeyword = SQLKeyword(.null)
+    public static let currentDate: SQLKeyword = SQLKeyword(.currentDate)
+    public static let currentTime: SQLKeyword = SQLKeyword(.currentTime)
+    public static let currentTimestamp: SQLKeyword = SQLKeyword(.currentTimestamp)
 
-    public static let all: AsteriskMark = .all
-    public static let prepared: PreparedMark = .prepared
+    public static let all: SQLAsteriskMark = .all
+    public static let prepared: SQLPreparedMark = .prepared
 
 }
 

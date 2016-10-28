@@ -31,8 +31,8 @@ class LimitTests: XCTestCase {
     }
     
     func testLimit() {
-        XCTAssertSQL(SQL.Limit(limit: 1, offset: nil), "1")
-        XCTAssertSQL(SQL.Limit(limit: 1, offset: 100), "1, 100")
+        XCTAssertSQL(SQLLimit(limit: 1, offset: nil), "1")
+        XCTAssertSQL(SQLLimit(limit: 1, offset: 100), "1, 100")
     }
     
 }

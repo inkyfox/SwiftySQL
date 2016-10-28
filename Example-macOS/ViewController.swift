@@ -9,14 +9,14 @@
 import Cocoa
 import SwiftySQL
 
-class Student: SQL.Alias {
+class Student: SQLAlias {
     
-    let table = SQL.Table("student")
+    let table = SQLTable("student")
     
-    let id = SQL.Column(table: "s", column: "id")
-    let name = SQL.Column(table: "s", column: "name")
-    let birth = SQL.Column(table: "s", column: "birth")
-    let year = SQL.Column(table: "s", column: "year")
+    let id = SQLColumn(table: "s", column: "id")
+    let name = SQLColumn(table: "s", column: "name")
+    let birth = SQLColumn(table: "s", column: "birth")
+    let year = SQLColumn(table: "s", column: "year")
     
     init() {
         super.init(table, alias: "s")
@@ -24,13 +24,13 @@ class Student: SQL.Alias {
     
 }
 
-class Teature: SQL.Alias {
+class Teature: SQLAlias {
     
-    let table = SQL.Table("teature")
+    let table = SQLTable("teature")
     
-    let id = SQL.Column(table: "t", column: "id")
-    let name = SQL.Column(table: "t", column: "name")
-    let office = SQL.Column(table: "t", column: "office")
+    let id = SQLColumn(table: "t", column: "id")
+    let name = SQLColumn(table: "t", column: "name")
+    let office = SQLColumn(table: "t", column: "office")
     
     init() {
         super.init(table, alias: "t")
@@ -38,15 +38,15 @@ class Teature: SQL.Alias {
     
 }
 
-class Lecture: SQL.Alias {
+class Lecture: SQLAlias {
     
-    let table = SQL.Table("lecture")
+    let table = SQLTable("lecture")
     
-    let id = SQL.Column(table: "l", column: "id")
-    let name = SQL.Column(table: "l", column: "name")
-    let category = SQL.Column(table: "l", column: "category")
-    let teatureID = SQL.Column(table: "l", column: "teature_id")
-    let hours = SQL.Column(table: "l", column: "hours")
+    let id = SQLColumn(table: "l", column: "id")
+    let name = SQLColumn(table: "l", column: "name")
+    let category = SQLColumn(table: "l", column: "category")
+    let teatureID = SQLColumn(table: "l", column: "teature_id")
+    let hours = SQLColumn(table: "l", column: "hours")
     
     init() {
         super.init(table, alias: "l")
@@ -54,12 +54,12 @@ class Lecture: SQL.Alias {
     
 }
 
-class Attending: SQL.Alias {
+class Attending: SQLAlias {
     
-    let table = SQL.Table("attending")
+    let table = SQLTable("attending")
     
-    let studentID = SQL.Column(table: "a", column: "student_id")
-    let lectureID = SQL.Column(table: "a", column: "lecture_id")
+    let studentID = SQLColumn(table: "a", column: "student_id")
+    let lectureID = SQLColumn(table: "a", column: "lecture_id")
     
     init() {
         super.init(table, alias: "a")

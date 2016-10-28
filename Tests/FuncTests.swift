@@ -31,10 +31,10 @@ class FuncTests: XCTestCase {
     }
     
     func testFunc() {
-        XCTAssertSQL(SQL.Func("myfunc"), "myfunc()")
-        XCTAssertSQL(SQL.Func("myfunc", args: [1, 2, 3]), "myfunc(1, 2, 3)")
-        XCTAssertSQL(SQL.Func("myfunc", args: 1, 2, 3), "myfunc(1, 2, 3)")
-        XCTAssertSQL(SQL.Func("myfunc", args: SQL.all), "myfunc(*)")
+        XCTAssertSQL(SQLFunc("myfunc"), "myfunc()")
+        XCTAssertSQL(SQLFunc("myfunc", args: [1, 2, 3]), "myfunc(1, 2, 3)")
+        XCTAssertSQL(SQLFunc("myfunc", args: 1, 2, 3), "myfunc(1, 2, 3)")
+        XCTAssertSQL(SQLFunc("myfunc", args: SQL.all), "myfunc(*)")
     }
     
     func testCount() {

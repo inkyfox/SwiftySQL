@@ -69,7 +69,7 @@ class InsertTests: XCTestCase {
         XCTAssertSQL(
             SQL.insert(into: student)
                 .columns(student.id, student.name)
-                .values(SQL.Tuple(10, "Yongha"))
+                .values(SQLTuple(10, "Yongha"))
             ,
             "INSERT INTO student " +
             "(id, name) " +

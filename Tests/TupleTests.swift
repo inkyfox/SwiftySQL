@@ -31,10 +31,10 @@ class TupleTests: XCTestCase {
     }
     
     func testTuple() {
-        XCTAssertSQL(SQL.Tuple(1), "(1)")
-        XCTAssertSQL(SQL.Tuple(1, 2, 3), "(1, 2, 3)")
-        XCTAssertSQL(SQL.Tuple("ab", "cd", "ef"), "('ab', 'cd', 'ef')")
-        XCTAssertSQL(SQL.Tuple([1, 2, 3]), "(1, 2, 3)")
+        XCTAssertSQL(SQLTuple(1), "(1)")
+        XCTAssertSQL(SQLTuple(1, 2, 3), "(1, 2, 3)")
+        XCTAssertSQL(SQLTuple("ab", "cd", "ef"), "('ab', 'cd', 'ef')")
+        XCTAssertSQL(SQLTuple([1, 2, 3]), "(1, 2, 3)")
     }
 
 }

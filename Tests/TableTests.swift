@@ -31,8 +31,8 @@ class TableTests: XCTestCase {
     }
     
     func testTable() {
-        XCTAssertSQL(SQL.Table("tbl_test"), "tbl_test")
-        XCTAssertSQL(SQL.Table(schemaName: "db", tableName: "tbl_test"), "db.tbl_test")
+        XCTAssertSQL(SQLTable("tbl_test"), "tbl_test")
+        XCTAssertSQL(SQLTable(schemaName: "db", tableName: "tbl_test"), "db.tbl_test")
     }
     
 }
