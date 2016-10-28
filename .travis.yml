@@ -13,10 +13,3 @@ before_deploy:
 - carthage archive $FRAMEWORK_NAME
 script:
 - sh scripts/ci.sh
-deploy:
-  provider: releases
-  api_key:
-    secure: cLSs6P2N1IfRu/YheT7juoo7m/O5JE9Wnnh4soVD8s/Yxs781ZK+56kexHWAKYzHoRCCsbVeLM4QiAD5t7c2ypJS8y65CpMnb6LH/1ttXYfhbrDH8jWPVQVGzrmRos1QRAzcH31XQbpuNQ2R1gDx1K9G4VCg7xxOo0QQGwcmq1X3QE72KepZ+MmVLFQ3sekc/9ZJlxHow95wiltPZpi5BWtyPty15pTb4OmIM2Q3Q/hFJoqaHyG9inqGRc36jKBGi4kAVJDGyacQicAsyBoFNi9BZ//kFvNOInGihtMiDbxFm8w3eoj26Y9/SOswP7+61KyWYz5ZyOL9L/pg59ydFhC7CMrsnPqEz+RP4xyed7twyH+sEZyb1pNPA9DeOn8dMx+b2QhhEoNpdRsFnPMQUDAan2xTcc85TwXpp1NKf+/y3Lt6u0BloLnPZV5+kOtdcI/SUJzD/xp3SY2PcvMRzGrUQSH26jxM5Mj4a1vA9jE8Zpo5hoviXsbtEI5B8s9/IAgN6pUqzz7DRWLXHcfXlWKW+/V9s3SSRXrS8tENCjOyy57h1ZkrnA3ppI0LNRl6mwARPL3mr9v+0Y0G5aLPNcgeGf1mnGet8Kzl9Dn1WSevxsTSR9vVR1fi/Cx+BmYJ+jbVVE78cwGNCUc6ip6QHIkC5gFzbK77lM872vfoDDY=
-  file: SwiftySQL.framework.zip
-  on:
-    repo: inkyfox/SwiftySQL
