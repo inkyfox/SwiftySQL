@@ -3,14 +3,14 @@
 import Cocoa
 import SwiftySQL
 
-class Student: SQL.Alias {
+class Student: SQLAlias {
     
-    let table = SQL.Table("student")
+    let table = SQLTable("student")
     
-    let id = SQL.Column(table: "s", column: "id")
-    let name = SQL.Column(table: "s", column: "name")
-    let birth = SQL.Column(table: "s", column: "birth")
-    let year = SQL.Column(table: "s", column: "year")
+    let id = SQLColumn(table: "s", column: "id")
+    let name = SQLColumn(table: "s", column: "name")
+    let birth = SQLColumn(table: "s", column: "birth")
+    let year = SQLColumn(table: "s", column: "year")
     
     init() {
         super.init(table, alias: "s")
@@ -18,13 +18,13 @@ class Student: SQL.Alias {
     
 }
 
-class Teature: SQL.Alias {
+class Teature: SQLAlias {
     
-    let table = SQL.Table("teature")
+    let table = SQLTable("teature")
     
-    let id = SQL.Column(table: "t", column: "id")
-    let name = SQL.Column(table: "t", column: "name")
-    let office = SQL.Column(table: "t", column: "office")
+    let id = SQLColumn(table: "t", column: "id")
+    let name = SQLColumn(table: "t", column: "name")
+    let office = SQLColumn(table: "t", column: "office")
     
     init() {
         super.init(table, alias: "t")
@@ -32,15 +32,15 @@ class Teature: SQL.Alias {
     
 }
 
-class Lecture: SQL.Alias {
+class Lecture: SQLAlias {
     
-    let table = SQL.Table("lecture")
+    let table = SQLTable("lecture")
     
-    let id = SQL.Column(table: "l", column: "id")
-    let name = SQL.Column(table: "l", column: "name")
-    let category = SQL.Column(table: "l", column: "category")
-    let teatureID = SQL.Column(table: "l", column: "teature_id")
-    let hours = SQL.Column(table: "l", column: "hours")
+    let id = SQLColumn(table: "l", column: "id")
+    let name = SQLColumn(table: "l", column: "name")
+    let category = SQLColumn(table: "l", column: "category")
+    let teatureID = SQLColumn(table: "l", column: "teature_id")
+    let hours = SQLColumn(table: "l", column: "hours")
     
     init() {
         super.init(table, alias: "l")
@@ -48,12 +48,12 @@ class Lecture: SQL.Alias {
     
 }
 
-class Attending: SQL.Alias {
+class Attending: SQLAlias {
     
-    let table = SQL.Table("attending")
+    let table = SQLTable("attending")
     
-    let studentID = SQL.Column(table: "a", column: "student_id")
-    let lectureID = SQL.Column(table: "a", column: "lecture_id")
+    let studentID = SQLColumn(table: "a", column: "student_id")
+    let lectureID = SQLColumn(table: "a", column: "lecture_id")
     
     init() {
         super.init(table, alias: "a")
@@ -105,24 +105,24 @@ checkSQL(
 )
 
 
-//class Student: SQL.Alias {
-//    let table = SQL.Table("tbl_student")
+//class Student: SQLAlias {
+//    let table = SQLTable("tbl_student")
 //    
-//    let name = SQL.Column(table: "stu", column: "name")
-//    let age = SQL.Column(table: "stu", column: "age")
-//    let attendCount = SQL.Column(table: "stu", column: "attendCount")
+//    let name = SQLColumn(table: "stu", column: "name")
+//    let age = SQLColumn(table: "stu", column: "age")
+//    let attendCount = SQLColumn(table: "stu", column: "attendCount")
 //    
 //    init() {
 //        super.init(table, alias: "stu")
 //    }
 //}
 //
-//class Lecture: SQL.Alias {
-//    let table = SQL.Table(schemaName: "user", tableName: "tbl_lecture")
+//class Lecture: SQLAlias {
+//    let table = SQLTable(schemaName: "user", tableName: "tbl_lecture")
 //    
-//    let name = SQL.Column(table: "lec", column: "name")
-//    let studentName = SQL.Column(table: "lec", column: "name")
-//    let studentCount = SQL.Column(table: "lec", column: "studentCount")
+//    let name = SQLColumn(table: "lec", column: "name")
+//    let studentName = SQLColumn(table: "lec", column: "name")
+//    let studentCount = SQLColumn(table: "lec", column: "studentCount")
 //    
 //    init() {
 //        super.init(table, alias: "lec")
@@ -194,7 +194,7 @@ checkSQL(
 //               lecture.name,
 //               "Literal string",
 //               1234,
-////               SQL.Case([(when: student.age == 15,
+////               SQLCase([(when: student.age == 15,
 ////                          then: student.age),
 ////                         (when: SQL.select(student.age)
 ////                            .from(student)
@@ -266,7 +266,7 @@ checkSQL(
 ///* Func */
 //print("--")
 //
-//test(SQL.Func("FUNC",
+//test(SQLFunc("FUNC",
 //              args: [1,
 //                     SQL.select(lecture.studentCount)
 //                        .from(lecture)
@@ -358,7 +358,7 @@ checkSQL(
 //
 //// tuple
 //
-//test(student.name.in(SQL.Tuple("a", "b", 1)))
+//test(student.name.in(SQLTuple("a", "b", 1)))
 //
 //// combination
 //print("--")
@@ -473,7 +473,7 @@ checkSQL(
 //)
 //
 //
-//test(~SQL.Hex(0x123))
+//test(~SQLHex(0x123))
 //
 //test(student.age + student.age)
 //
@@ -547,13 +547,4 @@ checkSQL(
 //     when(student.age <= 300, then: 300)]
 //        .else(400)
 //)
-//
-//
-//test(
-//    SQL.update(student)
-//        .set([student.name, student.age],
-//             SQL.select(student.name, student.age)
-//                .from(student)
-//                .where(student.name == 20))
-//        .where(student.name == 10)
-//)
+

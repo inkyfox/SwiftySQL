@@ -1,5 +1,5 @@
 //
-//  SQL.Insert.swift
+//  SQLInsert.swift
 //  SwiftySQL
 //
 //  Created by Yongha Yoo (inkyfox) on 2016. 10. 24..
@@ -8,46 +8,42 @@
 
 import Foundation
 
-extension SQL {
+public class SQLInsert: SQLQueryType {
     
-    public class Insert: SQLQueryType {
+    enum Action {
+        case insert, replace
+        case insertOrReplace, insertOrRollback, insertOrAbort, insertOrFail, insertOrIgnore
+    }
+    
+    public enum OrAction {
+        case replace, rollback, abort, fail, ignore
         
-        enum Action {
-            case insert, replace
-            case insertOrReplace, insertOrRollback, insertOrAbort, insertOrFail, insertOrIgnore
-        }
-        
-        public enum OrAction {
-            case replace, rollback, abort, fail, ignore
-            
-            var action: Action {
-                switch self {
-                case .replace: return .insertOrReplace
-                case .rollback: return .insertOrRollback
-                case .abort: return .insertOrAbort
-                case .fail: return .insertOrFail
-                case .ignore: return .insertOrIgnore
-                }
+        var action: Action {
+            switch self {
+            case .replace: return .insertOrReplace
+            case .rollback: return .insertOrRollback
+            case .abort: return .insertOrAbort
+            case .fail: return .insertOrFail
+            case .ignore: return .insertOrIgnore
             }
         }
-
-        let action: Action
-        let table: SQLSourceTableType
-        var columns: [Column] = []
-        
-        var values: [[SQLExprType]] = []
-        var select: Select? = nil
-        
-        init(_ action: Action, into table: SQLSourceTableType) {
-            self.action = action
-            self.table = table
-        }
-
+    }
+    
+    let action: Action
+    let table: SQLSourceTableType
+    var columns: [SQLColumn] = []
+    
+    var values: [[SQLExprType]] = []
+    var select: SQLSelect? = nil
+    
+    init(_ action: Action, into table: SQLSourceTableType) {
+        self.action = action
+        self.table = table
     }
     
 }
 
-extension SQL.Insert {
+extension SQLInsert {
     
     public func query(by generator: SQLGenerator) -> String {
         return generator.generateQuery(self, forRead: false)
@@ -69,61 +65,61 @@ extension SQL.Insert {
 
 extension SQL {
     
-    public static func insert(into table: SQLSourceTableType) -> Insert {
-        return Insert(.insert, into: table)
+    public static func insert(into table: SQLSourceTableType) -> SQLInsert {
+        return SQLInsert(.insert, into: table)
     }
     
-    public static func replace(into table: SQLSourceTableType) -> Insert {
-        return Insert(.replace, into: table)
+    public static func replace(into table: SQLSourceTableType) -> SQLInsert {
+        return SQLInsert(.replace, into: table)
     }
     
-    public static func insert(or orAction: Insert.OrAction, into table: SQLSourceTableType) -> Insert {
-        return Insert(orAction.action, into: table)
-    }
-    
-}
-
-extension SQL.Insert {
-    
-    public func columns(_ columns: [SQL.Column]) -> SQL.Insert {
-        self.columns += columns
-        return self
-    }
-    
-    public func columns(_ columns: SQL.Column...) -> SQL.Insert {
-        self.columns += columns
-        return self
+    public static func insert(or orAction: SQLInsert.OrAction, into table: SQLSourceTableType) -> SQLInsert {
+        return SQLInsert(orAction.action, into: table)
     }
     
 }
 
-extension SQL.Insert {
+extension SQLInsert {
+    
+    public func columns(_ columns: [SQLColumn]) -> SQLInsert {
+        self.columns += columns
+        return self
+    }
+    
+    public func columns(_ columns: SQLColumn...) -> SQLInsert {
+        self.columns += columns
+        return self
+    }
+    
+}
 
-    public func values(_ values: [SQLExprType]) -> SQL.Insert {
+extension SQLInsert {
+
+    public func values(_ values: [SQLExprType]) -> SQLInsert {
         select = nil
         self.values.append(values)
         return self
     }
 
-    public func values(_ values: SQLExprType...) -> SQL.Insert {
+    public func values(_ values: SQLExprType...) -> SQLInsert {
         select = nil
         self.values.append(values)
         return self
     }
     
-    public func values(_ values: SQL.Tuple) -> SQL.Insert {
+    public func values(_ values: SQLTuple) -> SQLInsert {
         select = nil
         self.values.append(values.exprs)
         return self
     }
  
-    public func values(_ prepared: SQL.PreparedMark) -> SQL.Insert {
+    public func values(_ prepared: SQLPreparedMark) -> SQLInsert {
         select = nil
-        self.values.append(Array<SQL.PreparedMark>(repeating: .prepared, count: columns.count))
+        self.values.append(Array<SQLPreparedMark>(repeating: .prepared, count: columns.count))
         return self
     }
     
-    public func select(_ select: SQL.Select) -> SQL.Insert {
+    public func select(_ select: SQLSelect) -> SQLInsert {
         values.removeAll()
         self.select = select
         return self
