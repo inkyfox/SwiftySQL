@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "SwiftySQL"
-  s.version          = "1.0.2"
+  s.version          = "1.0.3"
   s.summary          = "Write you SQL in Swift"
   s.homepage         = "https://github.com/inkyfox/SwiftySQL"
   s.license          = 'MIT'
