@@ -16,7 +16,7 @@
 - Use **Swift variables** for table and column names with **auto completion** and **syntax highlighting**.
 - Use **Swift operators** and expressions for SQL expressions.
 
-`SwiftSQL` does not provide the ORM-like feature, just builds SQL statement strings.
+`SwiftySQL` does not provide the ORM-like feature, just builds SQL statement strings.
 
 For example, you can write Swift codes:
 
