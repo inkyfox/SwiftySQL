@@ -45,8 +45,8 @@ class LiteralTests: XCTestCase {
     }
     
     func testAsteriskMark() {
-        XCTAssertSQL(SQL.select(SQL.all), "SELECT *")
-        XCTAssertSQL(SQL.count(SQL.all), "COUNT(*)")
+        XCTAssertSQL(SQL.select(.all), "SELECT *")
+        XCTAssertSQL(SQL.count(.all), "COUNT(*)")
     }
     
     func testPrepared() {

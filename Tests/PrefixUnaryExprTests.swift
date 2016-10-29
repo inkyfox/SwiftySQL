@@ -53,7 +53,7 @@ class PrefixUnaryExprTests: XCTestCase {
     
     func testExists() {
         XCTAssertSQL(
-            SQL.exists(SQL.select()
+            exists(SQL.select()
                 .from(student)
                 .where(student.grade >= 3)),
             "EXISTS (SELECT * FROM student AS stu WHERE stu.grade >= 3)")
@@ -61,7 +61,7 @@ class PrefixUnaryExprTests: XCTestCase {
     
     func testNotExists() {
         XCTAssertSQL(
-            SQL.notExists(SQL.select()
+            notExists(SQL.select()
                 .from(student)
                 .where(student.grade >= 3)),
             "NOT EXISTS (SELECT * FROM student AS stu WHERE stu.grade >= 3)")

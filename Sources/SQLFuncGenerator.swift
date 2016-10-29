@@ -20,7 +20,7 @@ class SQLFuncGenerator: SQLElementGenerator<SQLFunc> {
     override func generateFormatted(_ element: SQLFunc,
                                     forRead: Bool,
                                     withIndent indent: Int) -> String {
-        let argIndent = element.name.characters.count + 1
+        let argIndent = indent + element.name.characters.count + 1
         let query = element.args
             .map { $0.formattedSQLString(forRead: forRead, withIndent: argIndent, by: generator) }
             .joined(separator: ",\n\(space(argIndent))")

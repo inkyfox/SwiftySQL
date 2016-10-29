@@ -115,8 +115,8 @@ class SelectTests: XCTestCase {
                 .groupBy([student.grade, student.birth])
             ,
             "SELECT stu.name, stu.birth " +
-                "FROM student AS stu, user.attending AS atd " +
-                "WHERE stu.id = atd.student_id " +
+            "FROM student AS stu, user.attending AS atd " +
+            "WHERE stu.id = atd.student_id " +
             "GROUP BY stu.grade, stu.birth"
         )
         
@@ -127,8 +127,8 @@ class SelectTests: XCTestCase {
                 .groupBy(student.grade, student.birth)
             ,
             "SELECT stu.name, stu.birth " +
-                "FROM student AS stu, user.attending AS atd " +
-                "WHERE stu.id = atd.student_id " +
+            "FROM student AS stu, user.attending AS atd " +
+            "WHERE stu.id = atd.student_id " +
             "GROUP BY stu.grade, stu.birth"
         )
         
